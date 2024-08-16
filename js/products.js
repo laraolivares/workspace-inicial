@@ -41,8 +41,3 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error:', error); // Maneja cualquier error
         });
 });
-
-
-
-
-
