@@ -5,10 +5,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const inputUsuario = document.getElementById('inputUsuario').value.trim();
     const inputContraseña = document.getElementById('inputContraseña').value.trim();
     
-    
-    if (inputUsuario === '' || inputContraseña === '') {
-      alert('Completar usuario y contraseña');
-    } else {
+  
+
+
+//OCULTAR/MOSTRAR CONTRSEÑA
+let contraseña = document.getElementById('inputContraseña');
+let icon = document.getElementById('icon');
+
+icon.addEventListener("click", function() {
+  if (contraseña.type === "password") {
+    contraseña.type = "text";
+     
+  } else {
+    contraseña.type = "password";
+  }
+})
+
     // if (inputUsuario === 'user' && inputContraseña === 'password') {
         // Guardar sesión en localStorage
         localStorage.setItem('loggedIn', 'true');
@@ -23,3 +35,4 @@ document.addEventListener('DOMContentLoaded', function () {
 //  }
  });
 });
+
