@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+
  const botonEntrar = document.getElementById('boton-entrar');
  const inputUsuario = document.getElementById('inputUsuario');
  const inputContraseña = document.getElementById('inputContraseña');
@@ -30,4 +31,3 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // NO SE COMO SE HACE PARA VERIFICAR SI EL USUARIO Y LA CONTRASEÑA ESTAN OK. DONDE SE ALMACENA ESA INFO??
-

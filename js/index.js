@@ -19,7 +19,7 @@ window.onload = function() {
         window.location.href = 'login.html';
     } else {
         const username = localStorage.getItem('username');
-        document.getElementById('welcomeMessage').textContent = `Bienvenido, ${username}`;
+        
     }
 };
 
