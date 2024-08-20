@@ -5,16 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const inputUsuario = document.getElementById('inputUsuario').value.trim();
     const inputContraseña = document.getElementById('inputContraseña').value.trim();
     
-    
-    if (inputUsuario === '' || inputContraseña === '') {
-      alert('Completar usuario y contraseña');
-    } else {
-      
-      window.location.href = 'https://laraolivares.github.io/workspace-inicial/'; 
-    }
-  });
-});
-
+  
 
 
 //OCULTAR/MOSTRAR CONTRSEÑA
@@ -29,3 +20,19 @@ icon.addEventListener("click", function() {
     contraseña.type = "password";
   }
 })
+
+    // if (inputUsuario === 'user' && inputContraseña === 'password') {
+        // Guardar sesión en localStorage
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('username', inputUsuario);
+        window.location.href = 'https://laraolivares.github.io/workspace-inicial/';
+    
+  // NO SE COMO SE HACE PARA VERIFICAR SI EL USUARIO Y LA CONTRASEÑA ESTAN OK. DONDE SE ALMACENA ESA INFO??
+
+  //} else {
+  //  alert('Usuario o contraseña incorrectos');
+    }
+//  }
+ });
+});
+

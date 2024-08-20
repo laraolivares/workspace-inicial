@@ -12,3 +12,19 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+window.onload = function() {
+    const estaLogueado = localStorage.getItem('loggedIn');
+    if (!estaLogueado) {
+        window.location.href = 'login.html';
+    } else {
+        const username = localStorage.getItem('username');
+        document.getElementById('welcomeMessage').textContent = `Bienvenido, ${username}`;
+    }
+};
+
+function logout() {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('username');
+    window.location.href = 'login.html';
+}
