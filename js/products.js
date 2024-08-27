@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         console.error(`Elemento con ID "auto${i + 1}" no encontrado`);
                     }
 
+
                     // Establecer el src para la imagen si el elemento es una imagen
                     const imgElement = document.getElementById("img.auto" + (i + 1));
                     if (imgElement) {
@@ -41,3 +42,14 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error:', error); // Maneja cualquier error
         });
 });
+
+                    
+window.onload = function() {
+    const estaLogueado = localStorage.getItem('loggedIn');
+    if (!estaLogueado) {
+        window.location.href = 'login.html';
+    } else {
+        const username = localStorage.getItem('username');
+        document.getElementById("username").innerHTML = username ;
+    }
+};
