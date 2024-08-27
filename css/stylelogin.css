@@ -260,8 +260,53 @@ footer p {
           background-color: #FFFFFF;
           padding: 10px 0;
     }
-    
-    footer p {
-          margin: 0;
+* TABLETS EN MODO VERTICAL */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        font-size: 14px;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .primerlogin {
+        margin-top: 5px; /* Ajusta la posición del logo de login */
+    }
+
+    .log-in h2 {
+       
+        margin-top: 30px; /* Ajusta la posición del título "Login" */
+    }
+
+    #boton-entrar {
+        width: 150px; /* Ancho del botón */
+        height: 40px;
+        margin: -350px auto 0; /* Margen superior ajustado para subir el botón */
+        font-size: 16px;
+        display: block;
+        position: relative;
+        left: -10px; /* Pequeño ajuste hacia la izquierda */
+    }
+
+    footer {
+        padding: 15px 0;
+    }
+
+    footer .container {
+        text-align: center; /* Centra todo el contenido del contenedor */
+    }
+
+    footer .float-end {
+        display: inline-block; /* Hace que el enlace se comporte como un bloque para ajustar márgenes */
+        margin-right: 15px; /* Ajusta la posición del enlace "Volver arriba" */
+        vertical-align: middle; /* Alinea verticalmente el enlace */
+    }
+
+    footer .container > p:last-child {
+        display: inline; /* Hace que el párrafo de "Jóvenes a Programar" se mantenga en línea con el enlace "Volver arriba" */
+        margin: 0;
+        padding: 0;
     }
 }
+  
