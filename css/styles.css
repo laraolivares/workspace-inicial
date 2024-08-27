@@ -187,9 +187,6 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
-<<<<<<< Updated upstream
-}
-=======
 }
 
 body{
@@ -237,5 +234,3 @@ div.producto{
   font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
   letter-spacing: 5px;
 }
-
->>>>>>> Stashed changes
