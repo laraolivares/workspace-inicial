@@ -18,8 +18,10 @@ window.onload = function() {
     if (!estaLogueado) {
         window.location.href = 'login.html';
     } else {
-        const username = localStorage.getItem('username');
-        
+      const nombreUsuario = localStorage.getItem('username');
+      if (nombreUsuario) {
+        document.getElementById('username').textContent = nombreUsuario;
+      }
     }
 };
 
