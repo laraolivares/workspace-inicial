@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
    // Guardar sesión en localStorage
    localStorage.setItem('loggedIn', 'true');
    localStorage.setItem('username', usuario);
-   window.location.href = 'https://laraolivares.github.io/workspace-inicial/';;
+   window.location.href = 'index.html'; // Desafiate Entrega 2
   }
  });
 
@@ -30,4 +30,3 @@ document.addEventListener('DOMContentLoaded', function () {
  });
 });
 
-// NO SE COMO SE HACE PARA VERIFICAR SI EL USUARIO Y LA CONTRASEÑA ESTAN OK. DONDE SE ALMACENA ESA INFO??
