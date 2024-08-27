@@ -187,4 +187,55 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+<<<<<<< Updated upstream
 }
+=======
+}
+
+body{
+  background-color: #f8f9fa;
+}
+.producto {
+  display: flex;
+}
+
+.columna {
+  flex: 50%;
+}
+
+.columna img{
+ width: 500px;
+ text-align: left;
+ margin: 20px 0px 20px 0px;
+ border: 2px solid rgb(39, 25, 1);
+}
+
+.columna p{
+  text-align: left;
+  margin-top: 30px;
+  
+}
+
+div.producto{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  border: 1px solid rgb(41, 26, 1);
+}
+
+.autoVentas{
+  color: rgb(148, 147, 147);
+}
+
+.autoTitulo{
+  font-size: 40px;
+  font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+}
+
+#tituloProductos{
+  font-size: 50px;
+  margin: 40px 0px 20px 0px;
+  font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+  letter-spacing: 5px;
+}
+
+>>>>>>> Stashed changes
