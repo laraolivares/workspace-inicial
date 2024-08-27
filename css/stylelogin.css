@@ -129,4 +129,63 @@ footer {
 footer p {
       margin: 0;
 }
- 
+
+/*RESOLUCIÓN ESTANDAR*/
+@media (min-width: 1366px) {
+    body {
+        font-size: 16px;
+    }
+
+    main {
+        max-width: 1200px;
+        margin: auto;
+    }
+}
+
+/*TABLETS EN MODO VERTICAL*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        font-size: 14px;
+    }
+
+    main {
+        padding: 15px;
+    }
+}
+
+/*SMARTPHONES PEQUEÑOS*/
+@media (min-width: 320px) and (max-width: 568px) {
+    .primerlogin {
+        max-width: 50%; /* La imagen se ajusta al contenedor */
+        height: auto; /* Mantiene la proporción */
+    }
+
+    .log-in h2 {
+        font-size: 20px;
+    }
+
+    .log-usuario {
+        font-size: 10px;
+        width:80%;
+        height: 100%;
+        border: none; 
+        padding-left: 25px; 
+        border-radius: 30px; 
+        box-sizing: border-box; 
+        text-align: left;
+        padding-top: 5px;
+        padding-left: 60px;
+    }
+
+   
+
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 5px;
+    }
+}
