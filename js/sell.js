@@ -147,3 +147,14 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+
+window.onload = function() {
+    const estaLogueado = localStorage.getItem('loggedIn');
+    if (!estaLogueado) {
+        window.location.href = 'login.html';
+    } else {
+        const username = localStorage.getItem('username');
+        document.getElementById("usernameSell").innerHTML = username ;
+    }
+};
