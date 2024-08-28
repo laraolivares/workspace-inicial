@@ -1,4 +1,5 @@
-body {
+@media (min-width: 769px){
+    body {
 
     background-color: white;
     text-align: center;
@@ -129,4 +130,183 @@ footer {
 footer p {
       margin: 0;
 }
- 
+}
+@media (max-width: 320px){
+    body {
+
+        background-color: white;
+        text-align: center;
+    }
+    
+    .primerlogin {
+        margin-top: -50px;
+    }
+    
+    .log-in h2 {
+        font-family: 'Inter';
+        font-weight: 400; 
+        font-size: 32px;
+        color:#727272;
+        line-height: 39px;
+        position: absolute;
+        width: 92px;
+        height: 70px;
+        left: calc(50% - 92px/2);
+        margin-left: 50%;
+    }
+    
+    .log-usuario {
+        box-sizing: border-box;
+        position: relative;
+        width: 324px;
+        height: 53px;
+        left: calc(50% - 324px/2);
+        top: 120px;
+        background: #FFFFFF;
+        border: 3px solid #727272;
+        border-radius: 30px;
+    margin-left: 50%;
+    }
+    
+    .icono-login, .icono-contraseña {
+        position: absolute;
+        left: 10px; 
+        top: 50%; 
+        transform: translateY(-50%);
+        width: 34px; 
+        height: 34px; 
+    }
+    
+    #inputUsuario, #inputContraseña {
+        width: 100%;
+        height: 100%;
+        border: none; 
+        padding-left: 50px; 
+        border-radius: 30px; 
+        box-sizing: border-box; 
+        text-align: left;
+        padding-top: 5px;
+        padding-left: 60px;
+    }
+    
+    #inputUsuario::placeholder {
+            
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+        color: #B7B5B5;
+    }
+    
+    .log-contraseña {
+        box-sizing: border-box;
+        position: relative;
+        width: 324px;
+        height: 53px;
+        left: calc(50% - 324px/2);
+        top: 145px;
+        background: #FFFFFF;
+        border: 3px solid #727272;
+        border-radius: 30px;
+        margin-left: 50%;
+    
+    }
+    
+    #inputContraseña::placeholder {
+            
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+        color: #B7B5B5;
+    }
+    
+    #boton-entrar {
+    
+        position: absolute;
+        width: 109px;
+        height: 31px;
+        left: calc(50% - 109px/2 + 0.5px);
+        top: 520px;
+        background: #F09100;
+        border-radius: 40px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 18px;
+        color: #FFFFFF;
+        border:none;
+        margin-left: 50%;
+    }
+    
+     
+    .bx {
+        position: absolute;
+        right: 10px; /* Ajusta la posición del ícono */
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 30px;
+        cursor: pointer;
+    }
+    
+      
+    footer {
+          position: fixed;
+          bottom: 0;
+          width: 110%;
+          background-color: #FFFFFF;
+          padding: 10px 0;
+    }
+* TABLETS EN MODO VERTICAL */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        font-size: 14px;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .primerlogin {
+        margin-top: 5px; /* Ajusta la posición del logo de login */
+    }
+
+    .log-in h2 {
+       
+        margin-top: 30px; /* Ajusta la posición del título "Login" */
+    }
+
+    #boton-entrar {
+        width: 150px; /* Ancho del botón */
+        height: 40px;
+        margin: -350px auto 0; /* Margen superior ajustado para subir el botón */
+        font-size: 16px;
+        display: block;
+        position: relative;
+        left: -10px; /* Pequeño ajuste hacia la izquierda */
+    }
+
+    footer {
+        padding: 15px 0;
+    }
+
+    footer .container {
+        text-align: center; /* Centra todo el contenido del contenedor */
+    }
+
+    footer .float-end {
+        display: inline-block; /* Hace que el enlace se comporte como un bloque para ajustar márgenes */
+        margin-right: 15px; /* Ajusta la posición del enlace "Volver arriba" */
+        vertical-align: middle; /* Alinea verticalmente el enlace */
+    }
+
+    footer .container > p:last-child {
+        display: inline; /* Hace que el párrafo de "Jóvenes a Programar" se mantenga en línea con el enlace "Volver arriba" */
+        margin: 0;
+        padding: 0;
+    }
+}
+  
