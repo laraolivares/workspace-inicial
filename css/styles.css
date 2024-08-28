@@ -232,3 +232,36 @@ div.producto{
   font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
   letter-spacing: 5px;
 }
+
+@media (max-width: 320px) {
+  #tituloProductos {
+    font-size: 120%;
+    text-align: center;
+  }
+  .columna img {
+    width: 100%;
+    padding-top: 0%;
+    margin-top: 0%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  }
+  .autoTitulo {
+    font-size: 100%;
+  }
+  .auto {
+    font-size: 70%;
+  }
+  .autoVentas {
+    font-size: 70%; /* Ajusta el tamaño según sea necesario */
+  }
+  .producto {
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+  }
+  .columna {
+    flex: 1;
+    text-align: center;
+    margin-top: 1px;
+    width: 100%;
+
+    
+  }
+}
