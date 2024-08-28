@@ -1,3 +1,30 @@
+/*TABLETS*/
+@media screen and (min-width: 768px) {
+  body {
+      font-size: 13px;
+  }
+  
+  .container #tituloProductos {
+    font-size: 150%;
+  }
+
+  .columna {
+    flex: 500%;
+    margin-left: 3%;
+  }
+
+  .columna .autoTitulo {
+    font-size: 150%;
+  }
+
+  .columna .img {
+    width: 100%;
+    text-align: left;
+    margin: 20px 0px 20px 0px;
+ }
+}
+/*FIN TABLETS*/
+
 
 @media (min-width: 769px){
 .jumbotron,
