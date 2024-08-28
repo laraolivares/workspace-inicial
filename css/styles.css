@@ -221,6 +221,7 @@ a.custom-card:hover {
 
 .producto {
   display: flex;
+  margin-bottom: 50px;
 }
 
 .columna {
@@ -269,28 +270,51 @@ div.producto{
   }
   .columna img {
     width: 100%;
-    padding-top: 0%;
-    margin-top: 0%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+    height: auto;
+    margin: 0;
+    padding: 0;
   }
+  
   .autoTitulo {
-    font-size: 100%;
+    font-size: 90%; /* Reducido el tamaño del texto */
+    text-align: justify;
+    padding-left: 0.5%; /* Reducido el padding */
+    padding-right: 0.5%; /* Reducido el padding */
+    margin: 5px 0; /* Reducido el margen superior e inferior */
   }
-  .auto {
-    font-size: 70%;
+  
+  .columna .auto {
+    font-size: 60%; /* Reducido el tamaño del texto */
+    text-align: justify;
+    padding-left: 0.5%; /* Reducido el padding */
+    padding-right: 0.5%; /* Reducido el padding */
+    margin: 0; /* Elimina el margen */
   }
-  .autoVentas {
-    font-size: 70%; /* Ajusta el tamaño según sea necesario */
+  
+  .columna .autoVentas {
+    font-size: 60%; /* Reducido el tamaño del texto */
+    margin: 0; /* Elimina el margen */
   }
+  
   .producto {
     display: flex;
-    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
-  }
-  .columna {
-    flex: 1;
-    text-align: center;
-    margin-top: 1px;
+    flex-direction: column;
     width: 100%;
+    padding: 2%; /* Elimina el padding */
+    margin-bottom: 5%; /* Elimina el margen */
+  }
+  
+  .columna {
+    flex: 1; /* Permite que las columnas se ajusten al contenedor */
+    width: 100%; /* Ancho completo */
+    height: 120px; /* Reducida la altura */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total */
+    overflow: hidden; /* Evita el desbordamiento */
+    padding: 0; /* Elimina el padding */
+    margin: 0; /* Elimina el margen */
+  }
 
-    
+  footer{
+    font-size: 65%;
   }
 }

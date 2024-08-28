@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (productElement) {
                         productTitle.innerHTML = product.name ;
                         productElement.innerHTML = product.description + `<br>`
-                            + product.currency + " " + product.cost ;
+                        + `<br>` +`<strong>` + product.currency + " " + product.cost + ` </strong>`;
                         productSales.innerHTML = product.soldCount + " vendidos";
                     } else {
                         console.error(`Elemento con ID "auto${i + 1}" no encontrado`);
