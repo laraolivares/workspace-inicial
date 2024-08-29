@@ -260,8 +260,8 @@ footer p {
           background-color: #FFFFFF;
           padding: 10px 0;
     }
-* TABLETS EN MODO VERTICAL */
-@media (min-width: 768px) and (max-width: 1024px) {
+}
+@media (min-width: 321px){
     body {
         font-size: 14px;
     }
@@ -309,4 +309,3 @@ footer p {
         padding: 0;
     }
 }
-  
