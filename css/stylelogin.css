@@ -5,8 +5,9 @@
     text-align: center;
 }
 
-.primerlogin {
+.primerlogin img{
     margin-top: -50px;
+    width:40%;
 }
 
 .log-in h2 {
@@ -136,36 +137,30 @@ footer p {
         background-color: white;
         text-align: center;
     }
-    
-    .primerlogin {
-        margin-top: -50px;
-        text-align: center;
+
+    #imglogin{
+        width:270%;
+        text-align: left;
     }
     
-    .log-in h2 {
+   #tituloLogin {
         font-family: 'Inter';
         font-weight: 400; 
-        font-size: 32px;
+        font-size: 170%;
         color:#727272;
         line-height: 39px;
         position: absolute;
-        width: 92px;
-        height: 70px;
         left: calc(50% - 92px/2);
-        margin-left: 50%;
     }
     
-    .log-usuario {
+    #log-usuario-login {
         box-sizing: border-box;
         position: relative;
-        width: 324px;
-        height: 53px;
         left: calc(50% - 324px/2);
         top: 120px;
         background: #FFFFFF;
         border: 3px solid #727272;
         border-radius: 30px;
-        margin-left: 50%;
     }
     
     .icono-login, .icono-contraseña {
@@ -173,13 +168,12 @@ footer p {
         left: 10px; 
         top: 50%; 
         transform: translateY(-50%);
-        width: 34px; 
-        height: 34px; 
+        width: 340px; 
+        height: 304px; 
     }
     
     #inputUsuario, #inputContraseña {
-        width: 100%;
-        height: 100%;
+        width: 50%;
         border: none; 
         border-radius: 30px; 
         box-sizing: border-box; 
@@ -193,23 +187,19 @@ footer p {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
+        font-size: 5px;
         line-height: 29px;
         color: #B7B5B5;
     }
     
-    .log-contraseña {
+    #log-contraseña-login {
         box-sizing: border-box;
         position: relative;
-        width: 324px;
-        height: 53px;
         left: calc(50% - 324px/2);
-        top: 145px;
+        top: 120px;
         background: #FFFFFF;
         border: 3px solid #727272;
         border-radius: 30px;
-        margin-left: 50%;
-    
     }
     
     #inputContraseña::placeholder {
@@ -224,11 +214,11 @@ footer p {
     
     #boton-entrar {
     
-        position: absolute;
+        position: relative;
         width: 109px;
         height: 31px;
         left: calc(50% - 109px/2 + 0.5px);
-        top: 520px;
+        margin-top: -30%;
         background: #F09100;
         border-radius: 40px;
         font-family: 'Inter';
@@ -238,7 +228,6 @@ footer p {
         line-height: 18px;
         color: #FFFFFF;
         border:none;
-        margin-left: 50%;
     }
     
      
@@ -251,15 +240,28 @@ footer p {
         cursor: pointer;
     }
     
+    #volverArriba{
+        font-size: 50%;
+        display: inline-block; /* Hace que el enlace se comporte como un bloque para ajustar márgenes */
+        margin-right: 70%; /* Ajusta la posición del enlace "Volver arriba" */
+        vertical-align: middle; /* Alinea verticalmente el enlace */
+    }
+    footer p{
+        text-align: left;
+        font-size: 50%;
+      }
       
-    footer {
-          position: fixed;
-          bottom: 0;
-          width: 110%;
-          background-color: #FFFFFF;
-          padding: 10px 0;
+      footer .float-end {
+        display: inline-block; /* Hace que el enlace se comporte como un bloque para ajustar márgenes */
+        margin-right: 15px; /* Ajusta la posición del enlace "Volver arriba" */
+        vertical-align: middle; /* Alinea verticalmente el enlace */
     }
 }
+
+#container{
+    margin-top: 0;
+}
+
 @media (max-width: 768px){
     body {
 
@@ -267,8 +269,9 @@ footer p {
         text-align: center;
     }
     
-    .primerlogin {
+    .primerlogin img{
         margin-top: -50px;
+        width:40%;
     }
     
     .log-in h2 {
