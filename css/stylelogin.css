@@ -127,8 +127,9 @@ footer {
 }
 
 footer p {
-      margin: 0;
+      margin-right: 30%;
 }
+
 }
 @media (max-width: 320px){
     body {
@@ -384,4 +385,8 @@ footer p {
           background-color: #FFFFFF;
           padding: 10px 0;
     }
+
+    footer p {
+        margin-right: 20%;
+  }
 }
