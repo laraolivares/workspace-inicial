@@ -256,6 +256,10 @@ div.producto{
   font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
 }
 
+.producto{
+  cursor: pointer;
+}
+
 #tituloProductos{
   font-size: 50px;
   margin: 40px 0px 20px 0px;
@@ -318,3 +322,14 @@ div.producto{
     font-size: 65%;
   }
 }
+
+/*provisorio (para que los productos no se vean asquerosos)<3*/
+#produ_espec img{
+  float: left;
+  width: 50%;
+  padding-right: 5%;
+}
+
+#produ_espec{
+  padding-top: 3%;
+} /*aca termina mi css momentaneo*/

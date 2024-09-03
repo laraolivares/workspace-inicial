@@ -21,11 +21,10 @@ document.addEventListener("DOMContentLoaded", function() {
                         productElement.innerHTML = product.description + `<br>`
                         + `<br>` +`<strong>` + product.currency + " " + product.cost + ` </strong>`;
                         productSales.innerHTML = product.soldCount + " vendidos";
+                        document.getElementsByClassName("producto")[i].id = "a_" + product.id
                     } else {
                         console.error(`Elemento con ID "auto${i + 1}" no encontrado`);
                     }
-
-
                     // Establecer el src para la imagen si el elemento es una imagen
                     const imgElement = document.getElementById("img.auto" + (i + 1));
                     if (imgElement) {
@@ -33,7 +32,17 @@ document.addEventListener("DOMContentLoaded", function() {
                     } else {
                         console.error(`Elemento de imagen con ID "img${i + 1}" no encontrado`);
                     }
+
+                    
                 }
+                const productos = document.getElementsByClassName("producto");
+                for ( i = 0; i < productos.length; i++){ 
+                    productos[i].addEventListener("click", function() {
+                    // Accede correctamente al id del elemento clicado
+                    localStorage.setItem("id", this.id); // 'this' se refiere al elemento clicado
+                    console.log(localStorage.getItem("id"));
+                    window.location.href = "product-info.html";
+                    })};
             } else {
                 console.error('La propiedad products no está disponible en los datos:', data);
             }
@@ -53,3 +62,6 @@ window.onload = function() {
         document.getElementById("username").innerHTML = username ;
     }
 };
+
+
+
