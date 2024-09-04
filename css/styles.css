@@ -70,12 +70,6 @@ nav a {
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
 
 .jumbotron p:last-child {
   margin-bottom: 0;
@@ -219,39 +213,37 @@ a.custom-card:hover {
 }
 
 
-.producto {
+.product-container {
   display: flex;
   margin-bottom: 50px;
 }
 
-.columna {
+.product-text {
   flex: 50%;
+  text-align: left;
+  margin-top: 2%;
+  margin-left: 2%;
 }
 
-.columna img{
- width: 500px;
+#product-imaElement-0, #product-imaElement-1, #product-imaElement-2, #product-imaElement-3, #product-imaElement-4 {
+ width: 90%;
  text-align: left;
  margin: 20px 0px 20px 0px;
  border: 2px solid rgb(39, 25, 1);
 }
 
-.columna p{
-  text-align: left;
-  margin-top: 30px;
-  
-}
-
-div.producto{
+.product-container {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   border: 1px solid rgb(41, 26, 1);
 }
 
-.autoVentas{
+#product-soldCount-0,#product-soldCount-1, #product-soldCount-2, #product-soldCount-3, #product-soldCount-4 {
+  margin-top: 20%;
   color: rgb(148, 147, 147);
 }
 
-.autoTitulo{
+#product-name-0, #product-name-1, #product-name-2, #product-name-3, #product-name-4 {
   font-size: 40px;
   font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
 }
