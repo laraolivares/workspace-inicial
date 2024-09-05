@@ -1,3 +1,4 @@
+/*ESTANDAR*/
 @media (min-width: 769px){
     body {
 
@@ -5,11 +6,15 @@
     text-align: center;
 }
 
-.primerlogin {
+#primerloginID {
     margin-top: -50px;
 }
 
-.log-in h2 {
+#img-login{
+    width: 50%;
+}
+
+#log-inID h2 {
     font-family: 'Inter';
     font-weight: 400; 
     font-size: 32px;
@@ -22,20 +27,20 @@
    
 }
 
-.log-usuario {
+#log-usuarioID{
     box-sizing: border-box;
     position: relative;
     width: 324px;
     height: 53px;
     left: calc(50% - 324px/2);
-    top: 120px;
+    margin-top: 5%;
     background: #FFFFFF;
     border: 3px solid #727272;
     border-radius: 30px;
 
 }
 
-.icono-login, .icono-contraseña {
+#icono-loginID, #icono-contraseniaID {
     position: absolute;
     left: 10px; 
     top: 50%; 
@@ -65,13 +70,13 @@
     color: #B7B5B5;
 }
 
-.log-contraseña {
+#log-contraseniaID {
     box-sizing: border-box;
     position: relative;
     width: 324px;
     height: 53px;
     left: calc(50% - 324px/2);
-    top: 145px;
+    margin-top: 1%;
     background: #FFFFFF;
     border: 3px solid #727272;
     border-radius: 30px;
@@ -90,19 +95,16 @@
 }
 
 #boton-entrar {
-
-    position: absolute;
-    width: 109px;
-    height: 31px;
+    width: 10%;
+    margin-top: 2%;
+    text-align: center;
     left: calc(50% - 109px/2 + 0.5px);
-    top: 520px;
     background: #F09100;
     border-radius: 40px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: 120%;
     color: #FFFFFF;
     border:none;
 }
@@ -131,136 +133,8 @@ footer p {
 }
 
 }
-@media (max-width: 320px){
-    body {
-
-        background-color: white;
-        text-align: center;
-    }
-    
-    .primerlogin {
-        margin-top: -50px;
-        text-align: center;
-    }
-    
-    .log-in h2 {
-        font-family: 'Inter';
-        font-weight: 400; 
-        font-size: 32px;
-        color:#727272;
-        line-height: 39px;
-        position: absolute;
-        width: 92px;
-        height: 70px;
-        left: calc(50% - 92px/2);
-        margin-left: 50%;
-    }
-    
-    .log-usuario {
-        box-sizing: border-box;
-        position: relative;
-        width: 324px;
-        height: 53px;
-        left: calc(50% - 324px/2);
-        top: 120px;
-        background: #FFFFFF;
-        border: 3px solid #727272;
-        border-radius: 30px;
-        margin-left: 50%;
-    }
-    
-    .icono-login, .icono-contraseña {
-        position: absolute;
-        left: 10px; 
-        top: 50%; 
-        transform: translateY(-50%);
-        width: 34px; 
-        height: 34px; 
-    }
-    
-    #inputUsuario, #inputContraseña {
-        width: 100%;
-        height: 100%;
-        border: none; 
-        border-radius: 30px; 
-        box-sizing: border-box; 
-        text-align: left;
-        padding-top: 5px;
-        padding-left: 20%; 
-    }
-    
-    #inputUsuario::placeholder {
-            
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 29px;
-        color: #B7B5B5;
-    }
-    
-    .log-contraseña {
-        box-sizing: border-box;
-        position: relative;
-        width: 324px;
-        height: 53px;
-        left: calc(50% - 324px/2);
-        top: 145px;
-        background: #FFFFFF;
-        border: 3px solid #727272;
-        border-radius: 30px;
-        margin-left: 50%;
-    
-    }
-    
-    #inputContraseña::placeholder {
-            
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 29px;
-        color: #B7B5B5;
-    }
-    
-    #boton-entrar {
-    
-        position: absolute;
-        width: 109px;
-        height: 31px;
-        left: calc(50% - 109px/2 + 0.5px);
-        top: 520px;
-        background: #F09100;
-        border-radius: 40px;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 18px;
-        color: #FFFFFF;
-        border:none;
-        margin-left: 50%;
-    }
-    
-     
-    .bx {
-        position: absolute;
-        right: 10px; /* Ajusta la posición del ícono */
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 30px;
-        cursor: pointer;
-    }
-    
-      
-    footer {
-          position: fixed;
-          bottom: 0;
-          width: 110%;
-          background-color: #FFFFFF;
-          padding: 10px 0;
-    }
-}
+/*FIN ESTANDAR*/
+/*TABLET*/
 @media (max-width: 768px){
     body {
 
@@ -268,35 +142,42 @@ footer p {
         text-align: center;
     }
     
-    .primerlogin {
+    #primerloginID {
         margin-top: -50px;
     }
     
-    .log-in h2 {
+    #img-login{
+        width: 100%;
+    }
+    
+    #log-inID h2 {
         font-family: 'Inter';
         font-weight: 400; 
         font-size: 32px;
         color:#727272;
         line-height: 39px;
         position: absolute;
-        width: 92px;
+        width: 100px;
         height: 70px;
         left: calc(50% - 92px/2);
+       
     }
     
-    .log-usuario {
+    #log-usuarioID{
         box-sizing: border-box;
         position: relative;
-        width: 324px;
-        height: 53px;
+        width: 400px;
+        height: 60px;
         left: calc(50% - 324px/2);
-        top: 120px;
+        margin-top: 10%;
+        margin-left: -40px;
         background: #FFFFFF;
         border: 3px solid #727272;
         border-radius: 30px;
+    
     }
     
-    .icono-login, .icono-contraseña {
+    #icono-loginID, #icono-contraseniaID {
         position: absolute;
         left: 10px; 
         top: 50%; 
@@ -309,7 +190,7 @@ footer p {
         width: 100%;
         height: 100%;
         border: none; 
-        padding-left: 20%;  
+        padding-left: 20%; 
         border-radius: 30px; 
         box-sizing: border-box; 
         text-align: left;
@@ -326,16 +207,18 @@ footer p {
         color: #B7B5B5;
     }
     
-    .log-contraseña {
+    #log-contraseniaID {
         box-sizing: border-box;
         position: relative;
-        width: 324px;
-        height: 53px;
+        width: 400px;
+        height: 60px;
         left: calc(50% - 324px/2);
-        top: 145px;
+        margin-top: 2%;
+        margin-left: -40px;
         background: #FFFFFF;
         border: 3px solid #727272;
         border-radius: 30px;
+    
     
     }
     
@@ -350,19 +233,16 @@ footer p {
     }
     
     #boton-entrar {
-    
-        position: absolute;
-        width: 109px;
-        height: 31px;
+        width: 25%;
+        margin-top: 5%;
+        text-align: center;
         left: calc(50% - 109px/2 + 0.5px);
-        top: 520px;
         background: #F09100;
         border-radius: 40px;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
-        font-size: 15px;
-        line-height: 18px;
+        font-size: 150%;
         color: #FFFFFF;
         border:none;
     }
@@ -381,12 +261,144 @@ footer p {
     footer {
           position: fixed;
           bottom: 0;
-          width: 110%;
+          width: 150%;
           background-color: #FFFFFF;
-          padding: 10px 0;
+          margin-left: -250px;
     }
 
-    footer p {
-        margin-right: 20%;
-  }
-}
+    }
+/*FIN TABLET*/
+@media (max-width: 320px){
+    body {
+
+        background-color: white;
+        text-align: center;
+    }
+    
+    #primerloginID {
+        margin-top: -50px;
+    }
+    
+    #img-login{
+        width: 120%;
+    }
+    
+    #log-inID h2 {
+        font-family: 'Inter';
+        font-weight: 400; 
+        font-size: 32px;
+        color:#727272;
+        line-height: 39px;
+        position: absolute;
+        width: 100px;
+        height: 70px;
+        text-align: center;
+        margin-left: 25px;
+       
+    }
+    
+    #log-usuarioID{
+        box-sizing: border-box;
+        position: relative;
+        width: 300px;
+        height: 50px;
+        left: calc(50% - 324px/2);
+        margin-top: 20%;
+        margin-left: 40px;
+        background: #FFFFFF;
+        border: 3px solid #727272;
+        border-radius: 30px;
+    
+    }
+    
+    #icono-loginID, #icono-contraseniaID {
+        position: absolute;
+        left: 10px; 
+        top: 50%; 
+        transform: translateY(-50%);
+        width: 34px; 
+        height: 34px; 
+    }
+    
+    #inputUsuario, #inputContraseña {
+        width: 100%;
+        height: 100%;
+        border: none; 
+        padding-left: 20%; 
+        border-radius: 30px; 
+        box-sizing: border-box; 
+        text-align: left;
+        padding-top: 5px;
+    }
+    
+    #inputUsuario::placeholder {
+            
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+        color: #B7B5B5;
+    }
+    
+    #log-contraseniaID {
+        box-sizing: border-box;
+        position: relative;
+        width: 300px;
+        height: 50px;
+        left: calc(50% - 324px/2);
+        margin-top: 1%;
+        margin-left: 40px;
+        background: #FFFFFF;
+        border: 3px solid #727272;
+        border-radius: 30px;
+    
+    
+    }
+    
+    #inputContraseña::placeholder {
+            
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+        color: #B7B5B5;
+    }
+    
+    #boton-entrar {
+        width: 40%;
+        margin-top: 5%;
+        text-align: center;
+        left: calc(50% - 109px/2 + 0.5px);
+        background: #F09100;
+        border-radius: 40px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 120%;
+        color: #FFFFFF;
+        border:none;
+        margin-left: 49px;
+    }
+    
+     
+    .bx {
+        position: absolute;
+        right: 10px; /* Ajusta la posición del ícono */
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 30px;
+        cursor: pointer;
+    }
+    
+      
+    footer {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          background-color: #FFFFFF;
+          margin-left: -20px;
+    }
+
+    }
