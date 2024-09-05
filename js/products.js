@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const productContainer = document.createElement('div');
                     productContainer.className = 'product-container'; // Add class
                     productContainer.id = `product-${index}`; // Add unique ID
-                     
+
                     // Create a div for the image
                     const imageDiv = document.createElement('div');
                     imageDiv.className = 'product-image'; // Add class
@@ -66,7 +66,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     textDiv.appendChild(soldCountP);
 
                     // Append textDiv to productContainer
-                    productContainer.appendChild(textDiv);        
+                    productContainer.appendChild(textDiv);
+
+
+
+                });
             } else {
                 console.error('La propiedad products no está disponible en los datos:', data);
             }
