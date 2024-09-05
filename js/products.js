@@ -53,3 +53,27 @@ window.onload = function() {
         document.getElementById("username").innerHTML = username ;
     }
 };
+
+// FUNCIÓN PARA LA BÚSQUEDA EN TIEMPO REAL
+function realizarBusqueda() {
+    const buscador = document.getElementById('buscador');
+    const textoMinuscula = buscador.value.toLowerCase(); // Obtiene el texto de búsqueda en minúsculas
+    const productos = document.querySelectorAll('.producto'); // Selecciona todos los elementos con la clase 'producto'
+
+    productos.forEach(producto => {
+        const titulo = producto.querySelector('.autoTitulo').textContent.toLowerCase(); // Obtiene y convierte el título a minúsculas
+        const descripcion = producto.querySelector('.auto').textContent.toLowerCase(); // Obtiene y convierte la descripción a minúsculas
+
+        // Muestra el producto si el texto de la búsqueda está en el título o en la descripción
+        if (titulo.includes(textoMinuscula) || descripcion.includes(textoMinuscula)) {
+            producto.style.display = ''; // Muestra el producto
+        } else {
+            producto.style.display = 'none'; // Oculta el producto
+        }
+    });
+}
+
+document.getElementById('buscador').addEventListener('input', realizarBusqueda);
+
+document.getElementById('lupa').addEventListener('click', realizarBusqueda);
+

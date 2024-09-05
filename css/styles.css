@@ -318,3 +318,24 @@ div.producto{
     font-size: 65%;
   }
 }
+
+/*BUSCADOR*/
+input {
+  margin-top: 3%;
+  margin-left: 35%;
+  width: 400px;
+  height: 40px;
+  padding: 25px;
+  border: 2px solid;
+  font-size: 30px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+#lupa {
+  font-size: 30px;
+  position: relative;
+  left: -50px;
+  transform: translateX(-50%);
+  color: #666;
+  cursor: pointer;
+}
