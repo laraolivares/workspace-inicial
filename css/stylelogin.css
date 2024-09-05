@@ -369,7 +369,7 @@ footer p {
     }
     
     #boton-entrar {
-        width: 40%;
+        width: 50%;
         margin-top: 5%;
         text-align: center;
         left: calc(50% - 109px/2 + 0.5px);
@@ -378,7 +378,7 @@ footer p {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
-        font-size: 120%;
+        font-size: 100%;
         color: #FFFFFF;
         border:none;
     }
