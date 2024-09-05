@@ -335,7 +335,7 @@ footer p {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
+        font-size: 20px;
         line-height: 29px;
         color: #B7B5B5;
     }
@@ -370,7 +370,7 @@ footer p {
     
     #boton-entrar {
         width: 50%;
-        margin-top: 7%;
+        margin-top: 10%;
         text-align: center;
         left: calc(50% - 109px/2 + 0.5px);
         background: #F09100;
@@ -378,7 +378,7 @@ footer p {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
-        font-size: 100%;
+        font-size: 90%;
         color: #FFFFFF;
         border:none;
     }
