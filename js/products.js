@@ -66,11 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     textDiv.appendChild(soldCountP);
 
                     // Append textDiv to productContainer
-                    productContainer.appendChild(textDiv);
-
-                    
-                    
-                });
+                    productContainer.appendChild(textDiv);        
             } else {
                 console.error('La propiedad products no está disponible en los datos:', data);
             }
@@ -90,3 +86,6 @@ window.onload = function() {
         document.getElementById("username").innerHTML = username ;
     }
 };
+
+
+
