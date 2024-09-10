@@ -6,6 +6,9 @@ function setCatID(id) {
 const catID = localStorage.getItem("catID");
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    let products = [];
+
     fetch("https://japceibal.github.io/emercado-api/cats_products/" + catID + ".json")
         .then(response => {
             if (!response.ok) {
@@ -18,59 +21,101 @@ document.addEventListener("DOMContentLoaded", function() {
             const container = document.getElementById('productsContainer'); 
 
             if (data && data.products) {
-                data.products.forEach((product, index) => {
-                    // Create a container div for each product
-                    const productContainer = document.createElement('div');
-                    productContainer.className = 'product-container'; // Add class
-                    productContainer.id = `product-${index}`; // Add unique ID
+                products = data.products;
 
-                    // Create a div for the image
-                    const imageDiv = document.createElement('div');
-                    imageDiv.className = 'product-image'; // Add class
-                    imageDiv.id = `product-image-${index}`; // Add unique ID
+// Function to render products
+function renderProducts(products) {
+    container.innerHTML = ''; // Clear the container
+    products.forEach((product, index) => {
 
-                    // Add product image
-                    const imgElement = document.createElement('img');
-                    imgElement.src = product.image;
-                    imgElement.alt = product.name;
-                    imgElement.id = `product-imaElement-${index}`; // Add unique ID
-                    imageDiv.appendChild(imgElement);
+// Create a container div for each product
+    const productContainer = document.createElement('div');
+    productContainer.className = 'product-container'; // Add class
+    productContainer.id = `product-${index}`; // Add unique ID
 
-                    // Append imageDiv to productContainer
-                    productContainer.appendChild(imageDiv);
+// Create a div for the image
+    const imageDiv = document.createElement('div');
+    imageDiv.className = 'product-image'; // Add class
+    imageDiv.id = `product-image-${index}`; // Add unique ID
 
-                    // Append the productContainer to the main container
-                    container.appendChild(productContainer);
+// Add product image
+    const imgElement = document.createElement('img');
+    imgElement.src = product.image;
+    imgElement.alt = product.name;
+    imgElement.id = `product-imaElement-${index}`; // Add unique ID
+    imageDiv.appendChild(imgElement);
 
-                    // Create a div for text information
-                    const textDiv = document.createElement('div');
-                    textDiv.className = 'product-text'; // Add class
-                    textDiv.id = `product-text-${index}`; // Add unique ID
+// Append imageDiv to productContainer
+    productContainer.appendChild(imageDiv);
 
-                    // Add product name
-                    const nameP = document.createElement('p');
-                    nameP.textContent = product.name;
-                    nameP.id = `product-name-${index}`; // Add unique ID
-                    textDiv.appendChild(nameP);
+// Append the productContainer to the main container
+    container.appendChild(productContainer);
 
-                    // Add product description, cost, and currency
-                    const descriptionP = document.createElement('p');
-                    descriptionP.innerHTML = `${product.description}<br><br><strong>${product.currency} ${product.cost}</strong>`;
-                    descriptionP.id = `product-description-${index}`; // Add unique ID
-                    textDiv.appendChild(descriptionP);
+// Create a div for text information
+    const textDiv = document.createElement('div');
+    textDiv.className = 'product-text'; // Add class
+    textDiv.id = `product-text-${index}`; // Add unique ID
 
-                    // Add sold count
-                    const soldCountP = document.createElement('p');
-                    soldCountP.textContent = `${product.soldCount} vendidos`;
-                    soldCountP.id = `product-soldCount-${index}`; // Add unique ID
-                    textDiv.appendChild(soldCountP);
+// Add product name
+    const nameP = document.createElement('p');
+    nameP.textContent = product.name;
+    nameP.id = `product-name-${index}`; // Add unique ID
+    textDiv.appendChild(nameP);
 
-                    // Append textDiv to productContainer
-                    productContainer.appendChild(textDiv);
+// Add product description, cost, and currency
+    const descriptionP = document.createElement('p');
+    descriptionP.innerHTML = `${product.description}<br><br><strong>${product.currency} ${product.cost}</strong>`;
+    descriptionP.id = `product-description-${index}`; // Add unique ID
+    textDiv.appendChild(descriptionP);
+
+// Add sold count
+    const soldCountP = document.createElement('p');
+    soldCountP.textContent = `${product.soldCount} vendidos`;
+    soldCountP.id = `product-soldCount-${index}`; // Add unique ID
+    textDiv.appendChild(soldCountP);
+
+// Append textDiv to productContainer
+    productContainer.appendChild(textDiv);
+});
+}
+
+// Initial rendering
+renderProducts(products);
 
 
+// Botón filtro event listener
+document.getElementById('filterBtn').addEventListener('click', function() {
+    const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
+    const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
 
-                });
+
+    const filteredProducts = products.filter(product =>
+        product.cost >= minPrice && product.cost <= maxPrice
+    );
+   
+    renderProducts(filteredProducts);
+});
+
+// Ordenar por precio ascendente
+document.getElementById('sortPriceAsc').addEventListener('click', function() {
+    const sortedProducts = [...products].sort((a, b) => a.cost - b.cost);
+    renderProducts(sortedProducts);
+});
+
+
+// Ordenar por precio descendente
+document.getElementById('sortPriceDesc').addEventListener('click', function() {
+    const sortedProducts = [...products].sort((a, b) => b.cost - a.cost);
+    renderProducts(sortedProducts);
+});
+
+
+// Ordenar por relevancia (por los más vendidos)
+document.getElementById('sortRelevanceDesc').addEventListener('click', function() {
+    const sortedProducts = [...products].sort((a, b) => b.soldCount - a.soldCount);
+    renderProducts(sortedProducts);
+});
+
             } else {
                 console.error('La propiedad products no está disponible en los datos:', data);
             }
