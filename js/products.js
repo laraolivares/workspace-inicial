@@ -22,6 +22,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const searchBar = document.getElementById('search-bar');
 
             if (data && data.products) {
+                data.products.forEach((product, index) => {
+                    // Create a container div for each product
+                    const productContainer = document.createElement('div');
+                    productContainer.className = 'product-container'; // Add class
+                    productContainer.id = `product-${product.id}`;
+                    console.log(productContainer.id) // Add unique ID
                 products = data.products;
 
                 // Function to render products
@@ -42,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         const imgElement = document.createElement('img');
                         imgElement.src = product.image;
                         imgElement.alt = product.name;
-                        imgElement.id = `product-image-element-${index}`; // Add unique ID
+                        imgElement.id = `product-image-element-${product.id}`; // Add unique ID
                         imageDiv.appendChild(imgElement);
 
                         // Append imageDiv to productContainer
@@ -51,31 +57,40 @@ document.addEventListener("DOMContentLoaded", function() {
                         // Create a div for text information
                         const textDiv = document.createElement('div');
                         textDiv.className = 'product-text'; // Add class
-                        textDiv.id = `product-text-${index}`; // Add unique ID
+                        textDiv.id = `product-text-${product.id}`; // Add unique ID
 
                         // Add product name
                         const nameP = document.createElement('p');
                         nameP.textContent = product.name;
-                        nameP.id = `product-name-${index}`; // Add unique ID
+                        nameP.id = `product-name-${product.id}`; // Add unique ID
                         nameP.className = 'product-name'; // Corrected class assignment
                         textDiv.appendChild(nameP);
 
                         // Add product description, cost, and currency
                         const descriptionP = document.createElement('p');
                         descriptionP.innerHTML = `${product.description}<br><br><strong>${product.currency} ${product.cost}</strong>`;
-                        descriptionP.id = `product-description-${index}`; // Add unique ID
+                        descriptionP.id = `product-description-${product.id}`; // Add unique ID
                         descriptionP.className = 'product-description'; // Corrected class assignment
                         textDiv.appendChild(descriptionP);
 
                         // Add sold count
                         const soldCountP = document.createElement('p');
                         soldCountP.textContent = `${product.soldCount} vendidos`;
-                        soldCountP.id = `product-soldCount-${index}`; // Add unique ID
+                        soldCountP.id = `product-soldCount-${product.id}`; // Add unique ID
                         textDiv.appendChild(soldCountP);
 
                         // Append textDiv to productContainer
                         productContainer.appendChild(textDiv);
 
+                    // Añadí el evento a cada producto
+                    productContainer.addEventListener('click', function() {
+                        localStorage.setItem('idProducto', product.id);
+                        window.location.href = 'product-info.html'; // Assuming this is the page to view product details
+                    });
+                });
+                }
+            else {
+                console.error('La propiedad products no está disponible en los datos:', data);
                         // Append productContainer to the main container
                         container.appendChild(productContainer);
                     });
@@ -106,6 +121,8 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('There was a problem with the fetch operation:', error);
         });
 });
+
+
 
 // Initial rendering
 renderProducts(products);
