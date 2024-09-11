@@ -29,6 +29,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById("produ_espec").innerHTML = info1 + img + info2;
                 
                 initializeCarousel();
+
+                document.getElementById("categ").addEventListener('click', function(){
+                    window.location.href = 'products.html'
+                });
             }
         })
         .catch(error => {

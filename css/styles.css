@@ -103,7 +103,7 @@
     left: 50%;
   }
   
-  .cursor-active, .product-container {
+  .cursor-active, .product-container, #categ {
     cursor: pointer;
   }
   
