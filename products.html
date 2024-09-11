@@ -13,6 +13,8 @@
   
   <!--Agregue esta metaetiqueta que controla como se escala la página en diferentes dispositivos móviles-->
    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+   <!--LINK ICONO LUPA-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -40,11 +42,42 @@
       </div>
     </div>
   </nav>
+
   <main class="pb-5 container">
     <div class="container text-center ">
       <h1 id="tituloProductos">PRODUCTOS</h1> <br>
     </div>
   </div>
+
+    <!-- Barra de busqueda -->
+    <div>
+      <input type="text" id="search-bar" placeholder="Buscar..." />
+      <i class='bx bx-search' id="lupa"></i>
+      <div id="container"> </div>
+      
+      </div>
+
+<!-- Botones para filtrar precio y ordenar -->
+<div id="price-filter">
+  <label>Precio</label>
+  <input type="number" id="min-price" placeholder="0" step="1">
+  <input type="number" id="max-price" placeholder="0" step="1">
+  <button id="filterBtn">Filtrar</button>
+</div>
+
+
+<div>
+  <!--AGREGAR LAS IMAGENES DE LOS BOTONES-->
+
+
+  <button id="sortPriceAsc"> Ordenar por precio Ascendente</button>
+  <button id="sortPriceDesc"> Ordenar por precio Descendente</button>
+  <button id="sortRelevanceDesc"> Ordenar por relevancia Descendente</button>
+</div>
+ 
+<br>
+
+
       <div id="productsContainer">
         </div>
   </main>
