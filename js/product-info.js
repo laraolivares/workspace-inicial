@@ -22,16 +22,22 @@ document.addEventListener("DOMContentLoaded", function() {
                         <button class="carousel-button next">❯</button>
                     </div>`;
 
-                var info2 = `<p>${data.description}</p>
-                             <p>${data.currency} ${data.cost}</p>
-                             <p>${data.soldCount} vendidos</p>`;
+                var info2 = `<p id="descrip-corta">${data.description}</p>
+                             <p id="precio">${data.currency} ${data.cost}</p>
+                             <p id="categ-vendidos">${data.soldCount} vendidos</p>
+                             <p id="descrip-larga">${data.longDescription || 'No hay una descripción extensa disponible para este producto.'}
+                             `;
 
+
+                // Insertar todo el contenido en produ_espec
                 document.getElementById("produ_espec").innerHTML = info1 + img + info2;
-                
+
+                // Inicializar el carrusel después de cargar las imágenes
                 initializeCarousel();
 
+                // Redireccionar al hacer clic en la categoría
                 document.getElementById("categ").addEventListener('click', function(){
-                    window.location.href = 'products.html'
+                    window.location.href = 'products.html';
                 });
             }
         })
@@ -39,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error:', error);
         });
 
+    // Función para inicializar el carrusel
     function initializeCarousel() {
         const carouselContainer = document.querySelector('#carousel .carousel-images');
         const images = carouselContainer.querySelectorAll('img');
@@ -64,3 +71,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
