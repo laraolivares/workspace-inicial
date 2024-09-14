@@ -242,7 +242,6 @@
     color: #666;
     cursor: pointer;
   }
-
 }
 /*FIN ESTANDAR*/
 /*TABLETS*/
@@ -522,7 +521,8 @@
     letter-spacing: 5px;
   }
 
-  footer{
+  
+   footer{
     font-size: 60%;
   }
 }
@@ -651,5 +651,3 @@
   margin-left: auto; /* Empuja el texto hacia la derecha */
   margin-right: 0; /* Ajusta el margen derecho */
 }
-
-
