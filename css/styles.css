@@ -664,9 +664,9 @@
   font-weight:400;
   color: #242222;
   align-items: center;
-  transition: .5s ease;
   padding:.5rem 1rem;
   border-radius:8px;
+  transition: .5s ease;
   transition:opacity .15s linear;
   background-color: rgb(236, 191, 68);
 }
@@ -674,7 +674,11 @@
 #sortPriceAsc, #sortPriceDesc, #sortRelevanceDesc{
   float: right;
   font-size: 14px; 
-  padding: 6px;
+  align-items: center;
+  padding:.5rem 1rem;
+  border-radius:8px;
+  transition: .5s ease;
+  transition:opacity .15s linear;
   background-color: rgb(236, 191, 68);
   color: #242222;
 }
