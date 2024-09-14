@@ -575,13 +575,13 @@
 .ordenar-relevancia {
   display: flex;
   justify-content: center;
-  gap: 10px; /* Espacio entre los botones */
+  gap: 10px; 
 }
 
 #min-price,#max-price{
-  width: 100px; /* Ancho fijo para los campos de entrada */
-  padding: 5px; /* Espacio interno en los campos de entrada */
-  font-size: 14px; /* Tamaño de la fuente */
+  width: 100px; 
+  padding: 5px; 
+  font-size: 14px; 
 }
 
 #filterBtn {
@@ -598,8 +598,8 @@
 
 #sortPriceAsc, #sortPriceDesc, #sortRelevanceDesc{
   float: right;
-  font-size: 14px; /* Tamaño de la fuente */
-  padding: 6px; /* Espacio interno en los campos de entrada */
+  font-size: 14px; 
+  padding: 6px;
   background-color: rgb(236, 191, 68);
   color: #242222;
 }
