@@ -651,3 +651,30 @@
   margin-left: auto; /* Empuja el texto hacia la derecha */
   margin-right: 0; /* Ajusta el margen derecho */
 }
+
+/*Botones de filtro y ordenar productos*/
+
+#min-price,#max-price{
+  width: 100px; 
+  padding: 5px; 
+  font-size: 14px; 
+}
+
+#filterBtn {
+  font-weight:400;
+  color: #242222;
+  align-items: center;
+  transition: .5s ease;
+  padding:.5rem 1rem;
+  border-radius:8px;
+  transition:opacity .15s linear;
+  background-color: rgb(236, 191, 68);
+}
+
+#sortPriceAsc, #sortPriceDesc, #sortRelevanceDesc{
+  float: right;
+  font-size: 14px; 
+  padding: 6px;
+  background-color: rgb(236, 191, 68);
+  color: #242222;
+}
