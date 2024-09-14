@@ -103,7 +103,7 @@
     left: 50%;
   }
   
-  .cursor-active {
+  .cursor-active, .product-container, #categ {
     cursor: pointer;
   }
   
@@ -221,6 +221,26 @@
     margin: 40px 0px 20px 0px;
     font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
     letter-spacing: 5px;
+  }
+
+  #search-bar {
+    margin-left: 35%;
+    margin-bottom: 3%;
+    width: 400px;
+    height: 40px;
+    padding: 25px;
+    border: 2px solid;
+    font-size: 30px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  #lupa {
+    font-size: 30px;
+    position: relative;
+    left: -50px;
+    transform: translateX(-50%);
+    color: #666;
+    cursor: pointer;
   }
 }
 /*FIN ESTANDAR*/
@@ -504,4 +524,82 @@
   footer{
     font-size: 60%;
   }
+}
+
+/*Estilo para el carrusel, a editar*/
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Ajusta según sea necesario */
+  margin: auto;
+  overflow: hidden;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-images img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10; /* Asegura que los botones estén encima de las imágenes */
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
+
+/*Botones de filtro y ordenar productos*/
+
+.price-filter, .ordenar-relevancia {
+  float: right;
+  margin-bottom: 1000px
+}
+
+.ordenar-relevancia {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Espacio entre los botones */
+}
+
+#min-price,#max-price{
+  width: 100px; /* Ancho fijo para los campos de entrada */
+  padding: 5px; /* Espacio interno en los campos de entrada */
+  font-size: 14px; /* Tamaño de la fuente */
+}
+
+#filterBtn {
+  font-weight:400;
+  color: #242222;
+  align-items: center;
+  transition: .5s ease;
+  padding:.5rem 1rem;
+  border-radius:8px;
+  transition:opacity .15s linear;
+  background-color: rgb(236, 191, 68);
+}
+
+
+#sortPriceAsc, #sortPriceDesc, #sortRelevanceDesc{
+  float: right;
+  font-size: 14px; /* Tamaño de la fuente */
+  padding: 6px; /* Espacio interno en los campos de entrada */
+  background-color: rgb(236, 191, 68);
+  color: #242222;
 }
