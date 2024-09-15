@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const sortPriceAsc = document.getElementById('sortPriceAsc');
     const sortPriceDesc = document.getElementById('sortPriceDesc');
     const sortRelevanceDesc = document.getElementById('sortRelevanceDesc');
+    const clearFilterBtn = document.getElementById('clearFilterBtn');
     
     let products = [];
 
@@ -77,6 +78,14 @@ document.addEventListener("DOMContentLoaded", function() {
         renderProducts(filteredProducts);
     }
 
+    function clearFilters() {
+        document.getElementById('min-price').value = '';
+        document.getElementById('max-price').value = '';
+        searchBar.value = '';
+        filteredProducts = products;
+        renderProducts(filteredProducts);
+    }
+
     // Fetch products data
     fetch("https://japceibal.github.io/emercado-api/cats_products/" + catID + ".json")
         .then(response => {
@@ -121,6 +130,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     const sortedProducts = [...products].sort((a, b) => b.soldCount - a.soldCount);
                     renderProducts(sortedProducts);
                 });
+               
+                clearFilterBtn.addEventListener('click', clearFilters);
             }
         })
         .catch(error => {
