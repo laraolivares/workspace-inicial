@@ -654,6 +654,16 @@
 
 /*Botones de filtro y ordenar productos*/
 
+.ordenar-relevancia {
+display: flex; 
+gap: 10px; 
+align-items: center;
+}
+
+.ordenar-relevancia, .price-filter button:hover {
+background-color: #e0e0e0; /* Cambia el color de fondo al pasar el ratón */
+}
+
 #min-price,#max-price{
   width: 100px; 
   padding: 5px; 
