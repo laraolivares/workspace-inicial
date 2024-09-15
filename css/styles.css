@@ -25,6 +25,33 @@
   }
   
   
+  .jumbotron {/*ESTANDAR*/
+@media (min-width: 769px){
+  .jumbotron,
+  .card-body,
+  .container,
+  .site-header {
+    font-family: 'Verdana', serif !important;
+  }
+  
+  .jumbotron .display-4 {
+    font-weight: bold;
+  }
+  
+  nav a {
+    text-decoration: none;
+  }
+  
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  
   .jumbotron {
     height: 50vh;
     padding: 5em inherit;
