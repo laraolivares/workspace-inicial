@@ -25,33 +25,6 @@
   }
   
   
-  .jumbotron {/*ESTANDAR*/
-@media (min-width: 769px){
-  .jumbotron,
-  .card-body,
-  .container,
-  .site-header {
-    font-family: 'Verdana', serif !important;
-  }
-  
-  .jumbotron .display-4 {
-    font-weight: bold;
-  }
-  
-  nav a {
-    text-decoration: none;
-  }
-  
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  
   .jumbotron {
     height: 50vh;
     padding: 5em inherit;
@@ -681,13 +654,21 @@
 
 /*Botones de filtro y ordenar productos*/
 
+.ordenar-relevancia {
+gap: 10px;
+}
+
+.ordenar-relevancia, .price-filter button:hover {
+background-color: #e0e0e0; /* Cambia el color de fondo al pasar el ratón */
+}
+
 #min-price,#max-price{
   width: 100px; 
   padding: 5px; 
   font-size: 14px; 
 }
 
-#filterBtn {
+#filterBtn, #clearFilterBtn {
   font-weight:400;
   color: #242222;
   align-items: center;
