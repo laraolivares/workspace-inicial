@@ -690,3 +690,45 @@ background-color: #e0e0e0; /* Cambia el color de fondo al pasar el ratón */
   background-color: rgb(236, 191, 68);
   color: #242222;
 }
+
+/*Formulario de calificación*/
+#form-calificacion{
+  margin-top: 40px;
+  margin-left: 50px;
+}
+
+h4 {
+  font-size: 30px;
+  font-family: 'Lucida Console', monospace;
+}
+
+#comentario {
+  width: 500px; 
+  height: 150px;
+  resize: both; 
+}
+
+label {
+  font-size: 25px;
+  font-family: 'Lucida Console', monospace;
+  margin-top: 20px;
+}
+
+.rating {
+  transform: rotate(180deg);
+}
+
+input {
+  display: none;
+}
+
+.star {
+  display: inline-block;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+label:not(:last-child) {
+  margin-right: 8px;
+}
