@@ -724,8 +724,7 @@ background-color: #e0e0e0; /* Cambia el color de fondo al pasar el ratón */
 /*FORMULARIO DE CALIFICACIÓN*/
 #form-calificacion{  
   margin-left: 50%;
-  margin-top: 20px;
-  
+  margin-top: 20px;  
 }
 
 h4 {
@@ -758,11 +757,7 @@ input {
   display: none;
 }
 
-.estrellas {
-  direction: rtl; 
-  text-align: left;
- 
-}
+
 
 .star {
   display: inline-block;  
