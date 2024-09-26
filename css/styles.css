@@ -757,7 +757,10 @@ input {
   display: none;
 }
 
-
+.estrellas {
+  direction: rtl; 
+  text-align: left;
+ }
 
 .star {
   display: inline-block;  
