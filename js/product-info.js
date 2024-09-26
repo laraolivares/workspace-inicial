@@ -73,8 +73,42 @@ document.addEventListener("DOMContentLoaded", function() {
             showImage(currentIndex - 1);
         });
     }
-});
+  
+    const productId = localStorage.getItem('idProducto');
+    fetch(`https://japceibal.github.io/emercado-api/products_comments/${productId}.json`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const commentsContainer = document.getElementById('products_comments');
+            commentsContainer.innerHTML = ''; // Limpiar contenido anterior
 
+            if (data.length === 0) {
+                commentsContainer.innerHTML = '<p>No hay comentarios disponibles para este producto.</p>';
+                return;
+            }
+
+
+            data.forEach(comment => {
+                const commentElement = document.createElement('div');
+                commentElement.className = 'comentario';
+                commentElement.innerHTML = `
+                    <div><strong>Usuario:</strong> ${comment.user}</div>
+                    <div><strong>Puntuación:</strong> ${comment.score} Estrellas</div>
+                    <div><strong>Fecha:</strong> ${comment.dateTime}</div>
+                    <div><strong>Descripción:</strong> ${comment.description}</div>
+                    <hr>
+                `;
+                commentsContainer.appendChild(commentElement);
+            });
+        })
+        .catch(error => {
+            console.error('Hubo un problema con la operación fetch:', error);
+        });
+});
 
 
 
@@ -139,3 +173,4 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
     });
+
