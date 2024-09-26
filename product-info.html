@@ -52,32 +52,33 @@
     
 
 
-      <!-- Formulario de Calificación-->
+<!-- Formulario de Calificación-->
     <div id="form-calificacion">
-      <h4>Deja tu calificación</h4>
+      <h4>Calificá este producto</h4>
       <form id="calificacion-form">
         <div class="mb-3">
-          <label for="comentario" class="form-label">Comentario</label>
-          <textarea class="form-control" id="comentario" required></textarea>
+          <div class="estrellas">
+          <label for="star-5"><i class='bx bxs-star star'></i></label>
+          <input type="radio" name="rating" id="star-5">
+          <label for="star-4"><i class='bx bxs-star star'></i></label>
+          <input type="radio" name="rating" id="star-4">
+          <label for="star-3"><i class='bx bxs-star star'></i></label>
+          <input type="radio" name="rating" id="star-3">
+          <label for="star-2"><i class='bx bxs-star star'></i></label>
+          <input type="radio" name="rating" id="star-2">
+          <label for="star-1"><i class='bx bxs-star star'></i></label>
+          <input type="radio" name="rating" id="star-1">
+        </div>
+        </div>
+        
+        <div class="mb-3">
+          <textarea class="form-control" id="comentario" placeholder="Escribe un comentario..." required></textarea>
         </div>
         <div class="mb-3">
-          <label for="calificacion" class="form-label">Calificación</label>
-          <br>
-            <input type="radio" name="rating" id="star-1">
-            <label for="star-1"><i class='bx bxs-star star'></i></label>
-            <input type="radio" name="rating" id="star-2">
-            <label for="star-2"><i class='bx bxs-star star'></i></label>
-            <input type="radio" name="rating" id="star-3">
-            <label for="star-3"><i class='bx bxs-star star'></i></label>
-            <input type="radio" name="rating" id="star-4">
-            <label for="star-4"><i class='bx bxs-star star'></i></label>
-            <input type="radio" name="rating" id="star-5">
-            <label for="star-5"><i class='bx bxs-star star'></i></label>         
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
+
+        <button type="submit" class="btn btn-primary" id="button">Enviar</button>  
+      </form>
     </div>
-  </div>
 
 <div class="calificaciones">
   <div id="products_comments">
