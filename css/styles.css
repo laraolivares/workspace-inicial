@@ -721,9 +721,11 @@ background-color: #e0e0e0; /* Cambia el color de fondo al pasar el ratón */
   padding-left: 2%;
 }
 
-#form-calificacion{
-  margin-top: 40px;
-  margin-left: 50px;
+/*FORMULARIO DE CALIFICACIÓN*/
+#form-calificacion{  
+  margin-left: 50%;
+  margin-top: 20px;
+  
 }
 
 h4 {
@@ -731,16 +733,21 @@ h4 {
   font-family: 'Lucida Console', monospace;
 }
 
+#button {
+  margin-left: 63%;
+}
+
 #comentario {
   width: 500px; 
   height: 150px;
   resize: both; 
+  margin-top: 0;
 }
 
 label {
   font-size: 25px;
   font-family: 'Lucida Console', monospace;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .rating {
@@ -751,13 +758,32 @@ input {
   display: none;
 }
 
+.estrellas {
+  direction: rtl; 
+  text-align: left;
+ 
+}
+
 .star {
-  display: inline-block;
+  display: inline-block;  
   font-size: 25px;
   cursor: pointer;
   transition: all 0.3s;
+  color: lightgray;
 }
 
-label:not(:last-child) {
-  margin-right: 8px;
+input:checked + label .star {
+  color: gold; 
+}
+
+input:checked ~ input + label .star {
+  color: gold; 
+}
+
+label:hover ~ label .star {
+  color: gold; 
+}
+
+label:hover .star {
+  color: gold; 
 }
