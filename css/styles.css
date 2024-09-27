@@ -785,3 +785,47 @@ label:hover ~ label .star {
 label:hover .star {
   color: gold; 
 }
+
+/*SECCION DE COMENTARIOS*/
+
+.lista_comentarios {
+  background-color: lightgrey;
+  padding: 10px; 
+  border-radius: 5px;
+}
+.lista_calificaciones{
+  max-height: 450px; 
+  overflow-y: auto;
+}
+
+.lista_comentarios_2 {
+  background-color: white; 
+  padding: 10px; 
+  border-radius: 5px;
+  border-width: 15px;
+  border-color: black;
+}
+
+.lista_comentarios_1 {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.p-2 i {
+  font-size: 20px;
+  color: gold; 
+}
+
+.p-2 .far.fa-star {
+  color: transparent;
+}
+
+.container_comentarios {
+  display: flex;
+  justify-content: space-between;
+}
+
+#form-calificacion, .calificaciones {
+  width: 48%; 
+  box-sizing: border-box;
+}
