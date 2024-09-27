@@ -96,11 +96,18 @@ document.addEventListener("DOMContentLoaded", function() {
                 const commentElement = document.createElement('div');
                 commentElement.className = 'comentario';
                 commentElement.innerHTML = `
-                    <div><strong>Usuario:</strong> ${comment.user}</div>
-                    <div><strong>Puntuación:</strong> ${comment.score} Estrellas</div>
-                    <div><strong>Fecha:</strong> ${comment.dateTime}</div>
-                    <div><strong>Descripción:</strong> ${comment.description}</div>
-                    <hr>
+                <div class="lista_comentarios">
+                <div class = "lista_comentarios_1">    
+                    <div class="p-2">
+                     ${'<i class="fas fa-star"></i>'.repeat(comment.score)}${'<i class="far fa-star"></i>'.repeat(5 - comment.score)}                     </div>
+                    <div class="p-2"> ${comment.user}</div>
+                    <div class="ms-auto p-2"> ${comment.dateTime}</div>
+                </div>
+                <div class = "lista_comentarios_2">
+                    <div> ${comment.description}</div>
+                </div>
+                </div>
+                <hr>
                 `;
                 commentsContainer.appendChild(commentElement);
             });
@@ -109,8 +116,6 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Hubo un problema con la operación fetch:', error);
         });
 });
-
-
 
 const excludedProductId = localStorage.getItem('idProducto'); // Ensure this is a string
 
