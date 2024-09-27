@@ -786,7 +786,14 @@ label:hover .star {
   color: gold; 
 }
 
-/*SECCION DE COMENTARIOS*/
+/*SECCION DE COMENTARIOS ANTERIORES*/
+
+.container_comentarios {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  flex-wrap: wrap;
+}
 
 .lista_comentarios {
   background-color: lightgrey;
@@ -818,11 +825,6 @@ label:hover .star {
 
 .p-2 .far.fa-star {
   color: transparent;
-}
-
-.container_comentarios {
-  display: flex;
-  justify-content: space-between;
 }
 
 #form-calificacion, .calificaciones {
