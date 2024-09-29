@@ -252,7 +252,8 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
             <hr>
         `;
         return commentElement;
+        mostrarComentarios();
     }
 
-    mostrarComentarios();
+    
 
