@@ -691,7 +691,9 @@ background-color: #e0e0e0; /* Cambia el color de fondo al pasar el ratón */
   color: #242222;
 }
 
-
+#productosRelacionados{
+  margin-left: -700px;
+}
 .related-container {
   display: flex; /* Use flexbox for horizontal layout */
   overflow-x: auto; /* Enable horizontal scrolling */
