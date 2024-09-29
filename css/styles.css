@@ -692,7 +692,8 @@ background-color: #e0e0e0; /* Cambia el color de fondo al pasar el ratón */
 }
 
 #productosRelacionados{
-  margin-left: -700px;
+  margin-left: -720px;
+  margin-top: 30%;
 }
 .related-container {
   display: flex; /* Use flexbox for horizontal layout */
