@@ -175,6 +175,115 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
             }
         }
     })
+    
+    let btnEnviar = document.getElementById("button");
+let mi_comentario = document.getElementById("comentario");
+let puntuacion = 0; // Inicializa puntuación
+let selec_estrella = false;
+let estrellas = document.querySelectorAll("input[name='rating']");
+
+estrellas.forEach((estrella, index) => {
+    estrella.addEventListener("click", function() {
+        selec_estrella = true;
+        puntuacion = index + 1; // Asigna la puntuación (1 a 5)
+    });
+});
+
+btnEnviar.addEventListener("click", function() {
+    if (mi_comentario.value.trim() === "") {
+        alert("Ingrese su comentario antes de publicarlo");
+    } else if (!selec_estrella) {
+        alert("Debe puntuar al producto antes de publicar su comentario");
+    } else {
+        let comentario = {
+            description: mi_comentario.value.trim(),
+            score: puntuacion,
+            user: localStorage.getItem("username") || "Usuario Anónimo",
+            dateTime: new Date().toLocaleString(), // Fecha y hora actual
+            idProducto: localStorage.getItem('idProducto') // Añadir idProducto
+        };
+
+        // Guardar el comentario en localStorage
+        let comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
+        comentariosGuardados.push(comentario);
+        localStorage.setItem('comentarios', JSON.stringify(comentariosGuardados));
+
+        // Mostrar todos los comentarios
+        mostrarComentarios();
+        
+        // Limpiar el comentario y la puntuación después de enviar
+        mi_comentario.value = "";
+        puntuacion = 0;
+        selec_estrella = false;
+        estrellas.forEach(estrella => estrella.checked = false); // Reiniciar estrellas
+    }
+});
+
+// Función para mostrar todos los comentarios (fetch y localStorage)
+function mostrarComentarios() {
+    const commentsContainer = document.getElementById('products_comments');
+    commentsContainer.innerHTML = ''; // Limpiar contenido anterior
+
+    const currentIdProducto = localStorage.getItem('idProducto'); // Obtener el idProducto actual
+
+    // Mostrar comentarios de la API
+    fetch(`https://japceibal.github.io/emercado-api/products_comments/${currentIdProducto}.json`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.length === 0) {
+                commentsContainer.innerHTML = '<p>No hay comentarios disponibles para este producto.</p>';
+            } else {
+                data.forEach(comment => {
+                    const commentElement = createCommentElement(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+
+            // Mostrar comentarios guardados en localStorage
+            let comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
+            comentariosGuardados.forEach(comment => {
+                // Solo mostrar comentarios que corresponden al idProducto actual
+                if (comment.idProducto === currentIdProducto) {
+                    const commentElement = createCommentElement(comment);
+                    commentsContainer.appendChild(commentElement);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Hubo un problema con la operación fetch:', error);
+        });
+}
+
+// Función para crear el elemento de comentario
+function createCommentElement(comment) {
+    const commentElement = document.createElement('div');
+    commentElement.className = 'comentario';
+    commentElement.innerHTML = `
+        <div class="lista_comentarios">
+            <div class="lista_comentarios_1">    
+                <div class="p-2">
+                    ${'<i class="fas fa-star"></i>'.repeat(comment.score)}${'<i class="far fa-star"></i>'.repeat(5 - comment.score)}
+                </div>
+                <div class="p-2">${comment.user}</div>
+                <div class="ms-auto p-2">${comment.dateTime}</div>
+            </div>
+            <div class="lista_comentarios_2">
+                <div>${comment.description}</div>
+            </div>
+        </div>
+        <hr>
+    `;
+    return commentElement;
+}
+
+// Llamar a la función para mostrar comentarios al cargar la página
+mostrarComentarios()
+
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
     });
