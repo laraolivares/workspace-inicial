@@ -721,9 +721,11 @@ background-color: #e0e0e0; /* Cambia el color de fondo al pasar el ratón */
   padding-left: 2%;
 }
 
-/*FORMULARIO DE CALIFICACIÓN*/
+/*Formulario de calificación*/
 #form-calificacion{  
-  margin-top: 20px;  
+  margin-left: 50%;
+  margin-top: 20px;
+  
 }
 
 h4 {
@@ -742,7 +744,7 @@ h4 {
   margin-top: 0;
 }
 
-label {
+.star-label {
   font-size: 25px;
   font-family: 'Lucida Console', monospace;
   margin-top: 10px;
@@ -752,14 +754,15 @@ label {
   transform: rotate(180deg);
 }
 
-input {
+.star-input {
   display: none;
 }
 
 .estrellas {
   direction: rtl; 
   text-align: left;
- }
+ 
+}
 
 .star {
   display: inline-block;  
@@ -769,21 +772,22 @@ input {
   color: lightgray;
 }
 
-input:checked + label .star {
+input.star-input:checked + label.star-label .star {
   color: gold; 
 }
 
-input:checked ~ input + label .star {
+input.star-input:checked ~ input.star-input + label.star-label .star {
   color: gold; 
 }
 
-label:hover ~ label .star {
+label.star-label:hover ~ label.star-label .star {
   color: gold; 
 }
 
-label:hover .star {
+label.star-label:hover .star {
   color: gold; 
 }
+
 
 /*SECCION DE COMENTARIOS ANTERIORES*/
 
