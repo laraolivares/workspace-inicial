@@ -114,7 +114,11 @@ document.addEventListener("DOMContentLoaded", function() {
     let btnEnviar = document.getElementById("button");
     let mi_comentario = document.getElementById("comentario");
     let puntuacion = 0; // Inicializa puntuación
-    let estrellas = document.querySelectorAll("input[name='rating']");
+    let estrellas = [];
+
+    for(i=1;i<=5;i++){
+        estrellas.push(document.getElementById("star-"+i))
+    };
 
     estrellas.forEach((estrella, index) => {
         estrella.addEventListener("click", function() {
@@ -216,18 +220,8 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
     function mostrarComentarios() {
         const commentsContainer = document.getElementById('products_comments');
         commentsContainer.innerHTML = '';
-
-        fetch(`https://japceibal.github.io/emercado-api/products_comments/${productId}.json`)
-            .then(response => {
-                if (!response.ok) throw new Error('Network response was not ok');
-                return response.json();
-            })
-            .then(data => {
-                if (data.length === 0) {
-                    commentsContainer.innerHTML = '<p>No hay comentarios disponibles para este producto.</p>';
-                } else {
-                    data.forEach(comment => {
-                        commentsContainer.appendChild(createCommentElement(comment));
+        data.forEach(comment => {
+                    commentsContainer.appendChild(createCommentElement(comment));
                     });
                 }
 
@@ -238,10 +232,6 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
                     }
                 });
             })
-            .catch(error => {
-                console.error('Hubo un problema con la operación fetch:', error);
-            });
-    }
 
     function createCommentElement(comment) {
         const commentElement = document.createElement('div');
@@ -265,4 +255,4 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
     }
 
     mostrarComentarios();
-});
+
