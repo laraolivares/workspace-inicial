@@ -231,8 +231,7 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
                         commentsContainer.appendChild(createCommentElement(comment));
                     }
                 });
-            })
-
+    
     function createCommentElement(comment) {
         const commentElement = document.createElement('div');
         commentElement.className = 'comentario';
@@ -253,7 +252,7 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
         `;
         return commentElement;
         mostrarComentarios();
-    }
+    }; })
 
     
 
