@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Cargar información del producto
     const productId = localStorage.getItem('idProducto');
     
     fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
@@ -28,13 +27,9 @@ document.addEventListener("DOMContentLoaded", function() {
                                <p id="categ-vendidos">${data.soldCount} vendidos</p>
                                <p id="descrip-larga">${data.longDescription || 'No hay una descripción extensa disponible para este producto.'}</p>`;
 
-                // Insertar contenido en produ_espec
                 document.getElementById("produ_espec").innerHTML = info1 + img + info2;
 
-                // Inicializar el carrusel
                 initializeCarousel();
-
-                // Redireccionar al hacer clic en la categoría
                 document.getElementById("categ").addEventListener('click', function() {
                     window.location.href = 'products.html';
                 });
@@ -44,14 +39,13 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error:', error);
         });
 
-    // Función para inicializar el carrusel
     function initializeCarousel() {
         const carouselContainer = document.querySelector('#carousel .carousel-images');
         const images = carouselContainer.querySelectorAll('img');
         let currentIndex = 0;
 
         function showImage(index) {
-            currentIndex = (index + images.length) % images.length; // Asegura el índice dentro de los límites
+            currentIndex = (index + images.length) % images.length;
             carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
@@ -64,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Cargar comentarios del producto
     fetch(`https://japceibal.github.io/emercado-api/products_comments/${productId}.json`)
         .then(response => {
             if (!response.ok) throw new Error('Network response was not ok');
@@ -72,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(data => {
             const commentsContainer = document.getElementById('products_comments');
-            commentsContainer.innerHTML = ''; // Limpiar contenido anterior
+            commentsContainer.innerHTML = '';
 
             if (data.length === 0) {
                 commentsContainer.innerHTML = '<p>No hay comentarios disponibles para este producto.</p>';
@@ -87,26 +80,9 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Hubo un problema con la operación fetch:', error);
         });
 
-    // Cargar productos relacionados
-    fetch(`https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem('catID')}.json`)
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.json();
-        })
-        .then(data => {
-            if (data && data.products) {
-                const filteredProducts = data.products.filter(product => product.id.toString() !== productId);
-                displayImagesInRow(filteredProducts);
-            }
-        })
-        .catch(error => {
-            console.error('Error loading related products:', error);
-        });
-
-    // Mostrar imágenes de productos relacionados
     function displayImagesInRow(products) {
         const relatedContainer = document.getElementById('related-products');
-        relatedContainer.innerHTML = ''; // Limpiar contenido anterior
+        relatedContainer.innerHTML = '';
 
         const imgContainer = document.createElement('div');
         imgContainer.className = 'related-container';
@@ -135,24 +111,24 @@ document.addEventListener("DOMContentLoaded", function() {
         relatedContainer.appendChild(imgContainer);
     }
 
-    // Manejo de comentarios
     let btnEnviar = document.getElementById("button");
     let mi_comentario = document.getElementById("comentario");
-    let puntuacion = 0;
-    let selec_estrella = false;
+    let puntuacion = 0; // Inicializa puntuación
     let estrellas = document.querySelectorAll("input[name='rating']");
 
     estrellas.forEach((estrella, index) => {
         estrella.addEventListener("click", function() {
-            selec_estrella = true;
-            puntuacion = index + 1;
+            puntuacion = index + 1; // Asigna la puntuación correctamente
+            estrellas.forEach((star, idx) => {
+                star.checked = idx < puntuacion; // Selecciona estrellas según la puntuación
+            });
         });
     });
 
     btnEnviar.addEventListener("click", function() {
         if (mi_comentario.value.trim() === "") {
             alert("Ingrese su comentario antes de publicarlo");
-        } else if (!selec_estrella) {
+        } else if (puntuacion === 0) {
             alert("Debe puntuar al producto antes de publicar su comentario");
         } else {
             const comentario = {
@@ -168,15 +144,12 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.setItem('comentarios', JSON.stringify(comentariosGuardados));
 
             mostrarComentarios();
-
             mi_comentario.value = "";
             puntuacion = 0;
-            selec_estrella = false;
-            estrellas.forEach(estrella => estrella.checked = false);
+            estrellas.forEach(star => star.checked = false); // Reiniciar estrellas
         }
     });
 
-    // Función para mostrar todos los comentarios
     function mostrarComentarios() {
         const commentsContainer = document.getElementById('products_comments');
         commentsContainer.innerHTML = '';
@@ -195,7 +168,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
                 }
 
-                // Mostrar comentarios guardados
                 let comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
                 comentariosGuardados.forEach(comment => {
                     if (comment.idProducto === productId) {
@@ -208,7 +180,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
-    // Función para crear el elemento de comentario
     function createCommentElement(comment) {
         const commentElement = document.createElement('div');
         commentElement.className = 'comentario';
@@ -230,8 +201,5 @@ document.addEventListener("DOMContentLoaded", function() {
         return commentElement;
     }
 
-    // Llamar a la función para mostrar comentarios al cargar la página
     mostrarComentarios();
 });
-
-
