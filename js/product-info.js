@@ -1,46 +1,42 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('https://japceibal.github.io/emercado-api/products/' + localStorage.getItem('idProducto') + '.json')
+    // Cargar información del producto
+    const productId = localStorage.getItem('idProducto');
+    
+    fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            if (!response.ok) throw new Error('Network response was not ok');
             return response.json();
         })
         .then(data => {
-            console.log('Datos recibidos:', data);
             if (data) {
-                var info1 = `<p id="categ">${data.category}</p>
-                             <h1>${data.name}</h1>`;
-
-                             
+                const info1 = `<p id="categ">${data.category}</p>
+                               <h1>${data.name}</h1>`;
                 let img = `<div id="carousel" class="carousel">
                                <button class="carousel-button prev">❮</button>
                                <div class="carousel-images">`;
-                for (let i = 0; i < data.images.length; i++) {
-                    img += `<img src="${data.images[i]}" alt="Product Image">`;
-                }
+
+                data.images.forEach(image => {
+                    img += `<img src="${image}" alt="Product Image">`;
+                });
+
                 img += `</div>
                         <button class="carousel-button next">❯</button>
                     </div>`;
+                
+                const info2 = `<p id="descrip-corta">${data.description}</p>
+                               <p id="precio">${data.currency} ${data.cost}</p>
+                               <p id="categ-vendidos">${data.soldCount} vendidos</p>
+                               <p id="descrip-larga">${data.longDescription || 'No hay una descripción extensa disponible para este producto.'}</p>`;
 
-                var info2 = `<p id="descrip-corta">${data.description}</p>
-                             <p id="precio">${data.currency} ${data.cost}</p>
-                             <p id="categ-vendidos">${data.soldCount} vendidos</p>
-                             <p id="descrip-larga">${data.longDescription || 'No hay una descripción extensa disponible para este producto.'}
-                             `;
-
-
-                // Insertar todo el contenido en produ_espec
+                // Insertar contenido en produ_espec
                 document.getElementById("produ_espec").innerHTML = info1 + img + info2;
 
-                // Inicializar el carrusel después de cargar las imágenes
+                // Inicializar el carrusel
                 initializeCarousel();
 
                 // Redireccionar al hacer clic en la categoría
-                document.getElementById("categ").addEventListener('click', function(){
+                document.getElementById("categ").addEventListener('click', function() {
                     window.location.href = 'products.html';
-
-
                 });
             }
         })
@@ -55,13 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let currentIndex = 0;
 
         function showImage(index) {
-            if (index >= images.length) {
-                currentIndex = 0;
-            } else if (index < 0) {
-                currentIndex = images.length - 1;
-            } else {
-                currentIndex = index;
-            }
+            currentIndex = (index + images.length) % images.length; // Asegura el índice dentro de los límites
             carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
@@ -73,13 +63,11 @@ document.addEventListener("DOMContentLoaded", function() {
             showImage(currentIndex - 1);
         });
     }
-  
-    const productId = localStorage.getItem('idProducto');
+
+    // Cargar comentarios del producto
     fetch(`https://japceibal.github.io/emercado-api/products_comments/${productId}.json`)
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            if (!response.ok) throw new Error('Network response was not ok');
             return response.json();
         })
         .then(data => {
@@ -91,200 +79,159 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
 
-
             data.forEach(comment => {
-                const commentElement = document.createElement('div');
-                commentElement.className = 'comentario';
-                commentElement.innerHTML = `
-                <div class="lista_comentarios">
-                <div class = "lista_comentarios_1">    
-                    <div class="p-2">
-                     ${'<i class="fas fa-star"></i>'.repeat(comment.score)}${'<i class="far fa-star"></i>'.repeat(5 - comment.score)}                     </div>
-                    <div class="p-2"> ${comment.user}</div>
-                    <div class="ms-auto p-2"> ${comment.dateTime}</div>
-                </div>
-                <div class = "lista_comentarios_2">
-                    <div> ${comment.description}</div>
-                </div>
-                </div>
-                <hr>
-                `;
-                commentsContainer.appendChild(commentElement);
+                commentsContainer.appendChild(createCommentElement(comment));
             });
         })
         .catch(error => {
             console.error('Hubo un problema con la operación fetch:', error);
         });
-});
 
-const excludedProductId = localStorage.getItem('idProducto'); // Ensure this is a string
-
-fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.getItem('catID') + ".json")
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json(); // Convert the response to JSON
-    })
-    .then(data => {
-        if (data && data.products) {
-            const products = data.products; // Save products locally
-
-            // Exclude the product with the specified ID
-            const excludedProductId = localStorage.getItem('idProducto'); // Assuming this is how you get the ID to exclude
-            const filteredProducts = products.filter(product => product.id.toString() !== excludedProductId);
-
-            displayImagesInRow(filteredProducts); // Call to display images without the excluded product
-
-            function displayImagesInRow(products) {
-                // Clear existing related products if needed
-                const relatedContainer = document.getElementById('related-products');
-                relatedContainer.innerHTML = ''; // Clear previous content
-
-                // Create a container for the images
-                const imgContainer = document.createElement('div');
-                imgContainer.className = 'related-container'; // Add class for styling
-
-                // Create image elements and append to the container
-                products.forEach((product, index) => {
-                    const imageDiv = document.createElement('div');
-                    imageDiv.className = 'related-image'; // Add class for styling
-
-                    const imgElement = document.createElement('img');
-                    imgElement.src = product.image; // Use the source from the product object
-                    imgElement.alt = `Image ${index + 1}`; // Use a generic alt text or modify as needed
-
-
-                    const imgTitle = document.createElement('p');
-                    imgTitle.textContent= product.name;
-                    imgTitle.className = 'img-title';
-                    
-                    // Add a click event listener to save the product ID to local storage
-                    imgElement.addEventListener('click', () => {
-                        localStorage.setItem('idProducto', product.id); // Save the clicked product's ID
-                        window.location.href = 'product-info.html';
-                    });
-
-                    imageDiv.appendChild(imgElement);
-                    imageDiv.appendChild(imgTitle);
-                    imgContainer.appendChild(imageDiv);
-                });
-
-                // Append the image container to the specified element
-                relatedContainer.appendChild(imgContainer);
-            }
-        }
-    })
-    
-    let btnEnviar = document.getElementById("button");
-let mi_comentario = document.getElementById("comentario");
-let puntuacion = 0; // Inicializa puntuación
-let selec_estrella = false;
-let estrellas = document.querySelectorAll("input[name='rating']");
-
-estrellas.forEach((estrella, index) => {
-    estrella.addEventListener("click", function() {
-        selec_estrella = true;
-        puntuacion = index + 1; // Asigna la puntuación (1 a 5)
-    });
-});
-
-btnEnviar.addEventListener("click", function() {
-    if (mi_comentario.value.trim() === "") {
-        alert("Ingrese su comentario antes de publicarlo");
-    } else if (!selec_estrella) {
-        alert("Debe puntuar al producto antes de publicar su comentario");
-    } else {
-        let comentario = {
-            description: mi_comentario.value.trim(),
-            score: puntuacion,
-            user: localStorage.getItem("username") || "Usuario Anónimo",
-            dateTime: new Date().toLocaleString(), // Fecha y hora actual
-            idProducto: localStorage.getItem('idProducto') // Añadir idProducto
-        };
-
-        // Guardar el comentario en localStorage
-        let comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
-        comentariosGuardados.push(comentario);
-        localStorage.setItem('comentarios', JSON.stringify(comentariosGuardados));
-
-        // Mostrar todos los comentarios
-        mostrarComentarios();
-        
-        // Limpiar el comentario y la puntuación después de enviar
-        mi_comentario.value = "";
-        puntuacion = 0;
-        selec_estrella = false;
-        estrellas.forEach(estrella => estrella.checked = false); // Reiniciar estrellas
-    }
-});
-
-// Función para mostrar todos los comentarios (fetch y localStorage)
-function mostrarComentarios() {
-    const commentsContainer = document.getElementById('products_comments');
-    commentsContainer.innerHTML = ''; // Limpiar contenido anterior
-
-    const currentIdProducto = localStorage.getItem('idProducto'); // Obtener el idProducto actual
-
-    // Mostrar comentarios de la API
-    fetch(`https://japceibal.github.io/emercado-api/products_comments/${currentIdProducto}.json`)
+    // Cargar productos relacionados
+    fetch(`https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem('catID')}.json`)
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            if (!response.ok) throw new Error('Network response was not ok');
             return response.json();
         })
         .then(data => {
-            if (data.length === 0) {
-                commentsContainer.innerHTML = '<p>No hay comentarios disponibles para este producto.</p>';
-            } else {
-                data.forEach(comment => {
-                    const commentElement = createCommentElement(comment);
-                    commentsContainer.appendChild(commentElement);
-                });
+            if (data && data.products) {
+                const filteredProducts = data.products.filter(product => product.id.toString() !== productId);
+                displayImagesInRow(filteredProducts);
             }
-
-            // Mostrar comentarios guardados en localStorage
-            let comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
-            comentariosGuardados.forEach(comment => {
-                // Solo mostrar comentarios que corresponden al idProducto actual
-                if (comment.idProducto === currentIdProducto) {
-                    const commentElement = createCommentElement(comment);
-                    commentsContainer.appendChild(commentElement);
-                }
-            });
         })
         .catch(error => {
-            console.error('Hubo un problema con la operación fetch:', error);
+            console.error('Error loading related products:', error);
         });
-}
 
-// Función para crear el elemento de comentario
-function createCommentElement(comment) {
-    const commentElement = document.createElement('div');
-    commentElement.className = 'comentario';
-    commentElement.innerHTML = `
-        <div class="lista_comentarios">
-            <div class="lista_comentarios_1">    
-                <div class="p-2">
-                    ${'<i class="fas fa-star"></i>'.repeat(comment.score)}${'<i class="far fa-star"></i>'.repeat(5 - comment.score)}
-                </div>
-                <div class="p-2">${comment.user}</div>
-                <div class="ms-auto p-2">${comment.dateTime}</div>
-            </div>
-            <div class="lista_comentarios_2">
-                <div>${comment.description}</div>
-            </div>
-        </div>
-        <hr>
-    `;
-    return commentElement;
-}
+    // Mostrar imágenes de productos relacionados
+    function displayImagesInRow(products) {
+        const relatedContainer = document.getElementById('related-products');
+        relatedContainer.innerHTML = ''; // Limpiar contenido anterior
 
-// Llamar a la función para mostrar comentarios al cargar la página
-mostrarComentarios()
+        const imgContainer = document.createElement('div');
+        imgContainer.className = 'related-container';
 
-    .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
+        products.forEach((product, index) => {
+            const imageDiv = document.createElement('div');
+            imageDiv.className = 'related-image';
+
+            const imgElement = document.createElement('img');
+            imgElement.src = product.image;
+            imgElement.alt = `Image ${index + 1}`;
+            imgElement.addEventListener('click', () => {
+                localStorage.setItem('idProducto', product.id);
+                window.location.href = 'product-info.html';
+            });
+
+            const imgTitle = document.createElement('p');
+            imgTitle.textContent = product.name;
+            imgTitle.className = 'img-title';
+
+            imageDiv.appendChild(imgElement);
+            imageDiv.appendChild(imgTitle);
+            imgContainer.appendChild(imageDiv);
+        });
+
+        relatedContainer.appendChild(imgContainer);
+    }
+
+    // Manejo de comentarios
+    let btnEnviar = document.getElementById("button");
+    let mi_comentario = document.getElementById("comentario");
+    let puntuacion = 0;
+    let selec_estrella = false;
+    let estrellas = document.querySelectorAll("input[name='rating']");
+
+    estrellas.forEach((estrella, index) => {
+        estrella.addEventListener("click", function() {
+            selec_estrella = true;
+            puntuacion = index + 1;
+        });
     });
+
+    btnEnviar.addEventListener("click", function() {
+        if (mi_comentario.value.trim() === "") {
+            alert("Ingrese su comentario antes de publicarlo");
+        } else if (!selec_estrella) {
+            alert("Debe puntuar al producto antes de publicar su comentario");
+        } else {
+            const comentario = {
+                description: mi_comentario.value.trim(),
+                score: puntuacion,
+                user: localStorage.getItem("username") || "Usuario Anónimo",
+                dateTime: new Date().toLocaleString(),
+                idProducto: localStorage.getItem('idProducto')
+            };
+
+            let comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
+            comentariosGuardados.push(comentario);
+            localStorage.setItem('comentarios', JSON.stringify(comentariosGuardados));
+
+            mostrarComentarios();
+
+            mi_comentario.value = "";
+            puntuacion = 0;
+            selec_estrella = false;
+            estrellas.forEach(estrella => estrella.checked = false);
+        }
+    });
+
+    // Función para mostrar todos los comentarios
+    function mostrarComentarios() {
+        const commentsContainer = document.getElementById('products_comments');
+        commentsContainer.innerHTML = '';
+
+        fetch(`https://japceibal.github.io/emercado-api/products_comments/${productId}.json`)
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(data => {
+                if (data.length === 0) {
+                    commentsContainer.innerHTML = '<p>No hay comentarios disponibles para este producto.</p>';
+                } else {
+                    data.forEach(comment => {
+                        commentsContainer.appendChild(createCommentElement(comment));
+                    });
+                }
+
+                // Mostrar comentarios guardados
+                let comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
+                comentariosGuardados.forEach(comment => {
+                    if (comment.idProducto === productId) {
+                        commentsContainer.appendChild(createCommentElement(comment));
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Hubo un problema con la operación fetch:', error);
+            });
+    }
+
+    // Función para crear el elemento de comentario
+    function createCommentElement(comment) {
+        const commentElement = document.createElement('div');
+        commentElement.className = 'comentario';
+        commentElement.innerHTML = `
+            <div class="lista_comentarios">
+                <div class="lista_comentarios_1">    
+                    <div class="p-2">
+                        ${'<i class="fas fa-star"></i>'.repeat(comment.score)}${'<i class="far fa-star"></i>'.repeat(5 - comment.score)}
+                    </div>
+                    <div class="p-2">${comment.user}</div>
+                    <div class="ms-auto p-2">${comment.dateTime}</div>
+                </div>
+                <div class="lista_comentarios_2">
+                    <div>${comment.description}</div>
+                </div>
+            </div>
+            <hr>
+        `;
+        return commentElement;
+    }
+
+    // Llamar a la función para mostrar comentarios al cargar la página
+    mostrarComentarios();
+});
+
 
