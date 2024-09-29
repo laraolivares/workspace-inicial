@@ -725,8 +725,7 @@ background-color: #e0e0e0; /* Cambia el color de fondo al pasar el ratón */
 
 /*Formulario de calificación*/
 #form-calificacion{  
-  margin-left: 50%;
-  margin-top: -100px;
+ margin-top: 20px;
 }
 
 h4 {
