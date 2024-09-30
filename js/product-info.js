@@ -75,10 +75,13 @@ document.addEventListener("DOMContentLoaded", function() {
             data.forEach(comment => {
                 commentsContainer.appendChild(createCommentElement(comment));
             });
+            mostrarComentarios();  // Mostrar comentarios guardados en el localStorage al cargar la página
         })
         .catch(error => {
             console.error('Hubo un problema con la operación fetch:', error);
         });
+        
+        
 
     function displayImagesInRow(products) {
         const relatedContainer = document.getElementById('related-products');
@@ -111,51 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
         relatedContainer.appendChild(imgContainer);
     }
 
-    let btnEnviar = document.getElementById("button");
-    let mi_comentario = document.getElementById("comentario");
-    let puntuacion = 0; // Inicializa puntuación
-    let estrellas = [];
-
-    for(i=1;i<=5;i++){
-        estrellas.push(document.getElementById("star-"+i))
-    };
-
-    estrellas.forEach((estrella, index) => {
-        estrella.addEventListener("click", function() {
-            puntuacion = index + 1; // Asigna la puntuación correctamente
-            estrellas.forEach((star, idx) => {
-                star.checked = idx < puntuacion; // Selecciona estrellas según la puntuación
-            });
-        });
-    });
-
-    btnEnviar.addEventListener("click", function() {
-        if (mi_comentario.value.trim() === "") {
-            alert("Ingrese su comentario antes de publicarlo");
-        } else if (puntuacion === 0) {
-            alert("Debe puntuar al producto antes de publicar su comentario");
-        } else {
-            const comentario = {
-                description: mi_comentario.value.trim(),
-                score: puntuacion,
-                user: localStorage.getItem("username") || "Usuario Anónimo",
-                dateTime: new Date().toLocaleString(),
-                idProducto: localStorage.getItem('idProducto')
-            };
-
-            let comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
-            comentariosGuardados.push(comentario);
-            localStorage.setItem('comentarios', JSON.stringify(comentariosGuardados));
-
-            mostrarComentarios();
-            mi_comentario.value = "";
-            puntuacion = 0;
-            estrellas.forEach(star => star.checked = false); // Reiniciar estrellas
-        }
-    });
-
-
-    const excludedProductId = localStorage.getItem('idProducto'); // Ensure this is a string
+const excludedProductId = localStorage.getItem('idProducto'); // Ensure this is a string
 
 fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.getItem('catID') + ".json")
     .then(response => {
@@ -216,43 +175,90 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
     });
-    
-    function mostrarComentarios() {
-        const commentsContainer = document.getElementById('products_comments');
-        commentsContainer.innerHTML = '';
-        data.forEach(comment => {
-                    commentsContainer.appendChild(createCommentElement(comment));
-                    });
-                }
 
-                let comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
-                comentariosGuardados.forEach(comment => {
-                    if (comment.idProducto === productId) {
-                        commentsContainer.appendChild(createCommentElement(comment));
-                    }
+        let btnEnviar = document.getElementById("button");
+        let mi_comentario = document.getElementById("comentario");
+        let puntuacion = 0; // Inicializa puntuación
+        let estrellas = [];
+    
+        // Obtener las estrellas
+        for (let i = 1; i <= 5; i++) {
+            estrellas.push(document.getElementById("star-" + i));
+        }
+    
+        // Asignar evento a las estrellas
+        estrellas.forEach((estrella, index) => {
+            estrella.addEventListener("click", function() {
+                puntuacion = index + 1; // Asigna la puntuación correctamente
+                estrellas.forEach((star, idx) => {
+                    star.checked = idx < puntuacion; // Selecciona estrellas según la puntuación
                 });
+            });
+        });
     
-    function createCommentElement(comment) {
-        const commentElement = document.createElement('div');
-        commentElement.className = 'comentario';
-        commentElement.innerHTML = `
-            <div class="lista_comentarios">
-                <div class="lista_comentarios_1">    
-                    <div class="p-2">
-                        ${'<i class="fas fa-star"></i>'.repeat(comment.score)}${'<i class="far fa-star"></i>'.repeat(5 - comment.score)}
+        // Evento para enviar el comentario
+        btnEnviar.addEventListener("click", function() {
+            if (mi_comentario.value.trim() === "") {
+                alert("Ingrese su comentario antes de publicarlo");
+            } else if (puntuacion === 0) {
+                alert("Debe puntuar al producto antes de publicar su comentario");
+            } else {
+                const comentario = {
+                    description: mi_comentario.value.trim(),
+                    score: puntuacion,
+                    user: localStorage.getItem("username") || "Usuario Anónimo",
+                    dateTime: new Date().toLocaleString(),
+                    idProducto: localStorage.getItem('idProducto')
+                };
+    
+                // Guardar comentario en localStorage
+                let comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
+                comentariosGuardados.push(comentario);
+                localStorage.setItem('comentarios', JSON.stringify(comentariosGuardados));
+    
+                // Limpiar el campo de texto
+                mi_comentario.value = " "; 
+                puntuacion = 0; // Reiniciar puntuación
+                estrellas.forEach(star => star.checked = false); // Reiniciar estrellas
+    
+                mostrarComentarios(); // Mostrar comentarios después de añadir uno nuevo
+            }
+        });
+    
+        // Función para mostrar comentarios
+        function mostrarComentarios() {
+            const commentsContainer = document.getElementById('products_comments');
+    
+            // Obtener comentarios guardados en localStorage
+            let comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
+            
+            // Filtrar y mostrar comentarios del producto actual
+            comentariosGuardados.forEach(comment => {
+                if (comment.idProducto === localStorage.getItem('idProducto')) {
+                    commentsContainer.appendChild(createCommentElement(comment));
+                }
+            });
+        }
+    
+        // Función para crear el elemento de comentario
+        function createCommentElement(comment) {
+            const commentElement = document.createElement('div');
+            commentElement.className = 'comentario';
+            commentElement.innerHTML = `
+                <div class="lista_comentarios">
+                    <div class="lista_comentarios_1">    
+                        <div class="p-2">
+                            ${'<i class="fas fa-star"></i>'.repeat(comment.score)}${'<i class="far fa-star"></i>'.repeat(5 - comment.score)}
+                        </div>
+                        <div class="p-2">${comment.user}</div>
+                        <div class="ms-auto p-2">${comment.dateTime}</div>
                     </div>
-                    <div class="p-2">${comment.user}</div>
-                    <div class="ms-auto p-2">${comment.dateTime}</div>
+                    <div class="lista_comentarios_2">
+                        <div>${comment.description}</div>
+                    </div>
                 </div>
-                <div class="lista_comentarios_2">
-                    <div>${comment.description}</div>
-                </div>
-            </div>
-            <hr>
-        `;
-        return commentElement;
-        mostrarComentarios();
-    }; })
-
-    
-
+                <hr>
+            `;
+            return commentElement;
+        }
+    });
