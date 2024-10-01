@@ -190,9 +190,6 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
         estrellas.forEach((estrella, index) => {
             estrella.addEventListener("click", function() {
                 puntuacion = index + 1; // Asigna la puntuación correctamente
-                estrellas.forEach((star, idx) => {
-                    star.checked = idx < puntuacion; // Selecciona estrellas según la puntuación
-                });
             });
         });
     
