@@ -51,12 +51,21 @@
     </div>
   </nav>
   <main>
+
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <h2>Mi Perfil</h2>
+      <!-- FOTO DE PERFIL -->
+      <div class="profile-picture">
+        <img id="profileImage" src="default-profile.png" alt="Foto de perfil" width="150" height="150">
+      </div>
+      <div class="mt-3">
+        <input type="file" id="imageInput" accept="image/*">
+        <button id="saveImage" class="btn btn-primary mt-2">Guardar</button>
       </div>
     </div>
   </main>
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
