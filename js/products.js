@@ -3,6 +3,13 @@ function setCatID(id) {
     window.location = "products.html";
 }
 
+
+function logout() {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('username');
+    window.location.href = 'login.html';
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const container = document.getElementById('productsContainer');
     const searchBar = document.getElementById('search-bar');
@@ -10,8 +17,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const sortPriceAsc = document.getElementById('sortPriceAsc');
     const sortPriceDesc = document.getElementById('sortPriceDesc');
     const sortRelevanceDesc = document.getElementById('sortRelevanceDesc');
-    const clearFilterBtn = document.getElementById('clearFilterBtn');
-    
+    const clearFilterBtn = document.getElementById('clearFilterBtn');  
+    const cerrarSesion = document.getElementById("cerrarSesion"); 
+
+    // Cerrar sesion desde el dropdown menu
+    if (cerrarSesion) {
+        cerrarSesion.addEventListener('click', logout);
+    }
     let products = [];
 
     const catID = localStorage.getItem("catID");
@@ -149,4 +161,3 @@ window.onload = function() {
         document.getElementById("username").innerHTML = username;
     }
 };
-

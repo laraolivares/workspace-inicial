@@ -1,16 +1,23 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
-        window.location = "products.html"
+        window.location = "products.html";
     });
     document.getElementById("juguetes").addEventListener("click", function() {
         localStorage.setItem("catID", 102);
-        window.location = "products.html"
+        window.location = "products.html";
     });
     document.getElementById("muebles").addEventListener("click", function() {
         localStorage.setItem("catID", 103);
-        window.location = "products.html"
+        window.location = "products.html";
     });
+
+    const cerrarSesion = document.getElementById("cerrarSesion"); 
+
+    // Cerrar sesion desde el dropdown menu
+    if (cerrarSesion) {
+        cerrarSesion.addEventListener('click', logout);
+    }
 });
 
 window.onload = function() {
@@ -18,10 +25,10 @@ window.onload = function() {
     if (!estaLogueado) {
         window.location.href = 'login.html';
     } else {
-      const nombreUsuario = localStorage.getItem('username');
-      if (nombreUsuario) {
-        document.getElementById('username').textContent = nombreUsuario;
-      }
+        const nombreUsuario = localStorage.getItem('username');
+        if (nombreUsuario) {
+            document.getElementById('username').textContent = nombreUsuario;
+        }
     }
 };
 
