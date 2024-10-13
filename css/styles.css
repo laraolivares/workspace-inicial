@@ -835,3 +835,34 @@ label.star-label:hover .star {
   width: 48%; 
   box-sizing: border-box;
 }
+
+/* Modo oscuro */
+.darkmode {
+  background-color: rgb(37, 37, 46);
+  color: white;
+}
+
+/* Estilo base para el botón */
+#bdark {
+  float: right;
+  font-size: 14px; 
+  align-items: center;
+  padding: .5rem 1rem;
+  border-radius: 8px;
+  transition: .5s ease;
+  transition: opacity .15s linear;
+  background-color: transparent; /* Fondo transparente por defecto */
+  color: white; /* Color por defecto en modo claro */
+}
+
+/* Estilo para el botón en modo oscuro */
+.darkmode #bdark {
+  background-color: rgb(32, 32, 44);
+  color: white; /* Cambia el color del texto en modo oscuro */
+}
+
+/* Estilo para el botón en modo claro al hacer hover */
+#bdark:hover {
+  background-color: white;
+  color: black; /* Cambia el color del texto en modo claro */
+}
