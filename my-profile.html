@@ -63,16 +63,20 @@
     </div>
   </nav>
   <main>
-
-    <div class="container">
-      <h2>Mi Perfil</h2>
-      <!-- FOTO DE PERFIL -->
-      <div class="profile-picture">
-        <img id="profileImage" src="default-profile.png" alt="Foto de perfil" width="150" height="150">
-      </div>
-      <div class="mt-3">
-        <input type="file" id="imageInput" accept="image/*">
-        <button id="saveImage" class="btn btn-primary mt-2">Guardar</button>
+    <div id="contenedor-imagen">
+      <div class="container profile-section">
+        <h2>Perfil de Usuario</h2>
+        <!-- FOTO DE PERFIL -->
+        <div class="profile-picture">
+          <img id="profileImage" src="img/miperfil.png" alt="Foto de perfil">
+          <div class="camera-icon">
+            <img src="img/camarita.png" alt="Cambiar foto de perfil">
+          </div>
+        </div>
+        <div class="mt-3">
+          <input type="file" id="imageInput" accept="image/*" style="display: none;">
+          <button id="saveImage" class="btn btn-primary">Guardar imagen</button>
+        </div>
       </div>
     </div>
   </main>
