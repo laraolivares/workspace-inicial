@@ -1,5 +1,34 @@
+function setCatID(id) {
+    localStorage.setItem("catID", id);
+    window.location = "products.html";
+}
+
+
+function logout() {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('username');
+    window.location.href = 'login.html';
+}
+
+window.onload = function() {
+    const estaLogueado = localStorage.getItem('loggedIn');
+    if (!estaLogueado) {
+        window.location.href = 'login.html';
+    } else {
+        const username = localStorage.getItem('username');
+        document.getElementById("username").innerHTML = username;
+    }
+};
+
 document.addEventListener("DOMContentLoaded", function() {
     const productId = localStorage.getItem('idProducto');
+
+    const cerrarSesion = document.getElementById("cerrarSesion"); 
+
+                    // Cerrar sesion desde el dropdown menu
+                    if (cerrarSesion) {
+                        cerrarSesion.addEventListener('click', logout);
+                    }
     
     fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
         .then(response => {
@@ -32,6 +61,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 initializeCarousel();
                 document.getElementById("categ").addEventListener('click', function() {
                     window.location.href = 'products.html';
+
+                    
                 });
             }
         })
@@ -259,3 +290,31 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
             return commentElement;
         }
     });
+    
+    
+    const bdark = document.querySelector('#bdark');
+    const body = document.querySelector('body');
+
+    load();
+
+    bdark.addEventListener('click', () => {
+        const isDarkMode = body.classList.toggle('darkmode');
+        store(isDarkMode);
+        bdark.textContent = isDarkMode ? 'Modo claro' : 'Modo oscuro'; // Cambia el texto del botón
+    });
+    
+    function load() {
+        const darkmode = localStorage.getItem('darkmode');
+        if (darkmode === 'true') {
+            body.classList.add('darkmode');
+            bdark.textContent = 'Modo claro'; // Cambia el texto si está en modo oscuro
+        } else {
+            store('false'); // Guarda como 'false' si no hay nada
+        }
+    }
+
+    // Para guardar el modo oscuro en localStorage    
+    function store(value){
+        localStorage.setItem('darkmode', value);
+    }
+    

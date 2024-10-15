@@ -9,7 +9,28 @@ let PESO_SYMBOL = "UYU ";
 let PERCENTAGE_SYMBOL = '%';
 let MSG = "FUNCIONALIDAD NO IMPLEMENTADA";
 
-//Función que se utiliza para actualizar los costos de publicación
+function setCatID(id) {
+    localStorage.setItem("catID", id);
+    window.location = "products.html";
+}
+
+function logout() {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('username');
+    window.location.href = 'login.html';
+}
+
+window.onload = function() {
+    const estaLogueado = localStorage.getItem('loggedIn');
+    if (!estaLogueado) {
+        window.location.href = 'login.html';
+    } else {
+        const username = localStorage.getItem('username');
+        document.getElementById("username").innerHTML = username;
+    }
+};
+
+// Function to update publication costs
 function updateTotalCosts(){
     let unitProductCostHTML = document.getElementById("productCostText");
     let comissionCostHTML = document.getElementById("comissionText");
@@ -24,10 +45,14 @@ function updateTotalCosts(){
     totalCostHTML.innerHTML = totalCostToShow;
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+// Event listener for when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function(e){
+    // Add event listener for logout button
+    const cerrarSesion = document.getElementById("cerrarSesion"); 
+    if (cerrarSesion) {
+        cerrarSesion.addEventListener('click', logout);
+    }
+
     document.getElementById("productCountInput").addEventListener("change", function(){
         productCount = this.value;
         updateTotalCosts();
@@ -54,89 +79,68 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     document.getElementById("productCurrency").addEventListener("change", function(){
-        if (this.value == DOLLAR_CURRENCY)
-        {
+        if (this.value == DOLLAR_CURRENCY) {
             MONEY_SYMBOL = DOLLAR_SYMBOL;
-        } 
-        else if (this.value == PESO_CURRENCY)
-        {
+        } else if (this.value == PESO_CURRENCY) {
             MONEY_SYMBOL = PESO_SYMBOL;
         }
 
         updateTotalCosts();
     });
 
-
-    //Configuraciones para el elemento que sube archivos
+    // Configurations for the file upload element
     let dzoptions = {
-        url:"/",
+        url: "/",
         autoQueue: false
     };
     let myDropzone = new Dropzone("div#file-upload", dzoptions);    
 
-
-    //Se obtiene el formulario de publicación de producto
+    // Get the product selling form
     let sellForm = document.getElementById("sell-info");
 
-    //Se agrega una escucha en el evento 'submit' que será
-    //lanzado por el formulario cuando se seleccione 'Vender'.
+    // Add an event listener for the 'submit' event on the form
     sellForm.addEventListener("submit", function(e){
-
         e.preventDefault(); 
-        e.preventDefault();
 
         let productNameInput = document.getElementById("productName");
         let productCategory = document.getElementById("productCategory");
         let productCost = document.getElementById("productCostInput");
         let infoMissing = false;
 
-        //Quito las clases que marcan como inválidos
+        // Remove invalid classes
         productNameInput.classList.remove('is-invalid');
         productCategory.classList.remove('is-invalid');
         productCost.classList.remove('is-invalid');
 
-        //Se realizan los controles necesarios,
-        //En este caso se controla que se haya ingresado el nombre y categoría.
-        //Consulto por el nombre del producto
-        if (productNameInput.value === "")
-        {
+        // Validate product name
+        if (productNameInput.value === "") {
             productNameInput.classList.add('is-invalid');
             infoMissing = true;
         }
         
-        //Consulto por la categoría del producto
-        if (productCategory.value === "")
-        {
+        // Validate product category
+        if (productCategory.value === "") {
             productCategory.classList.add('is-invalid');
             infoMissing = true;
         }
 
-        //Consulto por el costo
-        if (productCost.value <=0)
-        {
+        // Validate product cost
+        if (productCost.value <= 0) {
             productCost.classList.add('is-invalid');
             infoMissing = true;
         }
         
-        if(!infoMissing)
-        {
-            //Aquí ingresa si pasó los controles, irá a enviar
-            //la solicitud para crear la publicación.
-
+        if (!infoMissing) {
+            // If all validations pass, send the request to create the publication
             getJSONData(PUBLISH_PRODUCT_URL).then(function(resultObj){
                 let msgToShowHTML = document.getElementById("resultSpan");
                 let msgToShow = "";
-    
-                //Si la publicación fue exitosa, devolverá mensaje de éxito,
-                //de lo contrario, devolverá mensaje de error.
-                //FUNCIONALIDAD NO IMPLEMENTADA
-                if (resultObj.status === 'ok')
-                {
+
+                // Show success or error message
+                if (resultObj.status === 'ok') {
                     msgToShow = MSG;
                     document.getElementById("alertResult").classList.add('alert-primary');
-                }
-                else if (resultObj.status === 'error')
-                {
+                } else if (resultObj.status === 'error') {
                     msgToShow = MSG;
                     document.getElementById("alertResult").classList.add('alert-primary');
                 }
@@ -149,12 +153,3 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 
 
-window.onload = function() {
-    const estaLogueado = localStorage.getItem('loggedIn');
-    if (!estaLogueado) {
-        window.location.href = 'login.html';
-    } else {
-        const username = localStorage.getItem('username');
-        document.getElementById("usernameSell").innerHTML = username ;
-    }
-};
