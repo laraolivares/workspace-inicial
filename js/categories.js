@@ -1,3 +1,27 @@
+window.onload = function() {
+    const estaLogueado = localStorage.getItem('loggedIn');
+    if (!estaLogueado) {
+        window.location.href = 'login.html';
+    } else {
+        const username = localStorage.getItem('username');
+        document.getElementById("username").innerHTML = username;
+    }
+};
+
+function setCatID(id) {
+    localStorage.setItem("catID", id);
+    window.location = "products.html";
+}
+
+
+function logout() {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('username');
+    window.location.href = 'login.html';
+}
+
+
+
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
@@ -35,10 +59,7 @@ function sortCategories(criteria, array){
     return result;
 }
 
-function setCatID(id) {
-    localStorage.setItem("catID", id);
-    window.location = "products.html"
-}
+
 
 function showCategoriesList(){
 
@@ -87,7 +108,14 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+
 document.addEventListener("DOMContentLoaded", function(e){
+    const cerrarSesion = document.getElementById("cerrarSesion"); 
+
+    // Cerrar sesion desde el dropdown menu
+    if (cerrarSesion) {
+        cerrarSesion.addEventListener('click', logout);
+    }
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentCategoriesArray = resultObj.data
@@ -142,12 +170,3 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 });
 
-window.onload = function() {
-    const estaLogueado = localStorage.getItem('loggedIn');
-    if (!estaLogueado) {
-        window.location.href = 'login.html';
-    } else {
-        const username = localStorage.getItem('username');
-        document.getElementById("usernameCat").innerHTML = username ;
-    }
-};
