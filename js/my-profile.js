@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const profileImage = document.getElementById("profileImage");
     const imageInput = document.getElementById("imageInput");
     const saveImageBtn = document.getElementById("saveImage");
+    const cameraIcon = document.getElementById("cameraIcon");
     const cerrarSesion = document.getElementById("cerrarSesion"); 
 
                     // Cerrar sesion desde el dropdown menu
@@ -32,7 +33,15 @@ document.addEventListener("DOMContentLoaded", function() {
                         cerrarSesion.addEventListener('click', logout);
                     }
   
-    // Cargar la imagen del localStorage si está guardada
+   if (cameraIcon) {
+    // Abrir el selector de archivos al hacer clic en el ícono de la cámara
+    cameraIcon.addEventListener("click", function() {
+      imageInput.click();
+    });
+  } 
+
+  
+  // Cargar la imagen del localStorage si está guardada
     const storedImage = localStorage.getItem("profileImage");
     if (storedImage) {
       profileImage.src = storedImage;
