@@ -854,10 +854,16 @@ label.star-label:hover .star {
 
 .darkmode #produ_espec #precio,
 .darkmode #produ_espec #categ-vendidos,
-.darkmode #produ_espec #categ,
-.darkmode #produ_espec h1,
 .darkmode #produ_espec #descrip-corta{
 color: white;
+}
+
+.darkmode .container #produ_espec h1 {
+  color: white !important; /* Cambia el color de la letra en modo oscuro */
+}
+
+.darkmode .container #produ_espec #categ {
+  color: white !important; /* Cambia el color de la letra en modo oscuro */
 }
 
 /* Estilo base para el botón */
