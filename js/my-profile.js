@@ -133,4 +133,30 @@ document.addEventListener("DOMContentLoaded", function() {
         };
       };
     });
+    const bdark = document.querySelector('#bdark');
+    const body = document.querySelector('body');
+
+    load();
+
+    bdark.addEventListener('click', () => {
+        const isDarkMode = body.classList.toggle('darkmode');
+        store(isDarkMode);
+        bdark.textContent = isDarkMode ? 'Modo claro' : 'Modo oscuro'; // Cambia el texto del botón
+    });
+    
+    function load() {
+        const darkmode = localStorage.getItem('darkmode');
+        if (darkmode === 'true') {
+            body.classList.add('darkmode');
+            bdark.textContent = 'Modo claro'; // Cambia el texto si está en modo oscuro
+        } else {
+            store('false'); // Guarda como 'false' si no hay nada
+        }
+    }
+
+    // Para guardar el modo oscuro en localStorage    
+    function store(value){
+        localStorage.setItem('darkmode', value);
+    }
+    
   });
