@@ -842,6 +842,24 @@ label.star-label:hover .star {
   color: white;
 }
 
+.darkmode .lista_comentarios{
+  background-color: rgb(59, 59, 66);
+  color: white;
+}
+
+.darkmode .lista_comentarios_2{
+  background-color: rgb(81, 81, 90);
+  color: white;
+}
+
+.darkmode #produ_espec #precio,
+.darkmode #produ_espec #categ-vendidos,
+.darkmode #produ_espec #categ,
+.darkmode #produ_espec h1,
+.darkmode #produ_espec #descrip-corta{
+color: white;
+}
+
 /* Estilo base para el botón */
 #bdark {
   float: right;
