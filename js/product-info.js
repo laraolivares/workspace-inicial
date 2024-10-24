@@ -317,4 +317,64 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
     function store(value){
         localStorage.setItem('darkmode', value);
     }
-    
+
+
+// BOTÓN COMPRAR
+document.addEventListener("DOMContentLoaded", function() {
+   
+    const comprarBtn = document.getElementById("comprar-btn");
+
+    if (comprarBtn) {
+        comprarBtn.addEventListener("click", function() {
+
+        const productId = localStorage.getItem('idProducto');
+        const cantidadInput = document.getElementById('cantidad');
+
+        if (!cantidadInput) {
+            console.error("Campo de cantidad no encontrado.");
+            return;
+        }
+
+        const cantidad = parseInt(cantidadInput.value); // Convertir el valor de cantidad a número
+
+    // Verificar que la cantidad sea válida
+        if (isNaN(cantidad) || cantidad < 1) {
+            console.error("Cantidad inválida.");
+            return;
+        }
+
+    fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
+        .then(response => response.json())
+        .then(data => {
+
+    // Crear objeto con la información del producto
+        const productToCart = {
+        id: data.id,
+        name: data.name,
+        currency: data.currency,
+        cost: data.cost,
+        image: data.images[0], 
+        quantity: cantidad, 
+        subtotal: data.cost * cantidad 
+        };
+
+    // Obtener el carrito guardado en localStorage o crear uno nuevo
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Añadir el producto al carrito
+        cart.push(productToCart);
+
+    // Guardar el carrito actualizado en localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Redirigir a la página del carrito
+        window.location.href = 'cart.html';
+        })
+        .catch(error => {
+        console.error('Error al agregar el producto al carrito:', error);
+        });
+    });
+    } else {
+        console.error("Botón 'Comprar' no encontrado en el DOM.");
+    }
+});
