@@ -355,7 +355,8 @@ document.addEventListener("DOMContentLoaded", function() {
         cost: data.cost,
         image: data.images[0], 
         quantity: cantidad, 
-        subtotal: data.cost * cantidad 
+        subtotal: data.cost * cantidad,
+        description: data.description
         };
 
     // Obtener el carrito guardado en localStorage o crear uno nuevo
