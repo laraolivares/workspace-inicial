@@ -55,15 +55,16 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div id="produ_espec">
-        <div id="categ"></div>
-        <div id="descrip-corta"></div>
-        <div id="precio"></div>
-        <div id="categ-vendidos"></div>
-        <div id="descrip-larga"></div>
-      </div>
+    <div class="container mt-4">
+        <div id="cart-container">
+            <h2 class="mb-4">MI CARRO</h2>
+            <div id="cart-items" class="cart-container"></div> <!-- Contenedor para los ítems del carrito -->
+            <div id="empty-cart" class="alert alert-info text-center" style="display: none;">
+                <h4>No hay productos en el carrito.</h4>
+            </div>
+        </div>
     </div>
+  </main>
 
     <!--BOTÓN COMPRAR-->  
   <div class="btn-comprar">
