@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartVisual(cartItems);
 });
 
-// Función para crear el elemento visual de un producto en el carrito
+// Function to create the visual element of a product in the cart
 function createProductElement(item, index) {
     const productElement = document.createElement("div");
     productElement.className = "cart-item mb-4";
@@ -63,36 +63,66 @@ function createProductElement(item, index) {
     return productElement;
 }
 
-// Actualiza la cantidad y el subtotal cuando cambia la cantidad
+// Function to add a product to the cart
+function addToCart(newItem) {
+    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    // Check if the item already exists in the cart
+    const existingIndex = cartItems.findIndex(item => item.id === newItem.id);
+    
+    if (existingIndex !== -1) {
+        // Item exists, update the quantity
+        console.log(`Updating quantity for ${newItem.name}`);
+        cartItems[existingIndex].quantity += newItem.quantity;
+    } else {
+        // Item doesn't exist, add it to the cart
+        console.log(`Adding new item ${newItem.name}`);
+        cartItems.push(newItem);
+    }
+    
+    // Save the updated cart to localStorage
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    
+    // Update the visual representation of the cart
+    updateCartVisual(cartItems);
+}
+
+// Update the quantity and subtotal when it changes
 function updateSubtotal(input, cost, index) {
     const quantity = parseInt(input.value);
     const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-    cartItems[index].quantity = quantity;
+    
+    if (quantity > 0) {
+        cartItems[index].quantity = quantity;
+    } else {
+        alert("Quantity must be at least 1.");
+        input.value = 1; // Reset to 1
+        cartItems[index].quantity = 1;
+    }
+
     localStorage.setItem("cart", JSON.stringify(cartItems));
     updateCartVisual(cartItems);
 }
 
-// Recarga los artículos del carrito visualmente
+// Reload the cart items visually
 function updateCartVisual(cartItems) {
     const cartItemsContainer = document.getElementById("cart-items");
-    cartItemsContainer.innerHTML = ""; // Limpiar contenido actual
+    cartItemsContainer.innerHTML = ""; // Clear current content
 
     if (cartItems.length === 0) {
-        document.getElementById("empty-cart").style.display = "block"; // Mostrar mensaje si el carrito está vacío
+        document.getElementById("empty-cart").style.display = "block"; // Show message if cart is empty
         return;
     }
 
-    document.getElementById("empty-cart").style.display = "none"; // Ocultar mensaje si hay productos en el carrito
-    let total = 0;
+    document.getElementById("empty-cart").style.display = "none"; // Hide message if there are products in the cart
 
     cartItems.forEach((item, index) => {
         const productElement = createProductElement(item, index);
         cartItemsContainer.appendChild(productElement);
-        total += item.cost * item.quantity;
     });
 }
 
-// Eliminar un artículo del carrito
+// Remove an item from the cart
 function removeFromCart(index) {
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     cartItems.splice(index, 1);
@@ -100,7 +130,25 @@ function removeFromCart(index) {
     updateCartVisual(cartItems);
 }
 
-// Función de marcador de posición para la futura funcionalidad de edición
+// Placeholder function for future edit functionality
 function editItem(index) {
     alert("Edit item feature is under development.");
 }
+
+// Function to test adding a product (for demonstration purposes)
+function testAddingProduct() {
+    const productToAdd = {
+        id: '123', // Ensure this ID is unique for each product
+        name: 'Example Product',
+        description: 'This is an example product.',
+        image: 'example.jpg',
+        cost: 10.00,
+        quantity: 1 // This is the quantity you want to add
+    };
+
+    // Call the function to add the product to the cart
+    addToCart(productToAdd);
+}
+
+// Uncomment the following line to test adding the product initially
+// testAddingProduct();
