@@ -343,33 +343,41 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-    fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
+        fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
         .then(response => response.json())
         .then(data => {
-
-    // Crear objeto con la información del producto
-        const productToCart = {
-        id: data.id,
-        name: data.name,
-        currency: data.currency,
-        cost: data.cost,
-        image: data.images[0], 
-        quantity: cantidad, 
-        subtotal: data.cost * cantidad,
-        description: data.description
-        };
-
-    // Obtener el carrito guardado en localStorage o crear uno nuevo
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // Añadir el producto al carrito
-        cart.push(productToCart);
-
-    // Guardar el carrito actualizado en localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-    // Redirigir a la página del carrito
-        window.location.href = 'cart.html';
+            // Crear objeto con la información del producto
+            const productToCart = {
+                id: data.id,
+                name: data.name,
+                currency: data.currency,
+                cost: data.cost,
+                image: data.images[0], 
+                quantity: cantidad, 
+                subtotal: data.cost * cantidad,
+                description: data.description
+            };
+    
+            // Obtener el carrito guardado en localStorage o crear uno nuevo
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            // Comprobar si el artículo ya existe en el carrito
+            const existingProductIndex = cart.findIndex(item => item.id === productToCart.id);
+    
+            if (existingProductIndex !== -1) {
+                // Si el artículo ya existe, actualizar la cantidad y subtotal
+                cart[existingProductIndex].quantity += productToCart.quantity;
+                cart[existingProductIndex].subtotal = cart[existingProductIndex].cost * cart[existingProductIndex].quantity; // Actualizar subtotal
+            } else {
+                // Si no existe, añadir el nuevo producto
+                cart.push(productToCart);
+            }
+    
+            // Guardar el carrito actualizado en localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+    
+            // Redirigir a la página del carrito
+            window.location.href = 'cart.html';
         })
         .catch(error => {
         console.error('Error al agregar el producto al carrito:', error);
