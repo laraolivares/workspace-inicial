@@ -739,7 +739,8 @@ h4 {
 }
 
 #comentario {
-  width: 500px; 
+  width: 100%; 
+  max-width: 500px;
   height: 150px;
   resize: both; 
   margin-top: 0;
@@ -787,6 +788,53 @@ label.star-label:hover ~ label.star-label .star {
 
 label.star-label:hover .star {
   color: gold; 
+}
+
+/* MEDIA QUERIES PANTALLAS MEDIANAS */
+@media (max-width: 768px) {
+  #button {
+    margin-left: 70%; 
+    
+  }
+  
+  .star-label {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  #comentario {
+    resize: none; 
+  }
+  }
+
+/* MEDIA QUERIES PANTALLAS PEQUEÑAS */
+@media (max-width: 480px) {
+  #button {
+    margin-left: 60%;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  #comentario {
+    width: 90%;
+  }
+
+  .star-label {
+    font-size: 18px;
+  }
+
+  .star {
+    font-size: 20px;
+  }
+
+  #comentario {
+    resize: none; 
+  }
 }
 
 
