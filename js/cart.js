@@ -11,6 +11,27 @@ function logout() {
     window.location.href = 'login.html';
 }
 
+function updateBadge() {
+    const carro = JSON.parse(localStorage.getItem('cart')) || []; // Parse the JSON string or use an empty array
+    let contador_prod = 0; // Initialize the counter
+
+    carro.forEach(item => {
+        if (item.quantity) { // Ensure quantity exists before adding
+            contador_prod += item.quantity; // Sum the quantities
+        }
+    });
+
+    let badge = document.getElementById("badge");
+    if (contador_prod > 0) {
+        badge.classList.remove("visually-hidden"); // Show the badge
+        badge.innerHTML = contador_prod; // Update the badge text
+    } else {
+        badge.classList.add("visually-hidden"); // Hide the badge if there are no items
+    }
+
+    console.log(contador_prod);
+}
+
 // Función que se ejecuta cuando la ventana se carga
 window.onload = function() {
     const estaLogueado = localStorage.getItem('loggedIn');
@@ -20,6 +41,7 @@ window.onload = function() {
         const username = localStorage.getItem('username');
         document.getElementById("username").innerHTML = username;
     }
+    updateBadge(); // Update badge on load
 };
 
 // Cerrar sesión desde el menú desplegable
@@ -85,6 +107,7 @@ function addToCart(newItem) {
     
     // Update the visual representation of the cart
     updateCartVisual(cartItems);
+    updateBadge()
 }
 
 // Update the quantity and subtotal when it changes
@@ -102,6 +125,7 @@ function updateSubtotal(input, cost, index) {
 
     localStorage.setItem("cart", JSON.stringify(cartItems));
     updateCartVisual(cartItems);
+    updateBadge(); // Update badge after quantity change
 }
 
 // Reload the cart items visually
@@ -128,6 +152,7 @@ function removeFromCart(index) {
     cartItems.splice(index, 1);
     localStorage.setItem("cart", JSON.stringify(cartItems));
     updateCartVisual(cartItems);
+    updateBadge(); // Update badge after item removal
 }
 
 // Placeholder function for future edit functionality
@@ -148,7 +173,10 @@ function testAddingProduct() {
 
     // Call the function to add the product to the cart
     addToCart(productToAdd);
+
+//Calculo la cantidad de productos en carrito
+// Function to update the badge with the total quantity of products in the cart
+
 }
 
-// Uncomment the following line to test adding the product initially
-// testAddingProduct();
+
