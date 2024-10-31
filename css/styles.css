@@ -884,6 +884,40 @@ label.star-label:hover .star {
   box-sizing: border-box;
 }
 
+/* MEDIA QUERIES PANTALLAS MEDIANAS */
+@media (max-width: 768px) {
+  #form-calificacion, .calificaciones {
+    width: 100%; 
+    margin-bottom: 20px; 
+  }
+}
+
+/* MEDIA QUERIES PANTALLAS PEQUEÑAS */
+@media (max-width: 480px) {
+  .container_comentarios {
+    padding: 10px;
+    flex-direction: column; 
+  }
+
+  #form-calificacion, .calificaciones {
+    width: 100%; 
+  }
+
+  .lista_comentarios {
+    font-size: 14px; 
+    padding: 8px;
+  }
+
+  .lista_comentarios_2 {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .p-2 i {
+    font-size: 18px; 
+  }
+}
+
 /* Modo oscuro */
 .darkmode {
   background-color: rgb(37, 37, 46);
