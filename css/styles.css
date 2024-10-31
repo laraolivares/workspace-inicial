@@ -508,7 +508,7 @@ label.star-label:hover .star {
 /* MEDIA QUERIES PANTALLAS MEDIANAS */
 @media (max-width: 768px) {
   #button {
-    margin-left: 70%; 
+    margin-left: 60%; 
     
   }
   
@@ -528,7 +528,7 @@ label.star-label:hover .star {
 /* MEDIA QUERIES PANTALLAS PEQUEÑAS */
 @media (max-width: 480px) {
   #button {
-    margin-left: 60%;
+    margin-left: 75%;
   }
 
   h4 {
