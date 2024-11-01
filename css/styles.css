@@ -406,35 +406,6 @@ background-color: #e0e0e0; /* Cambia el color de fondo al pasar el ratón */
   color: #242222;
 }
 
-#productosRelacionados{
-  margin-left: -720px;
-  margin-top: 30%;
-}
-.related-container {
-  display: flex; /* Use flexbox for horizontal layout */
-  overflow-x: auto; /* Enable horizontal scrolling */
-  padding: 10px 0; /* Optional padding */
-  gap: 10px; /* Space between items */
-}
-
-.related-image {
-  flex: 0 0 auto; /* Allow the item to maintain its width */
-  width: 500px; /* Fixed width for each image container */
-}
-
-.related-image img {
-  width: 100%; /* Ensure images fill their container */
-  height: auto; /* Maintain aspect ratio */
-  padding-bottom: 2%;
-  padding-left: 2%;
-}
-#titulos-relacionados{
- font-size: 150%;
- text-align: center;
- padding-top: 2%;
- font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
-}
-
 .img-title {
   padding-left: 2%;
 }
@@ -454,8 +425,7 @@ h4 {
 }
 
 #comentario {
-  width: 100%; 
-  max-width: 500px;
+  width: 500px; 
   height: 150px;
   resize: both; 
   margin-top: 0;
@@ -505,53 +475,6 @@ label.star-label:hover .star {
   color: gold; 
 }
 
-/* MEDIA QUERIES PANTALLAS MEDIANAS */
-@media (max-width: 768px) {
-  #button {
-    margin-left: 60%; 
-    
-  }
-  
-  .star-label {
-    font-size: 20px;
-  }
-
-  h4 {
-    font-size: 18px;
-  }
-
-  #comentario {
-    resize: none; 
-  }
-  }
-
-/* MEDIA QUERIES PANTALLAS PEQUEÑAS */
-@media (max-width: 480px) {
-  #button {
-    margin-left: 75%;
-  }
-
-  h4 {
-    font-size: 18px;
-  }
-
-  #comentario {
-    width: 90%;
-  }
-
-  .star-label {
-    font-size: 18px;
-  }
-
-  .star {
-    font-size: 20px;
-  }
-
-  #comentario {
-    resize: none; 
-  }
-}
-
 
 /*SECCION DE COMENTARIOS ANTERIORES*/
 
@@ -597,40 +520,6 @@ label.star-label:hover .star {
 #form-calificacion, .calificaciones {
   width: 48%; 
   box-sizing: border-box;
-}
-
-/* MEDIA QUERIES PANTALLAS MEDIANAS */
-@media (max-width: 768px) {
-  #form-calificacion, .calificaciones {
-    width: 100%; 
-    margin-bottom: 20px; 
-  }
-}
-
-/* MEDIA QUERIES PANTALLAS PEQUEÑAS */
-@media (max-width: 480px) {
-  .container_comentarios {
-    padding: 10px;
-    flex-direction: column; 
-  }
-
-  #form-calificacion, .calificaciones {
-    width: 100%; 
-  }
-
-  .lista_comentarios {
-    font-size: 14px; 
-    padding: 8px;
-  }
-
-  .lista_comentarios_2 {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .p-2 i {
-    font-size: 18px; 
-  }
 }
 
 /* Modo oscuro */
@@ -1160,7 +1049,7 @@ color: white;
     overflow-x: auto; /* Enable horizontal scrolling */
     padding: 10px 0; /* Optional padding */
     gap: 10px; /* Space between items */
-    margin-left: 100px;
+    margin-left: 25%;
   }
   
   .related-image {
@@ -1178,179 +1067,529 @@ color: white;
   #titulos-relacionados{
    font-size: 150%;
    text-align: center;
-   margin-left: 350px;
-   padding-top: 2%;
+   margin-left: 30%;
+   padding-top: 10%;
    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
   }
 
+  #form-calificacion{  
+    margin-top: 20px;
+   }
+   
+   h4 {
+     font-size: 20px;
+     font-family: 'Lucida Console', monospace;
+   }
+   
+   #button {
+     margin-left: 63%;
+   }
+   
+   #comentario {
+     width: 200px; 
+     height: 150px;
+     resize: both; 
+     margin-top: 0;
+   }
+   
+   .star-label {
+     font-size: 25px;
+     font-family: 'Lucida Console', monospace;
+     margin-top: 10px;
+   }
+   
+   .rating {
+     transform: rotate(180deg);
+   }
+   
+   .star-input {
+     display: none;
+   }
+   
+   .estrellas {
+     direction: rtl; 
+     text-align: left;
+    
+   }
+   
+   .star {
+     display: inline-block;  
+     font-size: 25px;
+     cursor: pointer;
+     transition: all 0.3s;
+     color: lightgray;
+   }
+   
+   input.star-input:checked + label.star-label .star {
+     color: gold; 
+   }
+   
+   input.star-input:checked ~ input.star-input + label.star-label .star {
+     color: gold; 
+   }
+   
+   label.star-label:hover ~ label.star-label .star {
+     color: gold; 
+   }
+   
+   label.star-label:hover .star {
+     color: gold; 
+   }
+   
+   
+   /*SECCION DE COMENTARIOS ANTERIORES*/
+   
+   .container_comentarios {
+     display: flex;
+     justify-content: space-between;
+     padding: 20px;
+     flex-wrap: wrap;
+   }
+   
+   .lista_comentarios {
+     background-color: lightgrey;
+     padding: 10px; 
+     border-radius: 5px;
+   }
+   .lista_calificaciones{
+     max-height: 450px; 
+     overflow-y: auto;
+   }
+   
+   .lista_comentarios_2 {
+     background-color: white; 
+     padding: 10px; 
+     border-radius: 5px;
+     border-width: 15px;
+     border-color: black;
+   }
+   
+   .lista_comentarios_1 {
+     display: flex; 
+     justify-content: space-between;
+   }
+   
+   .p-2 i {
+     font-size: 20px;
+     color: gold; 
+   }
+   
+   .p-2 .far.fa-star {
+     color: transparent;
+   }
+   
+   #form-calificacion, .calificaciones {
+     width: 48%; 
+     box-sizing: border-box;
+   }
+   
+   /* Modo oscuro */
+   .darkmode {
+     background-color: rgb(37, 37, 46);
+     color: white;
+   }
+   
+   .darkmode .lista_comentarios{
+     background-color: rgb(59, 59, 66);
+     color: white;
+   }
+   
+   .darkmode .lista_comentarios_2{
+     background-color: rgb(81, 81, 90);
+     color: white;
+   }
+   
+   .darkmode #produ_espec #precio,
+   .darkmode #produ_espec #categ-vendidos,
+   .darkmode #produ_espec #descrip-corta{
+   color: white;
+   }
+   
+   .darkmode .container #produ_espec h1 {
+     color: white !important; /* Cambia el color de la letra en modo oscuro */
+   }
+   
+   .darkmode .container #produ_espec #categ {
+     color: white !important; /* Cambia el color de la letra en modo oscuro */
+   }
+   
+   /* Estilo base para el botón */
+   #bdark {
+     float: right;
+     font-size: 14px; 
+     align-items: center;
+     padding: .5rem 1rem;
+     border-radius: 8px;
+     transition: .5s ease;
+     transition: opacity .15s linear;
+     background-color: transparent; /* Fondo transparente por defecto */
+     color: white; /* Color por defecto en modo claro */
+   }
+   
+   /* Estilo para el botón en modo oscuro */
+   .darkmode #bdark {
+     background-color: rgb(32, 32, 44);
+     color: white; /* Cambia el color del texto en modo oscuro */
+   }
+   
+   /* Estilo para el botón en modo claro al hacer hover */
+   #bdark:hover {
+     background-color: white;
+     color: black; /* Cambia el color del texto en modo claro */
+   }
+   
+   
+   
+   
+   
+   /*ENTREGA 5*/
+   
+   #contenedor-imagen {
+     margin-top: 3%;
+   }
+   
+   .profile-section {
+     text-align: center;
+     margin-top: 50%;
+     padding-top: 40%;
+   }
+   
+   .profile-section h2 {
+     font-size: 24px;
+     margin-bottom: 20px;
+   }
+   
+   .profile-picture {
+     position: relative;
+     display: inline-block;
+     width: 150px;
+     height: 150px;
+   }
+   
+   .profile-picture img {
+     border-radius: 50%;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: center;
+   }
+   
+   .camera-icon {
+     position: absolute;
+     bottom: 5px;
+     right: 5px;
+     background-color: white;
+     border-radius: 50%;
+     padding: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+   }
+   
+   .camera-icon img {
+     width: 20px;
+     height: 20px;
+   }
+   
+   #saveImage {
+     margin-top: 20px;
+   }
+   
+   /* BOTÓN COMPRAR */
+   .btn-comprar {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     width: 100%; 
+     padding: 1.25rem;
+   }
+   
+   #cantidad {
+     width: 5rem; 
+     height: 3.75rem; 
+     margin-top: 5%; 
+     text-align: center;
+     font-size: 1.5rem; 
+     cursor: pointer;
+     border-radius: 3.12rem; 
+   }
+   
+   #comprar-btn {
+     background-color: orange;
+     margin-top: 5%; 
+     margin-bottom: 5%;
+     font-size: 1.5rem; 
+     margin-left: 2%;
+     padding: 0.94rem;
+     cursor: pointer; 
+     border-radius: 3.12rem; 
+   }
+   
+   #comprar-btn:hover {
+     background-color: #FF6347;
+   }
+   
+   
 }
 /*FIN TABLETS*/
-/*hello*/
 /*CEL*/
 @media (max-width: 320px) {
-  .product-container {
-    display: block;
-    margin-bottom: 5%;
-  }
   
+
   .container #produ_espec {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end; /* Alinea todos los elementos hijos a la derecha */
-  position: relative;
-  margin-right: 0; /* Asegúrate de que no haya margen extra a la derecha */
-  padding-right: 0; /* Asegúrate de que no haya padding extra a la derecha */
-}
-
-/* Ajustes de textos en la página */
-.container #produ_espec #categ {
-  font-family: 'Verdana' !important;
-  font-size: 20px !important;
-  color: rgba(0, 0, 0, 0.55) !important;
-  margin-bottom: 20px; /* Espacio inferior para separación */
-}
-
-
-.container #produ_espec h1 {
-  font-family: 'Lucida Console', monospace !important;
-  font-size: 34px !important;
-  color: #000000 !important;
-  text-align:center !important;
-  margin: 20px auto !important;
-}
-
-/* descripcion corta */
-.container #produ_espec #descrip-corta {
-  width: 100%; /* Ocupa todo el ancho del contenedor */
-  max-width: 600px; /* Coincide con el ancho del carrusel */
-  margin: 20px auto 0; /* Centrado y separación con el carrusel */
-  font-family: 'Lucida Console', monospace;
-  font-size: 14px;
-  color: #000000;
-}
-
-
-/* Ajuste para el elemento #categ-vendidos */
-.container #produ_espec #categ-vendidos {
-  font-family: 'Verdana';
-  font-style: normal;
-  font-size: 22px;
-  color: rgba(0, 0, 0, 0.55);
-  margin-top: 0; /* Ajusta según el espacio necesario entre #categ y #categ-vendidos */
-  margin-left: auto; /* Empuja el texto hacia la derecha */
-  margin-right: 0; /* Ajusta el margen derecho */
-  position: static; /* Asegúrate de que no esté posicionado absolutamente si no es necesario */
-}
-
-/* Ajusta la descripción larga */
-#produ_espec #descrip-larga {
-  font-family: 'Verdana', sans-serif;
-  font-size: 18px;
-  line-height: 24px;
-  margin-top: 30px; /* Ajusta este margen para separar el precio del carrusel */
-  padding-right: 350px; /* Ajusta este padding para mover el texto hacia la izq */
-}
-/* Ajuste para el elemento #precio */
-#produ_espec #precio {
-  font-family: 'Verdana', sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 39px;
-  color: #000000;
-  margin-top: 80px;
-  margin-left: auto; /* Empuja el texto hacia la derecha */
-  margin-right: 0; /* Ajusta el margen derecho */
-}
-  .product-text {
-    flex: 50%;
-    text-align: left;
-    margin-top: 3%;
-    margin-left: 4%;
-    margin-right: 5%;
-    font-size: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinea todos los elementos hijos a la derecha */
+    position: relative;
+    margin-right: 0; /* Asegúrate de que no haya margen extra a la derecha */
+    padding-right: 0; /* Asegúrate de que no haya padding extra a la derecha */
   }
   
-  #product-imaElement-0, #product-imaElement-1, #product-imaElement-2, #product-imaElement-3, #product-imaElement-4 {
-   width:95%;
-   text-align: left;
-   margin-top: 5%;
-   margin-bottom: 10%;
-   border: 2px solid rgb(39, 25, 1);
+  /* Ajustes de textos en la página */
+  .container #produ_espec #categ {
+    font-family: 'Verdana' !important;
+    font-size: 10px !important;
+    max-width: 150px;
+    color: rgba(0, 0, 0, 0.55) !important;
+    margin-left: -100px;
+    margin-bottom: 10px; /* Espacio inferior para separación */
   }
   
-  .product-container {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-    border: 1px solid rgb(41, 26, 1);
-  }
   
-  #product-soldCount-0,#product-soldCount-1, #product-soldCount-2, #product-soldCount-3, #product-soldCount-4 {
-    margin-top: 20%;
-    color: rgb(148, 147, 147);
+  .container #produ_espec h1 {
+    font-family: 'Lucida Console', monospace !important;
+    font-size: 24px !important;
+    margin-left: -30px;
+    color: #000000 !important;
+    text-align:center !important;
+
   }
-  
-  #product-name-0, #product-name-1, #product-name-2, #product-name-3, #product-name-4 {
-    font-size: 300%;
-    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
-  }
-  
+
   #tituloProductos{
-    font-size: 40px;
-    margin: 40px 0px 20px 0px;
-    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    margin-left: -100px;
     letter-spacing: 5px;
   }
-
   
-   footer{
-    font-size: 60%;
+  /* descripcion corta */
+  .container #produ_espec #descrip-corta {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    max-width: 270px; /* Coincide con el ancho del carrusel */
+    margin: 10px auto 0; /* Centrado y separación con el carrusel */
+    font-family: 'Lucida Console', monospace;
+    font-size: 14px;
+    margin-left: 0;
+    color: #000000;
+  }
+  
+  
+  /* Ajuste para el elemento #categ-vendidos */
+  .container #produ_espec #categ-vendidos {
+    font-family: 'Verdana';
+    font-style: normal;
+    max-width: 170px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.55);
+    margin-left: -50px;
+    position: static; /* Asegúrate de que no esté posicionado absolutamente si no es necesario */
+  }
+  
+  /* Ajusta la descripción larga */
+  #produ_espec #descrip-larga {
+    font-family: 'Verdana', sans-serif;
+    font-size: 8px;
+    line-height: 24px;
+    max-width: 170px;
+    margin-top: 30px; /* Ajusta este margen para separar el precio del carrusel */
+    padding-right: 350px; /* Ajusta este padding para mover el texto hacia la izq */
+  }
+  /* Ajuste para el elemento #precio */
+  #produ_espec #precio {
+    font-family: 'Verdana', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 39px;
+    color: #000000;
+    margin-top: 80px;
+    max-width: 170px;
+    margin-right: 0; /* Ajusta el margen derecho */
   }
 
-  .btn-comprar {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    flex-direction: column; 
+  .carousel {
+    position: relative;
+    width: 100%;
+    max-width: 300px; /* Ajusta según sea necesario */
+    margin: 0 auto; /* Centra el carrusel y da un margen superior */
+    overflow: hidden;
+    margin-left: 0;
+    padding-top: 20px;
   }
+  
+  /* Asegura que las imágenes no se desajusten */
+  .carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .carousel-images img {
+    width: 100%;
+    flex-shrink: 0;
+  }
+  
+  /* Botones del carrusel */
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10; /* Asegura que los botones estén encima de las imágenes */
+  }
+  
+  .carousel-button.prev {
+    left: 10px;
+  }
+  
+  .carousel-button.next {
+    right: 10px;
+  }
+
+.container_comentarios {
+  padding: 10px;
+  flex-direction: column; 
+max-width: 300px;
+}
+
+
+#form-calificacion, .calificaciones {
+  width: 100%; 
+}
+
+
+.lista_comentarios {
+  font-size: 8px; 
+  padding: 8px;
+}
+
+
+.lista_comentarios_2 {
+  font-size: 8px;
+  padding: 8px;
+}
+
+
+.p-2 i {
+  font-size: 8px; 
+}
+
+#comentario {
+  width: 270px; 
+  height: 150px;
+  resize: both; 
+  margin-top: 0;
+}
+
+.star-label {
+  font-size: 25px;
+  font-family: 'Lucida Console', monospace;
+  margin-top: 10px;
+}
+
+.rating {
+  transform: rotate(180deg);
+}
+
+.star-input {
+  display: none;
+}
+
+.estrellas {
+  direction: rtl; 
+  text-align: left;
+ 
+}
+
+.star {
+  display: inline-block;  
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: lightgray;
+}
+
+input.star-input:checked + label.star-label .star {
+  color: gold; 
+}
+
+input.star-input:checked ~ input.star-input + label.star-label .star {
+  color: gold; 
+}
+
+label.star-label:hover ~ label.star-label .star {
+  color: gold; 
+}
+
+label.star-label:hover .star {
+  color: gold; 
+}
+.btn-comprar {
+  width: 100%; 
+  padding: 1.25rem;
+}
 
 #cantidad {
   width: 5rem; 
-  height: 2.5rem;
-  font-size: 1.6rem; 
-  margin-top: 2%;
-  border-radius: 1.88rem; 
+  height: 3.75rem; 
+  margin-top: 5%; 
+  text-align: center;
+  font-size: 1.5rem; 
+  cursor: pointer;
+  border-radius: 3.12rem; 
 }
 
 #comprar-btn {
-  font-size: 1.25rem; 
-  padding: 0.63rem; 
-  margin-left: 1%; 
-  border-radius: 2.5rem; 
+  background-color: orange;
+  margin-top: 5%; 
+  margin-bottom: 5%;
+  font-size: 1.5rem; 
+  margin-left: 2%;
+  padding: 0.94rem;
+  cursor: pointer; 
+  border-radius: 3.12rem; 
 }
 
+#comprar-btn:hover {
+  background-color: #FF6347;
+}
+
+#productosRelacionados{
+  margin-top: 30%;
+}
 .related-container {
   display: flex; /* Use flexbox for horizontal layout */
   overflow-x: auto; /* Enable horizontal scrolling */
   padding: 10px 0; /* Optional padding */
-  gap: 5px; /* Space between items */
-  margin-left: 200px;
+  gap: 10px; /* Space between items */
+  padding-left: 35px;
 }
 
 .related-image {
   flex: 0 0 auto; /* Allow the item to maintain its width */
-  width: 400px; /* Fixed width for each image container */
+  width: 300px; /* Fixed width for each image container */
 }
+
 .related-image img {
-  width: 400px; /* Ensure images fill their container */
+  width: 100%; /* Ensure images fill their container */
   height: auto; /* Maintain aspect ratio */
   padding-bottom: 2%;
-  padding-left: 2%;
+
 }
 #titulos-relacionados{
- font-size: 120%;
- text-align: right;
+ font-size: 100%;
+ text-align: center;
  padding-top: 2%;
+ padding-left: 350px;
  font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
 }
 }
