@@ -666,7 +666,34 @@ color: white;
   background-color: #FF6347;
 }
 
+#productosRelacionados{
+  margin-left: -720px;
+  margin-top: 30%;
+}
+.related-container {
+  display: flex; /* Use flexbox for horizontal layout */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding: 10px 0; /* Optional padding */
+  gap: 10px; /* Space between items */
+}
 
+.related-image {
+  flex: 0 0 auto; /* Allow the item to maintain its width */
+  width: 500px; /* Fixed width for each image container */
+}
+
+.related-image img {
+  width: 100%; /* Ensure images fill their container */
+  height: auto; /* Maintain aspect ratio */
+  padding-bottom: 2%;
+  padding-left: 2%;
+}
+#titulos-relacionados{
+ font-size: 150%;
+ text-align: center;
+ padding-top: 10%;
+ font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+}
 
 }
 /*FIN ESTANDAR*/
