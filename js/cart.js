@@ -30,6 +30,7 @@ function updateBadge() {
     }
 
     console.log(contador_prod);
+    localStorage.setItem("cant_prod",contador_prod);
 }
 
 // Función que se ejecuta cuando la ventana se carga
