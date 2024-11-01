@@ -30,6 +30,27 @@ window.onload = function() {
     }
 };
 
+function updateBadge() {
+    const carro = JSON.parse(localStorage.getItem('cart')) || []; // Parse the JSON string or use an empty array
+    let contador_prod = 0; // Initialize the counter
+
+    carro.forEach(item => {
+        if (item.quantity) { // Ensure quantity exists before adding
+            contador_prod += item.quantity; // Sum the quantities
+        }
+    });
+
+    let badge = document.getElementById("badge");
+    if (contador_prod > 0) {
+        badge.classList.remove("visually-hidden"); // Show the badge
+        badge.innerHTML = contador_prod; // Update the badge text
+    } else {
+        badge.classList.add("visually-hidden"); // Hide the badge if there are no items
+    }
+
+    console.log(contador_prod);
+};
+
 // Function to update publication costs
 function updateTotalCosts(){
     let unitProductCostHTML = document.getElementById("productCostText");
@@ -150,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             });
         }
     });
+    updateBadge();
 });
 
 
