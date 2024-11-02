@@ -179,77 +179,7 @@
   .checked {
     color: orange;
   }
-  
-  
-  .product-container {
-    display: flex;
-    margin-bottom: 50px;
-  }
-  
-  .product-text {
-    flex: 50%;
-    text-align: left;
-    margin-top: 2%;
-    margin-left: 2%;
-  }
-  
-  #product-imaElement-0, #product-imaElement-1, #product-imaElement-2, #product-imaElement-3, #product-imaElement-4 {
-   width: 90%;
-   text-align: left;
-   margin: 20px 0px 20px 0px;
-   border: 2px solid rgb(39, 25, 1);
-  }
-  
-  .product-container {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-    border: 1px solid rgb(41, 26, 1);
-  }
-  
-  #product-soldCount-0,#product-soldCount-1, #product-soldCount-2, #product-soldCount-3, #product-soldCount-4 {
-    margin-top: 20%;
-    color: rgb(148, 147, 147);
-  }
-  
-  #product-name-0, #product-name-1, #product-name-2, #product-name-3, #product-name-4 {
-    font-size: 40px;
-    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
-  }
-  
-  #tituloProductos{
-    font-size: 50px;
-    margin: 40px 0px 20px 0px;
-    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
-    letter-spacing: 5px;
-  }
-
-  #search-bar {
-    margin-left: 35%;
-    margin-bottom: 3%;
-    width: 400px;
-    height: 40px;
-    padding: 25px;
-    border: 2px solid;
-    font-size: 30px;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
-  }
-  
-  #lupa {
-    font-size: 30px;
-    position: relative;
-    left: -50px;
-    transform: translateX(-50%);
-    color: #666;
-    cursor: pointer;
-  }
-
-
-.container {
-  margin: 0 auto !important;
-  padding: 20px !important; /* O el valor necesario para evitar que el contenido quede pegado al borde */
-  width: 80% !important; /* Ajusta el ancho del contenedor */
-}
-
+ 
 /* Ajusta el margen superior para situar el carrusel debajo del elemento con el ID chevrolet-onyx-joy */
 #chevrolet-onyx-joy + .carousel {
   margin-top: 20px; /* Ajusta este valor según el espacio que quieras */
@@ -365,45 +295,6 @@
   margin-top: 80px;
   margin-left: auto; /* Empuja el texto hacia la derecha */
   margin-right: 0; /* Ajusta el margen derecho */
-}
-
-/*Botones de filtro y ordenar productos*/
-
-.ordenar-relevancia {
-gap: 10px;
-}
-
-.ordenar-relevancia, .price-filter button:hover {
-background-color: #e0e0e0; /* Cambia el color de fondo al pasar el ratón */
-}
-
-#min-price,#max-price{
-  width: 100px; 
-  padding: 5px; 
-  font-size: 14px; 
-}
-
-#filterBtn, #clearFilterBtn {
-  font-weight:400;
-  color: #242222;
-  align-items: center;
-  padding:.5rem 1rem;
-  border-radius:8px;
-  transition: .5s ease;
-  transition:opacity .15s linear;
-  background-color: rgb(236, 191, 68);
-}
-
-#sortPriceAsc, #sortPriceDesc, #sortRelevanceDesc{
-  float: right;
-  font-size: 14px; 
-  align-items: center;
-  padding:.5rem 1rem;
-  border-radius:8px;
-  transition: .5s ease;
-  transition:opacity .15s linear;
-  background-color: rgb(236, 191, 68);
-  color: #242222;
 }
 
 .img-title {
@@ -576,10 +467,6 @@ color: white;
   background-color: white;
   color: black; /* Cambia el color del texto en modo claro */
 }
-
-
-
-
 
 /*ENTREGA 5*/
 
@@ -949,51 +836,6 @@ color: white;
     color: orange;
   }
   
-  
-  .product-container {
-    display: flex;
-    margin-bottom: 50px;
-  }
-  
-  .product-text {
-    flex: 50%;
-    text-align: left;
-    margin-top: 3%;
-    margin-left: 2%;
-    margin-right: 5%;
-    font-size: 80%;
-  }
-  
-  #product-imaElement-0, #product-imaElement-1, #product-imaElement-2, #product-imaElement-3, #product-imaElement-4 {
-   width:85%;
-   text-align: left;
-   margin-top: 10%;
-   margin-bottom: 10%;
-   border: 2px solid rgb(39, 25, 1);
-  }
-  
-  .product-container {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-    border: 1px solid rgb(41, 26, 1);
-  }
-  
-  #product-soldCount-0,#product-soldCount-1, #product-soldCount-2, #product-soldCount-3, #product-soldCount-4 {
-    margin-top: 20%;
-    color: rgb(148, 147, 147);
-  }
-  
-  #product-name-0, #product-name-1, #product-name-2, #product-name-3, #product-name-4 {
-    font-size: 40px;
-    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
-  }
-  
-  #tituloProductos{
-    font-size: 50px;
-    margin: 40px 0px 20px 0px;
-    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
-    letter-spacing: 5px;
-  }
   .btn-comprar {
     display: flex;
     flex-direction: row;
@@ -1265,10 +1107,6 @@ color: white;
      color: black; /* Cambia el color del texto en modo claro */
    }
    
-   
-   
-   
-   
    /*ENTREGA 5*/
    
    #contenedor-imagen {
@@ -1357,10 +1195,10 @@ color: white;
    
 }
 /*FIN TABLETS*/
+
 /*CEL*/
 @media (max-width: 320px) {
   
-
   .container #produ_espec {
     display: flex;
     flex-direction: column;
@@ -1388,11 +1226,6 @@ color: white;
     color: #000000 !important;
     text-align:center !important;
 
-  }
-
-  #tituloProductos{
-    margin-left: -100px;
-    letter-spacing: 5px;
   }
   
   /* descripcion corta */
@@ -1485,7 +1318,7 @@ color: white;
 .container_comentarios {
   padding: 10px;
   flex-direction: column; 
-max-width: 300px;
+  max-width: 300px;
 }
 
 
