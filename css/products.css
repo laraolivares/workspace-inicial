@@ -1,0 +1,335 @@
+/* ESTANDAR */
+@media (min-width: 769px){
+    
+ /* BARRA DE BUSQUEDA */
+    #search-bar {
+        margin-left: 35%;
+        margin-bottom: 3%;
+        width: 400px;
+        height: 40px;
+        padding: 25px;
+        border: 2px solid;
+        font-size: 30px;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      #lupa { 
+        font-size: 2rem; 
+        position: relative;
+        left: -5%;
+        transform: translateX(-50%);
+        color: #666;
+        cursor: pointer;
+    }
+/* ----------------- */
+
+/* BOTONES DE FILTRO Y ORDENAR PRODUCTOS */
+    .ordenar-relevancia {
+        gap: 10px;
+        margin-left: auto; /* Permite que este div se alinee a la derecha */
+      }
+
+      .price-filter {
+        margin-right: auto; /* Permite que este div se alinee a la izquierda */
+      }
+
+      #min-price, #max-price {
+        width: 100px; 
+        padding: 5px;
+        font-size: 14px; 
+      }
+      
+      #filterBtn, #clearFilterBtn, #sortPriceAsc, #sortPriceDesc, #sortRelevanceDesc {
+        font-size: 14px;
+        color: #242222;
+        align-items: center;
+        padding: .5rem 1rem;
+        border-radius: 8px;
+        transition: .5s ease, opacity .15s linear;
+        background-color: rgb(236, 191, 68);
+      }
+/* ----------------- */
+
+/* CONTAINER PRODUCTOS */
+
+    .container{
+        font-family: 'Verdana', serif !important;
+      } 
+    .product-container {
+        display: flex;
+        margin-bottom: 50px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-align: center;
+        border: 1px solid rgb(41, 26, 1);
+      }
+
+      .product-text {
+        flex: 50%;
+        text-align: left;
+        margin-top: 2%;
+        margin-left: 2%;
+      }
+
+      #product-imaElement-0, #product-imaElement-1, #product-imaElement-2, #product-imaElement-3, #product-imaElement-4 {
+        width: 90%;
+        text-align: left;
+        margin: 20px 0px 20px 0px;
+        border: 2px solid rgb(39, 25, 1);
+       }
+
+       #product-soldCount-0,#product-soldCount-1, #product-soldCount-2, #product-soldCount-3, #product-soldCount-4 {
+        margin-top: 20%;
+        color: rgb(148, 147, 147);
+      }
+
+      #product-name-0, #product-name-1, #product-name-2, #product-name-3, #product-name-4 {
+        font-size: 40px;
+        font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+      }
+
+      #tituloProductos{
+        font-size: 50px;
+        margin: 40px 0px 20px 0px;
+        font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+        letter-spacing: 5px;
+      }
+/* ----------------- */      
+}
+
+
+/*FIN ESTANDAR*/
+
+/*TABLETS*/
+
+/* Estilos generales para dispositivos hasta 768px */
+@media (max-width: 768px) {
+    /* BARRA DE BUSQUEDA */
+    div {
+        position: relative; /* Permitir posicionamiento absoluto del ícono */
+        width: 95%; /* Ajustar ancho */
+        margin-left: 2.5%; /* Ajustar margen */
+    }
+
+    #search-bar {
+        width: 100%; /* Asegurarse de que el input ocupe el 100% del contenedor */
+        height: 40px; /* Ajustar altura */
+        padding: 5px 30px 5px 10px; /* Espacio a la derecha para el ícono */
+        border: 2px solid;
+        font-size: 14px; /* Reducir tamaño de fuente */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 3px 10px rgba(0, 0, 0, 0.19);
+    }
+
+    #lupa {
+        position: absolute; /* Posicionar el ícono de forma absoluta */
+        right: 10px; /* Ajustar la posición a la derecha */
+        top: 50%; /* Centrar verticalmente */
+        transform: translateY(-50%); /* Ajustar para centrar completamente */
+        font-size: 1.5rem; /* Ajustar tamaño del icono */
+        color: #666;
+        cursor: pointer;
+    }
+
+    /* Otros estilos para dispositivos hasta 768px */
+    .d-flex {
+        flex-direction: column; /* Cambiar a columna */
+        align-items: stretch; /* Alinear para ocupar todo el ancho */
+    }
+
+    .ordenar-relevancia {
+        gap: 4px; /* Ajustar espacio entre botones */
+        margin-left: 0; /* Eliminar margen izquierdo */
+        margin-top: 10px; /* Espacio entre price-filter y ordenar-relevancia */
+    }
+
+    /* Estilos de botones */
+    #filterBtn, #clearFilterBtn, #sortPriceAsc, #sortPriceDesc, #sortRelevanceDesc {
+        font-size: 14px; /* Aumentar ligeramente el tamaño de fuente */
+        color: #242222;
+        align-items: center;
+        padding: .6rem; /* Aumentar padding */
+        border-radius: 5px; /* Ajustar radio de borde */
+        transition: .5s ease, opacity .15s linear;
+        background-color: rgb(236, 191, 68);
+        width: 100%; /* Hacer que los botones ocupen todo el ancho */
+        margin-bottom: 8px; /* Espacio entre botones */
+    }
+
+    /* CONTAINER PRODUCTOS */
+    .container {
+        font-family: 'Verdana', serif !important;
+        width: 100%; /* Asegurarse de que la clase contenedora ocupe todo el ancho */
+    }
+
+    .product-container {
+        display: flex;
+        flex-direction: column; /* Mantener diseño en columna */
+        margin-bottom: 20px; /* Reducir espacio entre productos */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 3px 10px rgba(0, 0, 0, 0.19);
+        text-align: center;
+        border: 1px solid rgb(41, 26, 1);
+        width: 100%; /* Asegurarse de que cada producto ocupe todo el ancho */
+    }
+
+    .product-text {
+        flex: 100%; /* Ocupa todo el ancho */
+        text-align: left;
+        margin-top: 2%;
+        margin-left: 2%;
+    }
+
+    /* Imágenes de productos */
+    #product-imaElement-0, #product-imaElement-1, #product-imaElement-2, #product-imaElement-3, #product-imaElement-4 {
+        width: 100%; /* Ocupa todo el ancho */
+        height: auto; /* Mantener la proporción de las imágenes */
+        max-width: 100%; /* Evitar que las imágenes se desborden */
+        margin: 5px 0; /* Reducir margen */
+        border: 2px solid rgb(39, 25, 1);
+        object-fit: cover; /* Opcional, recorta la imagen para mantener su aspecto */
+    }
+
+    #product-soldCount-0, #product-soldCount-1, #product-soldCount-2, #product-soldCount-3, #product-soldCount-4 {
+        margin-top: 5%; /* Reducir margen superior */
+        color: rgb(148, 147, 147);
+    }
+
+    #product-name-0, #product-name-1, #product-name-2, #product-name-3, #product-name-4 {
+        font-size: 18px; /* Reducir tamaño de fuente */
+        font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    }
+
+    #tituloProductos {
+        font-size: 22px; /* Reducir tamaño de título */
+        margin: 10px 0; /* Ajustar margen */
+        font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+        letter-spacing: 1px; /* Reducir espacio entre letras */
+    }
+}
+
+/*FIN TABLETS*/
+
+/*CEL*/
+@media (max-width: 320px) {
+
+/* BARRA DE BUSQUEDA */
+div {
+    position: relative; /* Permitir posicionamiento absoluto del ícono */
+    width: 96%; /* Ocupa casi todo el ancho */
+    margin-left: 2%; /* Ajustar margen */
+}
+
+#search-bar {
+    width: 100%; /* Asegurarse de que el input ocupe el 100% del contenedor */
+    height: 35px; /* Reducir altura */
+    padding: 5px 35px 5px 10px; /* Espacio a la derecha para el ícono */
+    border: 2px solid;
+    font-size: 16px; /* Reducir tamaño de fuente */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+#lupa {
+    position: absolute; /* Posicionar el ícono de forma absoluta */
+    right: 10px; /* Ajustar la posición a la derecha */
+    top: 50%; /* Centrar verticalmente */
+    transform: translateY(-50%); /* Ajustar para centrar completamente */
+    font-size: 1.2rem; /* Ajustar tamaño del icono */
+    color: #666;
+    cursor: pointer;
+}
+/* ----------------- */
+
+@media (max-width: 320px) {
+
+    /* BOTONES DE FILTRO Y ORDENAR PRODUCTOS */ 
+    .d-flex {
+        flex-direction: column; /* Cambiar a columna */
+        align-items: stretch; /* Alinear para ocupar todo el ancho */
+    }
+
+    .ordenar-relevancia {
+        gap: 2px; /* Reducir espacio entre botones */
+        margin-left: 0; /* Eliminar margen izquierdo */
+        margin-top: 10px; /* Espacio entre price-filter y ordenar-relevancia */
+    }
+
+    .ordenar-relevancia button .texto-precio {
+        display: none; /* Ocultar el texto "Precio" */
+    }
+
+    .price-filter {
+        margin-right: 0; /* Eliminar margen derecho */
+        margin-bottom: 10px; /* Espacio debajo del price-filter */
+    }
+
+    #min-price, #max-price {
+        width: 100%; /* Ajustar tamaño para que ocupen todo el ancho */
+        padding: 5px; /* Ajustar padding */
+        font-size: 12px; /* Aumentar ligeramente el tamaño de fuente */
+    }
+    
+    #filterBtn, #clearFilterBtn, #sortPriceAsc, #sortPriceDesc, #sortRelevanceDesc {
+        font-size: 12px; /* Aumentar ligeramente el tamaño de fuente */
+        color: #242222;
+        align-items: center;
+        padding: .5rem; /* Aumentar padding */
+        border-radius: 5px; /* Ajustar radio de borde */
+        transition: .5s ease, opacity .15s linear;
+        background-color: rgb(236, 191, 68);
+        width: 100%; /* Hacer que los botones ocupen todo el ancho */
+        margin-bottom: 5px; /* Espacio entre botones */
+    }
+
+    /* CONTAINER PRODUCTOS */
+    .container {
+        font-family: 'Verdana', serif !important;
+        width: 100%; /* Asegurarse de que la clase contenedora ocupe todo el ancho */
+    }
+    
+    .product-container {
+        display: flex;
+        flex-direction: column; /* Mantener diseño en columna */
+        margin-bottom: 20px; /* Reducir espacio entre productos */
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+        text-align: center;
+        border: 1px solid rgb(41, 26, 1);
+        width: 100%; /* Asegurarse de que cada producto ocupe todo el ancho */
+    }
+
+    .product-text {
+        flex: 100%; /* Ocupa todo el ancho */
+        text-align: left;
+        margin-top: 2%;
+        margin-left: 2%;
+    }
+
+    #product-imaElement-0, #product-imaElement-1, #product-imaElement-2, #product-imaElement-3, #product-imaElement-4 {
+        width: 100%; /* Ocupa todo el ancho */
+        height: auto; /* Mantener la proporción de las imágenes */
+        max-width: 100%; /* Evitar que las imágenes se desborden */
+        margin: 5px 0; /* Reducir margen */
+        border: 2px solid rgb(39, 25, 1);
+        object-fit: cover; /* Opcional, recorta la imagen para mantener su aspecto */
+    }
+
+    #product-soldCount-0, #product-soldCount-1, #product-soldCount-2, #product-soldCount-3, #product-soldCount-4 {
+        margin-top: 5%; /* Reducir margen superior */
+        color: rgb(148, 147, 147);
+    }
+
+    #product-name-0, #product-name-1, #product-name-2, #product-name-3, #product-name-4 {
+        font-size: 20px; /* Reducir tamaño de fuente */
+        font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    }
+
+    #tituloProductos {
+        font-size: 24px; /* Reducir tamaño de título */
+        margin: 10px 0; /* Ajustar margen */
+        font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+        letter-spacing: 1px; /* Reducir espacio entre letras */
+    }
+}
+
+/* ----------------- */
+
+}
+
+/*FIN CEL*/
