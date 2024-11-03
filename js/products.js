@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const imageDiv = document.createElement('div');
             imageDiv.className = 'product-image'; // Add class
             const imgElement = document.createElement('img');
+            imgElement.className = 'image-product'
             imgElement.src = product.image;
             imgElement.alt = product.name;
             imageDiv.appendChild(imgElement);
