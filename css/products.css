@@ -179,12 +179,15 @@
 
     /* Imágenes de productos */
     #product-imaElement-0, #product-imaElement-1, #product-imaElement-2, #product-imaElement-3, #product-imaElement-4 {
-        width: 100%; /* Ocupa todo el ancho */
-        height: auto; /* Mantener la proporción de las imágenes */
+        width: 100px; /* Ocupa todo el ancho */
         max-width: 100%; /* Evitar que las imágenes se desborden */
         margin: 5px 0; /* Reducir margen */
         border: 2px solid rgb(39, 25, 1);
         object-fit: cover; /* Opcional, recorta la imagen para mantener su aspecto */
+    }
+
+    .image-product{
+        width: 100%;
     }
 
     #product-soldCount-0, #product-soldCount-1, #product-soldCount-2, #product-soldCount-3, #product-soldCount-4 {
@@ -308,6 +311,10 @@ div {
         margin: 5px 0; /* Reducir margen */
         border: 2px solid rgb(39, 25, 1);
         object-fit: cover; /* Opcional, recorta la imagen para mantener su aspecto */
+    }
+
+    .image-product{
+        width: 100%;
     }
 
     #product-soldCount-0, #product-soldCount-1, #product-soldCount-2, #product-soldCount-3, #product-soldCount-4 {
