@@ -143,7 +143,7 @@ main {
 }
 
 @media (min-width: 375px) {
-    /* Cart container for desktop */
+
     #cart-container {
         background-color: #f7df6e; /* Color de fondo para el contenedor del carrito */
         padding: 30px; /* Aumentar el padding para más espacio interior */
