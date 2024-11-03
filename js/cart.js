@@ -28,9 +28,6 @@ function updateBadge() {
     } else {
         badge.classList.add("visually-hidden"); // Hide the badge if there are no items
     }
-
-    console.log(contador_prod);
-    localStorage.setItem("cant_prod",contador_prod);
 }
 
 // Función que se ejecuta cuando la ventana se carga
