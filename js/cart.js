@@ -12,12 +12,12 @@ function logout() {
 }
 
 function updateBadge() {
-    const carro = JSON.parse(localStorage.getItem('cart')) || []; // Parse the JSON string or use an empty array
-    let contador_prod = 0; // Initialize the counter
+    const carro = JSON.parse(localStorage.getItem('cart')) || []; 
+    let contador_prod = 0; // Inicializar el contador
 
     carro.forEach(item => {
-        if (item.quantity) { // Ensure quantity exists before adding
-            contador_prod += item.quantity; // Sum the quantities
+        if (item.quantity) { // Asegurar que hay cantidad antes de agregar
+            contador_prod += item.quantity; // Sumar cantidades
         }
     });
 
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartVisual(cartItems);
 });
 
-// Function to create the visual element of a product in the cart
+// Función para crear el elemento visual del producto en el carrito
 function createProductElement(item, index) {
     const productElement = document.createElement("div");
     productElement.className = "cart-item mb-4";
@@ -86,27 +86,27 @@ function createProductElement(item, index) {
     return productElement;
 }
 
-// Function to add a product to the cart
+// Función para agregar el producto en el carrito
 function addToCart(newItem) {
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     
-    // Check if the item already exists in the cart
+    // Chequear si el producto está en el carrito
     const existingIndex = cartItems.findIndex(item => item.id === newItem.id);
     
     if (existingIndex !== -1) {
-        // Item exists, update the quantity
+        // Item existe, actualiza la cantidad
         console.log(`Updating quantity for ${newItem.name}`);
         cartItems[existingIndex].quantity += newItem.quantity;
     } else {
-        // Item doesn't exist, add it to the cart
+        // Item no existe, agrega al carrito
         console.log(`Adding new item ${newItem.name}`);
         cartItems.push(newItem);
     }
     
-    // Save the updated cart to localStorage
+    // Guardar en el localStorage el carrito actualizado
     localStorage.setItem("cart", JSON.stringify(cartItems));
     
-    // Update the visual representation of the cart
+    // Actualizar representación visual del carrito
     updateCartVisual(cartItems);
     updateBadge()
 }
