@@ -30,6 +30,51 @@ function updateBadge() {
     }
 }
 
+// Función para calcular el subtotal de los productos en el carrito
+function calcularSubtotal() {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    return cartItems.reduce((acumulador, item) => acumulador + item.cost * item.quantity, 0);
+}
+
+// Función para calcular el costo de envío
+function calcularCostoEnvio(subtotal) {
+    // Obtener el tipo de envío seleccionado (suponiendo que sean inputs de tipo radio)
+    const tipoEnvioSeleccionado = document.querySelector('input[name="shippingType"]:checked');
+    
+    if (tipoEnvioSeleccionado) {
+        const tasaEnvio = parseFloat(tipoEnvioSeleccionado.value);
+        return subtotal * tasaEnvio;
+    }
+
+    return 0; // Si no se selecciona un tipo de envío, el costo es 0
+}
+
+// Función para actualizar los costos
+function actualizarCostos() {
+    const subtotal = calcularSubtotal(); // Asegúrate de que esta función esté calculando el subtotal correctamente
+    const costoEnvio = calcularCostoEnvio(subtotal);
+    const total = subtotal + costoEnvio;
+
+    // Actualizar los valores en el HTML
+    document.getElementById("subtotal").innerText = subtotal.toFixed(2);
+    document.getElementById("shipping-cost").innerText = costoEnvio.toFixed(2);
+    document.getElementById("total-cost").innerText = total.toFixed(2);
+}
+
+// Función para recalcular los costos cuando se cambia el tipo de envío
+document.addEventListener("DOMContentLoaded", function () {
+    // Asegurarse de que el cambio en el tipo de envío actualice los costos
+    const tiposEnvio = document.querySelectorAll('input[name="shippingType"]');
+    tiposEnvio.forEach(input => {
+        input.addEventListener('change', function () {
+            actualizarCostos(); // Actualizar los costos cuando se cambie el tipo de envío
+        });
+    });
+
+    // Calcular los costos iniciales al cargar la página
+    actualizarCostos();
+});
+
 // Función que se ejecuta cuando la ventana se carga
 window.onload = function() {
     const estaLogueado = localStorage.getItem('loggedIn');
@@ -39,7 +84,8 @@ window.onload = function() {
         const username = localStorage.getItem('username');
         document.getElementById("username").innerHTML = username;
     }
-    updateBadge(); // Update badge on load
+    updateBadge(); // Actualizar el badge al cargar la página
+    actualizarCostos(); // Actualizar los costos al cargar la página
 };
 
 // Cerrar sesión desde el menú desplegable
@@ -105,7 +151,8 @@ function addToCart(newItem) {
     
     // Actualizar representación visual del carrito
     updateCartVisual(cartItems);
-    updateBadge()
+    updateBadge(); // Actualizar badge
+    actualizarCostos(); // Actualizar los costos
 }
 
 // Update the quantity and subtotal when it changes
@@ -123,20 +170,21 @@ function updateSubtotal(input, cost, index) {
 
     localStorage.setItem("cart", JSON.stringify(cartItems));
     updateCartVisual(cartItems);
-    updateBadge(); // Update badge after quantity change
+    updateBadge(); // Actualizar el badge después de cambiar la cantidad
+    actualizarCostos(); // Actualizar los costos después de cambiar la cantidad
 }
 
 // Reload the cart items visually
 function updateCartVisual(cartItems) {
     const cartItemsContainer = document.getElementById("cart-items");
-    cartItemsContainer.innerHTML = ""; // Clear current content
+    cartItemsContainer.innerHTML = ""; // Limpiar el contenido actual
 
     if (cartItems.length === 0) {
-        document.getElementById("empty-cart").style.display = "block"; // Show message if cart is empty
+        document.getElementById("empty-cart").style.display = "block"; // Mostrar mensaje si el carrito está vacío
         return;
     }
 
-    document.getElementById("empty-cart").style.display = "none"; // Hide message if there are products in the cart
+    document.getElementById("empty-cart").style.display = "none"; // Ocultar mensaje si hay productos en el carrito
 
     cartItems.forEach((item, index) => {
         const productElement = createProductElement(item, index);
@@ -150,7 +198,8 @@ function removeFromCart(index) {
     cartItems.splice(index, 1);
     localStorage.setItem("cart", JSON.stringify(cartItems));
     updateCartVisual(cartItems);
-    updateBadge(); // Update badge after item removal
+    updateBadge(); // Actualizar badge después de eliminar un artículo
+    actualizarCostos(); // Actualizar los costos después de eliminar un producto
 }
 
 // Placeholder function for future edit functionality
@@ -171,10 +220,6 @@ function testAddingProduct() {
 
     // Call the function to add the product to the cart
     addToCart(productToAdd);
-
-//Calculo la cantidad de productos en carrito
-// Function to update the badge with the total quantity of products in the cart
-
 }
 
 
