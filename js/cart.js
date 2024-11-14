@@ -190,6 +190,72 @@ function updateCartVisual(cartItems) {
         const productElement = createProductElement(item, index);
         cartItemsContainer.appendChild(productElement);
     });
+
+    //Funcionalidad del boton de finalizar compra
+
+    let finalCompra = document.getElementById('finalCompra');
+    let tipoEnvio = document.querySelectorAll('input[name="shippingType"]');
+    let metodosPago = document.querySelectorAll('input[name="paymentMethod"]');
+    let seleccionaEnvio = false;
+    let seleccionaPago = false;
+    
+    finalCompra.addEventListener('click', function() {
+        // Obtener los valores de los campos de dirección
+        let departamento = document.getElementById('department').value.trim();
+        let localidad = document.getElementById('locality').value.trim();
+        let calle = document.getElementById('street').value.trim();
+        let numero = document.getElementById('number').value.trim();
+        let esquina = document.getElementById('corner').value.trim();
+    
+        // Recuperar el carrito desde localStorage
+        const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        console.log(cartItems); // Verifica el contenido del carrito en la consola
+    
+        // Validar si el carrito está vacío
+        if (cartItems.length === 0) {
+            alert("Su carrito está vacío. Por favor, agregue productos antes de continuar.");
+            return; // Detiene la ejecución si el carrito está vacío
+        }
+    
+        // Validar si se ha seleccionado tipo de envío
+        tipoEnvio.forEach((tipo) => {
+            if (tipo.checked) {
+                seleccionaEnvio = true;
+            }
+        });
+    
+        // Validar si se ha seleccionado método de pago
+        metodosPago.forEach((metodo) => {
+            if (metodo.checked) {
+                seleccionaPago = true;
+            }
+        });
+    
+        // Validaciones
+        if (departamento === "" || localidad === "" || calle === "" || numero === "" || esquina === "") {
+            alert("Complete los datos de dirección para el envío de su pedido.");
+            return; // Detiene la ejecución si la dirección está incompleta
+        }
+    
+        if (!seleccionaEnvio) {
+            alert("Debe escoger un tipo de envío para su pedido.");
+            return; // Detiene la ejecución si no se seleccionó un tipo de envío
+        }
+    
+        if (!seleccionaPago) {
+            alert("Debe escoger un método de pago para su pedido.");
+            return; // Detiene la ejecución si no se seleccionó un método de pago
+        }
+    
+        // Si todo está correcto, mostramos el mensaje de éxito
+        alert("Envío exitoso!!");
+        // Eliminar todos los productos del carrito en localStorage
+        localStorage.removeItem("cart");
+
+        // Recargar la página
+        location.reload();
+        
+    });    
 }
 
 // Remove an item from the cart
