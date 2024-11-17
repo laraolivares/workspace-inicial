@@ -32,6 +32,10 @@ main {
         max-width: 1500px; /* Puedes establecer un ancho máximo según tus necesidades */
         margin-left: auto; /* Centrar el contenedor horizontalmente */
         margin-right: auto; /* Centrar el contenedor horizontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar todo el contenido dentro de este contenedor */
+    justify-content: center;
     }
 
     #cart-items {
@@ -157,7 +161,10 @@ main {
   margin-left: 2%;
   padding: 0.94rem;
   cursor: pointer; 
-  border-radius: 3.12rem; 
+  border-radius: 3.12rem;
+display: block; /* Asegura que el botón sea un bloque para centrarlo */
+width: auto; /* El ancho se ajusta al contenido */
+text-align: center; /* Alinear el texto dentro del botón */
 }
 
 #finalCompra:hover {
@@ -175,6 +182,10 @@ main {
         max-width: 2000px; /* Puedes establecer un ancho máximo según tus necesidades */
         margin-left: auto; /* Centrar el contenedor horizontalmente */
         margin-right: auto; /* Centrar el contenedor horizontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar todo el contenido dentro de este contenedor */
+    justify-content: center;
     }
 
     #cart-items {
@@ -291,7 +302,10 @@ main {
   margin-left: 2%;
   padding: 0.94rem;
   cursor: pointer; 
-  border-radius: 3.12rem; 
+  border-radius: 3.12rem;
+display: block; /* Asegura que el botón sea un bloque para centrarlo */
+width: auto; /* El ancho se ajusta al contenido */
+text-align: center; /* Alinear el texto dentro del botón */
 }
 
 #finalCompra:hover {
