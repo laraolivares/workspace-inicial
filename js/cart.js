@@ -268,23 +268,22 @@ function removeFromCart(index) {
     actualizarCostos(); // Actualizar los costos después de eliminar un producto
 }
 
-// Placeholder function for future edit functionality
+// Placeholder función para editar
 function editItem(index) {
-    alert("Edit item feature is under development.");
+    alert("La función para editar item está bajo desarrollo.");
 }
 
-// Function to test adding a product (for demonstration purposes)
+// Function para probar agregar producto
 function testAddingProduct() {
     const productToAdd = {
-        id: '123', // Ensure this ID is unique for each product
+        id: '123', 
         name: 'Example Product',
-        description: 'This is an example product.',
+        description: 'Ejemplo de producto.',
         image: 'example.jpg',
         cost: 10.00,
-        quantity: 1 // This is the quantity you want to add
+        quantity: 1 
     };
-
-    // Call the function to add the product to the cart
+    // Agregar producto al carrito
     addToCart(productToAdd);
 }
 
