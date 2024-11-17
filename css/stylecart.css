@@ -53,8 +53,6 @@ main {
         margin: 0 auto; /* Centrar las tarjetas horizontalmente */
     }
 
-
-
     .product-image {
         width: 300px; /* Ancho de la imagen */
         height: auto;
@@ -149,6 +147,21 @@ main {
   justify-content: center;
   width: 100%; 
   padding: 1.25rem;
+}
+
+#finalCompra {
+  background-color: orange;
+  margin-top: 5%; 
+  margin-bottom: 5%;
+  font-size: 1.5rem; 
+  margin-left: 2%;
+  padding: 0.94rem;
+  cursor: pointer; 
+  border-radius: 3.12rem; 
+}
+
+#finalCompra:hover {
+  background-color: #FF6347;
 }
 
 @media (min-width: 375px) {
@@ -269,3 +282,19 @@ main {
   width: 100%; 
   padding: 1.25rem;
 }
+
+#finalCompra {
+  background-color: orange;
+  margin-top: 5%; 
+  margin-bottom: 5%;
+  font-size: 1.5rem; 
+  margin-left: 2%;
+  padding: 0.94rem;
+  cursor: pointer; 
+  border-radius: 3.12rem; 
+}
+
+#finalCompra:hover {
+  background-color: #FF6347;
+}
+
