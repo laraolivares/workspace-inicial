@@ -40,21 +40,21 @@ function logout() {
 }
 
 function updateBadge() {
-    const carro = JSON.parse(localStorage.getItem('cart')) || []; // Parse the JSON string or use an empty array
-    let contador_prod = 0; // Initialize the counter
+    const carro = JSON.parse(localStorage.getItem('cart')) || []; // Parse JSON string
+    let contador_prod = 0; // Inicia el contador
 
     carro.forEach(item => {
-        if (item.quantity) { // Ensure quantity exists before adding
-            contador_prod += item.quantity; // Sum the quantities
+        if (item.quantity) { // Se asegura que exista cantidad antes de agregar
+            contador_prod += item.quantity; 
         }
     });
 
     let badge = document.getElementById("badge");
     if (contador_prod > 0) {
-        badge.classList.remove("visually-hidden"); // Show the badge
-        badge.innerHTML = contador_prod; // Update the badge text
+        badge.classList.remove("visually-hidden"); 
+        badge.innerHTML = contador_prod;
     } else {
-        badge.classList.add("visually-hidden"); // Hide the badge if there are no items
+        badge.classList.add("visually-hidden"); 
     }
 
     console.log(contador_prod);

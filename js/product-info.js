@@ -21,21 +21,21 @@ window.onload = function() {
 };
 
 function updateBadge() {
-    const carro = JSON.parse(localStorage.getItem('cart')) || []; // Parse the JSON string or use an empty array
-    let contador_prod = 0; // Initialize the counter
+    const carro = JSON.parse(localStorage.getItem('cart')) || []; // Parse JSON string
+    let contador_prod = 0; // Inicia el contador
 
     carro.forEach(item => {
-        if (item.quantity) { // Ensure quantity exists before adding
-            contador_prod += item.quantity; // Sum the quantities
+        if (item.quantity) { // Se asegura que exista cantidad antes de agregar  
+            contador_prod += item.quantity; 
         }
     });
 
     let badge = document.getElementById("badge");
     if (contador_prod > 0) {
-        badge.classList.remove("visually-hidden"); // Show the badge
-        badge.innerHTML = contador_prod; // Update the badge text
+        badge.classList.remove("visually-hidden"); // Mostrar badge
+        badge.innerHTML = contador_prod; 
     } else {
-        badge.classList.add("visually-hidden"); // Hide the badge if there are no items
+        badge.classList.add("visually-hidden"); //  Esconder badge
     }
 
     console.log(contador_prod);
@@ -166,51 +166,50 @@ document.addEventListener("DOMContentLoaded", function() {
         relatedContainer.appendChild(imgContainer);
     }
 
-const excludedProductId = localStorage.getItem('idProducto'); // Ensure this is a string
+const excludedProductId = localStorage.getItem('idProducto'); // Se asegura que sea string
 
 fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.getItem('catID') + ".json")
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        return response.json(); // Convert the response to JSON
+        return response.json(); // Convertir JSON
     })
     .then(data => {
         if (data && data.products) {
-            const products = data.products; // Save products locally
+            const products = data.products; // Guardar products locally
 
-            // Exclude the product with the specified ID
-            const excludedProductId = localStorage.getItem('idProducto'); // Assuming this is how you get the ID to exclude
+            const excludedProductId = localStorage.getItem('idProducto'); 
             const filteredProducts = products.filter(product => product.id.toString() !== excludedProductId);
 
-            displayImagesInRow(filteredProducts); // Call to display images without the excluded product
+            displayImagesInRow(filteredProducts); 
 
             function displayImagesInRow(products) {
-                // Clear existing related products if needed
+            
                 const relatedContainer = document.getElementById('related-products');
-                relatedContainer.innerHTML = ''; // Clear previous content
+                relatedContainer.innerHTML = ''; // Vaciar container previo
 
-                // Create a container for the images
+                // Crear container para images
                 const imgContainer = document.createElement('div');
-                imgContainer.className = 'related-container'; // Add class for styling
+                imgContainer.className = 'related-container'; // Agregar class
 
-                // Create image elements and append to the container
+                // Crear elementos de imagen  y su div
                 products.forEach((product, index) => {
                     const imageDiv = document.createElement('div');
-                    imageDiv.className = 'related-image'; // Add class for styling
+                    imageDiv.className = 'related-image'; 
 
                     const imgElement = document.createElement('img');
-                    imgElement.src = product.image; // Use the source from the product object
-                    imgElement.alt = `Image ${index + 1}`; // Use a generic alt text or modify as needed
+                    imgElement.src = product.image; 
+                    imgElement.alt = `Image ${index + 1}`; 
 
 
                     const imgTitle = document.createElement('p');
                     imgTitle.textContent= product.name;
                     imgTitle.className = 'img-title';
 
-                    // Add a click event listener to save the product ID to local storage
+                    // Guardar el product ID en local storage
                     imgElement.addEventListener('click', () => {
-                        localStorage.setItem('idProducto', product.id); // Save the clicked product's ID
+                        localStorage.setItem('idProducto', product.id); 
                         window.location.href = 'product-info.html';
                     });
 
@@ -219,7 +218,7 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + localStorage.g
                     imgContainer.appendChild(imageDiv);
                 });
 
-                // Append the image container to the specified element
+               
                 relatedContainer.appendChild(imgContainer);
             }
         }
