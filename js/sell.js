@@ -51,7 +51,7 @@ function updateBadge() {
     console.log(contador_prod);
 };
 
-// Function to update publication costs
+//Función para actualizar los costos de publicación
 function updateTotalCosts(){
     let unitProductCostHTML = document.getElementById("productCostText");
     let comissionCostHTML = document.getElementById("comissionText");
@@ -66,7 +66,7 @@ function updateTotalCosts(){
     totalCostHTML.innerHTML = totalCostToShow;
 }
 
-// Event listener for when the DOM is fully loaded
+// Evento para cuando el DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", function(e){
     // Add event listener for logout button
     const cerrarSesion = document.getElementById("cerrarSesion"); 
@@ -109,17 +109,17 @@ document.addEventListener("DOMContentLoaded", function(e){
         updateTotalCosts();
     });
 
-    // Configurations for the file upload element
+    // Configuración para el elemento de carga de archivos.
     let dzoptions = {
         url: "/",
         autoQueue: false
     };
     let myDropzone = new Dropzone("div#file-upload", dzoptions);    
 
-    // Get the product selling form
+    // Formulario de venta de productos
     let sellForm = document.getElementById("sell-info");
 
-    // Add an event listener for the 'submit' event on the form
+    // Evento 'enviar' en el formulario
     sellForm.addEventListener("submit", function(e){
         e.preventDefault(); 
 
@@ -128,36 +128,36 @@ document.addEventListener("DOMContentLoaded", function(e){
         let productCost = document.getElementById("productCostInput");
         let infoMissing = false;
 
-        // Remove invalid classes
+        // Eliminar clases no válidas
         productNameInput.classList.remove('is-invalid');
         productCategory.classList.remove('is-invalid');
         productCost.classList.remove('is-invalid');
 
-        // Validate product name
+        // Validar nombre del producto
         if (productNameInput.value === "") {
             productNameInput.classList.add('is-invalid');
             infoMissing = true;
         }
         
-        // Validate product category
+        // Validar categoría de producto
         if (productCategory.value === "") {
             productCategory.classList.add('is-invalid');
             infoMissing = true;
         }
 
-        // Validate product cost
+        // Validar costo del producto
         if (productCost.value <= 0) {
             productCost.classList.add('is-invalid');
             infoMissing = true;
         }
         
         if (!infoMissing) {
-            // If all validations pass, send the request to create the publication
+            // Si pasan todas las validaciones, envía la solicitud para crear la publicación.
             getJSONData(PUBLISH_PRODUCT_URL).then(function(resultObj){
                 let msgToShowHTML = document.getElementById("resultSpan");
                 let msgToShow = "";
 
-                // Show success or error message
+                // Mostrar mensaje de éxito o error
                 if (resultObj.status === 'ok') {
                     msgToShow = MSG;
                     document.getElementById("alertResult").classList.add('alert-primary');
