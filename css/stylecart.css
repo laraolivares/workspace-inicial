@@ -158,9 +158,6 @@ main {
   padding: 0.94rem;
   cursor: pointer; 
   border-radius: 3.12rem;
-display: block; /* Asegura que el botón sea un bloque para centrarlo */
-width: auto; /* El ancho se ajusta al contenido */
-text-align: center; /* Alinear el texto dentro del botón */
 }
 
 #finalCompra:hover {
@@ -295,9 +292,6 @@ text-align: center; /* Alinear el texto dentro del botón */
   padding: 0.94rem;
   cursor: pointer; 
   border-radius: 3.12rem;
-display: block; /* Asegura que el botón sea un bloque para centrarlo */
-width: auto; /* El ancho se ajusta al contenido */
-text-align: center; /* Alinear el texto dentro del botón */
 }
 
 #finalCompra:hover {
