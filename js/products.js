@@ -11,21 +11,21 @@ function logout() {
 }
 
 function updateBadge() {
-    const carro = JSON.parse(localStorage.getItem('cart')) || []; // Parse the JSON string or use an empty array
-    let contador_prod = 0; // Initialize the counter
-
+    const carro = JSON.parse(localStorage.getItem('cart')) || []; 
+    let contador_prod = 0; // Empieza el contador
+    
     carro.forEach(item => {
-        if (item.quantity) { // Ensure quantity exists before adding
-            contador_prod += item.quantity; // Sum the quantities
+        if (item.quantity) { 
+            contador_prod += item.quantity; 
         }
     });
 
     let badge = document.getElementById("badge");
     if (contador_prod > 0) {
-        badge.classList.remove("visually-hidden"); // Show the badge
-        badge.innerHTML = contador_prod; // Update the badge text
+        badge.classList.remove("visually-hidden");
+        badge.innerHTML = contador_prod;
     } else {
-        badge.classList.add("visually-hidden"); // Hide the badge if there are no items
+        badge.classList.add("visually-hidden");
     }
 
     console.log(contador_prod);
@@ -49,20 +49,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const catID = localStorage.getItem("catID");
 
-    // Function to render products
+    // Funcion render
     function renderProducts(productsToRender) {
-        container.innerHTML = ''; // Clear the container
+        container.innerHTML = '';
         productsToRender.forEach((product, index) => {
-            // Create a container div for each product
+            // Crea container div para cada producto
             const productContainer = document.createElement('div');
-            productContainer.className = 'product-container'; // Add class
+            productContainer.className = 'product-container';
             productContainer.id = `product-${product.id}`;
             productContainer.addEventListener('click', function() {
                 localStorage.setItem('idProducto', product.id);
-                window.location.href = 'product-info.html'; // Assuming this is the page to view product details
+                window.location.href = 'product-info.html';
             });
 
-            // Create a div for the image
+            // Crea div para la imagen
             const imageDiv = document.createElement('div');
             imageDiv.className = 'product-image'; // Add class
             const imgElement = document.createElement('img');
@@ -72,36 +72,34 @@ document.addEventListener("DOMContentLoaded", function() {
             imageDiv.appendChild(imgElement);
             productContainer.appendChild(imageDiv);
 
-            // Create a div for text information
+            // Crea div para la info
             const textDiv = document.createElement('div');
-            textDiv.className = 'product-text'; // Add class
+            textDiv.className = 'product-text';
 
-            // Add product name
+            // Agrega nombre del producto
             const nameP = document.createElement('p');
             nameP.textContent = product.name;
-            nameP.className = 'product-name'; // Corrected class assignment
+            nameP.className = 'product-name';
             textDiv.appendChild(nameP);
 
-            // Add product description, cost, and currency
+            // Agrega desc, costo y moneda del producto
             const descriptionP = document.createElement('p');
             descriptionP.innerHTML = `${product.description}<br><br><strong>${product.currency} ${product.cost}</strong>`;
-            descriptionP.className = 'product-description'; // Corrected class assignment
+            descriptionP.className = 'product-description';
             textDiv.appendChild(descriptionP);
 
-            // Add sold count
+            
             const soldCountP = document.createElement('p');
             soldCountP.textContent = `${product.soldCount} vendidos`;
             textDiv.appendChild(soldCountP);
 
-            // Append textDiv to productContainer
             productContainer.appendChild(textDiv);
 
-            // Append productContainer to the main container
             container.appendChild(productContainer);
         });
     }
 
-    // Function to filter products based on search input
+    // Funcion filtro
     function filterProducts(query) {
         const lowerCaseQuery = query.toLowerCase();
         const filteredProducts = products.filter(product =>
@@ -120,26 +118,25 @@ document.addEventListener("DOMContentLoaded", function() {
         renderProducts(filteredProducts);
     }
 
-    // Fetch products data
     fetch("https://japceibal.github.io/emercado-api/cats_products/" + catID + ".json")
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json(); // Convert the response to JSON
+            return response.json();
         })
         .then(data => {
             if (data && data.products) {
-                products = data.products; // Save products globally
-                renderProducts(products); // Initial render of all products
+                products = data.products; 
+                renderProducts(products); 
 
-                // Add event listener to the search bar
+                // Event listener para la barra de busqueda
                 searchBar.addEventListener('input', (event) => {
                     const query = event.target.value;
                     filterProducts(query);
                 });
 
-                // Add event listener to the filter button
+                // Event listener para el boton de filtro
                 filterBtn.addEventListener('click', function() {
                     const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
                     const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
@@ -149,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     renderProducts(filteredProducts);
                 });
 
-                // Add event listeners for sorting
+                // Event listeners para el orden
                 sortPriceAsc.addEventListener('click', function() {
                     const sortedProducts = [...products].sort((a, b) => a.cost - b.cost);
                     renderProducts(sortedProducts);
@@ -173,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 });
 
-// On window load check for login status
+
 window.onload = function() {
     const estaLogueado = localStorage.getItem('loggedIn');
     if (!estaLogueado) {
