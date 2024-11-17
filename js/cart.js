@@ -273,16 +273,6 @@ function editItem(index) {
     alert("Edit item feature is under development.");
 }
 
-// Function to test adding a product (for demonstration purposes)
-function testAddingProduct() {
-    const productToAdd = {
-        id: '123', // Ensure this ID is unique for each product
-        name: 'Example Product',
-        description: 'This is an example product.',
-        image: 'example.jpg',
-        cost: 10.00,
-        quantity: 1 // This is the quantity you want to add
-    };
 
     // Call the function to add the product to the cart
     addToCart(productToAdd);
