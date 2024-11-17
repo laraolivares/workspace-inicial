@@ -238,9 +238,7 @@ div {
     color: #666;
     cursor: pointer;
 }
-/* ----------------- */
 
-@media (max-width: 320px) {
 
     /* BOTONES DE FILTRO Y ORDENAR PRODUCTOS */ 
     .d-flex {
@@ -333,10 +331,6 @@ div {
         font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
         letter-spacing: 1px; /* Reducir espacio entre letras */
     }
-}
-
-/* ----------------- */
-
 }
 
 /*FIN CEL*/
