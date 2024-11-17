@@ -23,10 +23,10 @@ function updateBadge() {
 
     let badge = document.getElementById("badge");
     if (contador_prod > 0) {
-        badge.classList.remove("visually-hidden"); // Show the badge
-        badge.innerHTML = contador_prod; // Update the badge text
+        badge.classList.remove("visually-hidden"); // Mostrar el badge
+        badge.innerHTML = contador_prod; // Actualizar el texto del badge
     } else {
-        badge.classList.add("visually-hidden"); // Hide the badge if there are no items
+        badge.classList.add("visually-hidden"); // Esconder el badge si no hay más items
     }
 }
 
@@ -38,7 +38,7 @@ function calcularSubtotal() {
 
 // Función para calcular el costo de envío
 function calcularCostoEnvio(subtotal) {
-    // Obtener el tipo de envío seleccionado (suponiendo que sean inputs de tipo radio)
+    // Obtener el tipo de envío seleccionado
     const tipoEnvioSeleccionado = document.querySelector('input[name="shippingType"]:checked');
     
     if (tipoEnvioSeleccionado) {
@@ -51,7 +51,7 @@ function calcularCostoEnvio(subtotal) {
 
 // Función para actualizar los costos
 function actualizarCostos() {
-    const subtotal = calcularSubtotal(); // Asegúrate de que esta función esté calculando el subtotal correctamente
+    const subtotal = calcularSubtotal(); 
     const costoEnvio = calcularCostoEnvio(subtotal);
     const total = subtotal + costoEnvio;
 
@@ -155,7 +155,7 @@ function addToCart(newItem) {
     actualizarCostos(); // Actualizar los costos
 }
 
-// Update the quantity and subtotal when it changes
+// Actualizar la cantidad y subtotal cuando cambia
 function updateSubtotal(input, cost, index) {
     const quantity = parseInt(input.value);
     const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
@@ -163,8 +163,8 @@ function updateSubtotal(input, cost, index) {
     if (quantity > 0) {
         cartItems[index].quantity = quantity;
     } else {
-        alert("Quantity must be at least 1.");
-        input.value = 1; // Reset to 1
+        alert("La cantidad debe ser al menos 1.");
+        input.value = 1; // Resetar a 1
         cartItems[index].quantity = 1;
     }
 
@@ -174,7 +174,7 @@ function updateSubtotal(input, cost, index) {
     actualizarCostos(); // Actualizar los costos después de cambiar la cantidad
 }
 
-// Reload the cart items visually
+// Recargar los items visualmente en el carrito
 function updateCartVisual(cartItems) {
     const cartItemsContainer = document.getElementById("cart-items");
     cartItemsContainer.innerHTML = ""; // Limpiar el contenido actual
@@ -258,7 +258,7 @@ function updateCartVisual(cartItems) {
     });    
 }
 
-// Remove an item from the cart
+// Eliminar el item del carrito
 function removeFromCart(index) {
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     cartItems.splice(index, 1);
