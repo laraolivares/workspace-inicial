@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
         renderProducts(filteredProducts);
     }
 
-    fetch("https://japceibal.github.io/emercado-api/cats_products/" + catID + ".json")
+    fetch("http://localhost:3000/cats_products/" + catID)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');

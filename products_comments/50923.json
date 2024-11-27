@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1732662592331",
+    "product": 50923,
+    "score": 4,
+    "description": "Prueba Postman.",
+    "user": "Subgrupo2",
+    "dateTime": "2024-11-26 16:26:10"
+  },
+  {
+    "id": "1732662984573",
+    "product": 50923,
+    "score": 4,
+    "description": "Prueba Postman2.",
+    "user": "Subgrupo2",
+    "dateTime": "2024-11-26 16:26:10"
+  },
+  {
+    "product": 50923,
+    "score": 4,
+    "description": "Prueba Postman3.",
+    "user": "Subgrupo2",
+    "dateTime": "2024-11-26 16:26:10"
+  },
+  {
+    "product": 50923,
+    "score": 4,
+    "description": "Prueba Postman3.",
+    "user": "Subgrupo2",
+    "dateTime": "2024-11-26 16:26:10"
+  }
+]
